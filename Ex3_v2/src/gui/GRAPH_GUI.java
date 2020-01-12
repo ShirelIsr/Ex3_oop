@@ -166,10 +166,19 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 					x=scale(f.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
 					y=scale(f.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
 					Point3D pf=new Point3D(x,y);
-					g.setColor(Color.DARK_GRAY);
+					if(f.getType()==1)
+						g.setColor(Color.PINK);
+					else g.setColor(Color.ORANGE);
 					g.fillOval(pf.ix(),pf.iy(),12,12);
 				}
 			}
+			Bots b=Robots.get(0);
+			x=scale(b.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
+			y=scale(b.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
+			Point3D pb=new Point3D(x,y);
+			g.setColor(Color.black);
+			g.fillOval(pb.ix(),pb.iy(),12,12);
+
 		}
 	}
 	public void save() 
@@ -396,22 +405,21 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 			else Robots.clear();
 			int i=0;
 			while(i<rs)
-				{
-				 int rnd =(int)Math.random()*Gui_Graph.nodeSize();
+			{
+				int rnd =(int)Math.random()*Gui_Graph.nodeSize();
 				game.addRobot(rnd);
 				i++;
-				}
+			}
 			List<String> Bots = game.getRobots();
-			for (String str : Bots) {
+			for (String str : Bots)
+			{
+				System.out.println(str);
 				Bots b= new Bots (this.Gui_Graph);
-				 b.initRobot(str);
-				 Robots.put(b.getId(), b);
-				 
+				b.initRobot(str);
+				Robots.put(b.getId(), b);	 
+			}
 		}
-		}
-			catch (JSONException e) {e.printStackTrace();}
-
-
+		catch (JSONException e) {e.printStackTrace();}
 		repaint();
 	}
 
