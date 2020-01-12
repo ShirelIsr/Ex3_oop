@@ -270,6 +270,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	}
 
 
+
 	public void SP() 
 	{
 		String src=  JOptionPane.showInputDialog("Please input the src ");
@@ -388,7 +389,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		{
 			try
 			{
-				Fruit f=new Fruit();
+				Fruit f=new Fruit(Gui_Graph);
 				f.initFruit(f_iter.next());
 				_fruit.add(f);	 
 			}
@@ -418,10 +419,42 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 				b.initRobot(str);
 				Robots.put(b.getId(), b);	 
 			}
+
 		}
 		catch (JSONException e) {e.printStackTrace();}
+		ArrayList <Integer> target=targets();
+		setBots(target);
 		repaint();
 	}
+	private ArrayList <Integer> targets()
+	{
+		ArrayList <Integer> t=new ArrayList <Integer>();
+		if (!_fruit.isEmpty())
+		{
+			Iterator <Fruit> it=_fruit.iterator();
+			while (it.hasNext())
+			{
+				Fruit f=it.next();
+				t.add(f.getEdge().getSrc());
+			}
+		}
+		return t;
+	}
+
+	private void setBots(ArrayList <Integer> targets)
+	{
+		Iterator <Integer> it=targets.iterator();
+		System.out.println(targets.size());
+		for(int i=0; i<Robots.size();i++)
+		{
+			if(it.hasNext())
+				Robots.get(i).setlocaiton(Gui_Graph.getNode(it.next()).getLocation());
+		}
+	}
+
+
+
+
 
 
 	@Override
