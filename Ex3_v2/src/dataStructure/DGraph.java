@@ -127,26 +127,25 @@ public class DGraph implements graph ,Serializable{
 	public void init(String json_file) {
 		DGraph g=new DGraph();
 		try{
-			String text = new String(Files.readAllBytes(Paths.get(json_file)), StandardCharsets.UTF_8);
-			JSONObject obj = new JSONObject(text);
-			JSONArray arr = obj.getJSONArray("Edges");
-
-			JSONArray arr1 = obj.getJSONArray("Nodes");
-			for(int i = 0; i < arr1.length(); i++)
+			JSONObject obj = new JSONObject(json_file);
+			JSONArray Edges = obj.getJSONArray("Edges");
+			JSONArray Nodes = obj.getJSONArray("Nodes");
+			
+			for(int i = 0; i < Nodes.length(); i++)
 			{
-				String pos= arr1.getJSONObject(i).getString("pos");
+				String pos= Nodes.getJSONObject(i).getString("pos");
 				String str[]=pos.split(",");
-				int id=arr1.getJSONObject(i).getInt("id");
+				int id=Nodes.getJSONObject(i).getInt("id");
 				Point3D p=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
 				node_data n =new NodeData(id,p); 
 				g.addNode(n);
 
 			} 
-			for(int i = 0; i < arr.length(); i++)
+			for(int i = 0; i < Edges.length(); i++)
 			{
-				int  src = arr.getJSONObject(i).getInt("src");
-				int dst = arr.getJSONObject(i).getInt("dest");
-				double w = arr.getJSONObject(i).getDouble("w");
+				int  src = Edges.getJSONObject(i).getInt("src");
+				int dst = Edges.getJSONObject(i).getInt("dest");
+				double w = Edges.getJSONObject(i).getDouble("w");
 				g.connect(src, dst, w);
 			} 
 		}
