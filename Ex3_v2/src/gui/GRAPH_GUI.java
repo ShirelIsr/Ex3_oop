@@ -60,7 +60,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	private double yMin=Double.MIN_VALUE;
 	private double yMax=Double.MAX_VALUE;
 	private double BORDES=20;
-	ArrayList <Fruit> _fruit =new ArrayList <Fruit>();
+	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 
@@ -172,12 +172,15 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 					g.fillOval(pf.ix(),pf.iy(),12,12);
 				}
 			}
-			Bots b=Robots.get(0);
-			x=scale(b.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-			y=scale(b.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
-			Point3D pb=new Point3D(x,y);
-			g.setColor(Color.black);
-			g.fillOval(pb.ix(),pb.iy(),12,12);
+			Collection<Bots> bb = Robots.values();
+			for(Bots b:bb)
+			{
+				x=scale(b.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
+				y=scale(b.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
+				Point3D pb=new Point3D(x,y);
+				g.setColor(Color.black);
+				g.fillOval(pb.ix(),pb.iy(),12,12);
+			}
 
 		}
 	}
@@ -385,6 +388,11 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		this.Gui_Graph=gg;
 		set(Gui_Graph);
 		Iterator<String> f_iter = game.getFruits().iterator();
+		if(_fruit==null)
+		{
+			_fruit=new ArrayList <Fruit>();
+		}
+		else _fruit.clear();
 		while(f_iter.hasNext())
 		{
 			try
@@ -443,18 +451,13 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 
 	private void setBots(ArrayList <Integer> targets)
 	{
+		Collection<Bots> b = Robots.values();
 		Iterator <Integer> it=targets.iterator();
-		System.out.println(targets.size());
-		for(int i=0; i<Robots.size();i++)
-		{
+		for(Bots bb:b)
 			if(it.hasNext())
-				Robots.get(i).setlocaiton(Gui_Graph.getNode(it.next()).getLocation());
-		}
+				bb.setlocaiton(Gui_Graph.getNode(it.next()).getLocation());
+
 	}
-
-
-
-
 
 
 	@Override
