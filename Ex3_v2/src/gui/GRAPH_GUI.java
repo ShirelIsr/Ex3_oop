@@ -65,6 +65,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
+	Thread help;
 
 	public GRAPH_GUI(graph g)
 	{
@@ -124,7 +125,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	}
 
 	public void paint(Graphics g)
-	{
+	{	
 		super.paint(g);
 		if (Gui_Graph==null) return;
 		Collection<node_data> s =Gui_Graph.getV();
@@ -177,8 +178,8 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 			Collection<Bots> bb = Robots.values();
 			for(Bots b:bb)
 			{
-				x=scale(b.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-				y=scale(b.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
+				x=scale(b.getLocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
+				y=scale(b.getLocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
 				Point3D pb=new Point3D(x,y);
 				g.setColor(Color.black);
 				g.fillOval(pb.ix(),pb.iy(),12,12);
@@ -381,6 +382,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	}
 
 	public void scenario() {
+
 		String num=  JOptionPane.showInputDialog("Please input the num");
 		int scenario_num = Integer.parseInt(num);
 		game_service game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -425,8 +427,8 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 			for (String str : Bots)
 			{
 				System.out.println(str);
-				Bots b= new Bots (this.Gui_Graph);
-				b.initRobot(str);
+				Bots b= new Bots ();
+				b.initBot(str);
 				Robots.put(b.getId(), b);	 
 			}
 
@@ -434,126 +436,179 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		catch (JSONException e) {e.printStackTrace();}
 		ArrayList <edge_data> target=targets();
 		setBots(target);
+		while(game.isRunning()) {
+			//initGUI();
+			moveRobots(game);
+		}
+		String results = game.toString();
+		System.out.println("Game Over: "+results);
 		repaint();
+		
 	}
-	private ArrayList <edge_data> targets()
+
+private ArrayList <edge_data> targets()
+{
+	ArrayList <edge_data> t=new ArrayList <edge_data>();
+	if (!_fruit.isEmpty())
 	{
-		ArrayList <edge_data> t=new ArrayList <edge_data>();
-		if (!_fruit.isEmpty())
+		Iterator <Fruit> it=_fruit.iterator();
+		while (it.hasNext())
 		{
-			Iterator <Fruit> it=_fruit.iterator();
-			while (it.hasNext())
-			{
-				Fruit f=it.next();
-				t.add(f.getEdge());
-			}
+			Fruit f=it.next();
+			t.add(f.getEdge());
 		}
-		return t;
+	}
+	return t;
+}
+
+
+
+private void setBots(ArrayList <edge_data> targets)
+{
+	Collection<Bots> b = Robots.values();
+	Iterator <edge_data> it=targets.iterator();
+	for(Bots bb:b)
+		if(it.hasNext())
+			bb.setLocaiton(Gui_Graph.getNode(it.next().getSrc()).getLocation());
+}
+
+/** 
+ * Moves each of the robots along the edge, 
+ * in case the robot is on a node the next destination (next edge) is chosen (randomly).
+ * @param game
+ * @param gg
+ * @param log
+ */
+private  void moveRobots(game_service game) {
+	List<String> log = game.move();
+	if(log!=null) {
+		long t = game.timeToEnd();
+		for(int i=0;i<log.size();i++) {
+			String robot_json = log.get(i);
+			try {
+				JSONObject line = new JSONObject(robot_json);
+				JSONObject ttt = line.getJSONObject("Robot");
+				int rid = ttt.getInt("id");
+				int src = ttt.getInt("src");
+				int dest = ttt.getInt("dest");
+
+				if(dest==-1) {	
+					dest = nextNode(src);
+					game.chooseNextEdge(rid, dest);
+
+				}
+				Bots b =Robots.get(rid);
+
+				_fruit=new ArrayList <Fruit>();
+				_fruit.clear();
+				Iterator<String> f_iter = game.getFruits().iterator();
+				while(f_iter.hasNext())
+				{
+
+					Fruit f=new Fruit(Gui_Graph);
+					f.initFruit(f_iter.next());
+					_fruit.add(f);	 
+
+				}
+				b.setLocaiton(Gui_Graph.getNode(src).getLocation());
+				System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
+				System.out.println(ttt);
+			}
+			catch (JSONException e) {e.printStackTrace();}
+		}
 	}
 
-	private void setBots(ArrayList <edge_data> targets)
+
+}
+
+
+private int nextNode( int src) {
+	Iterator<Fruit> it =_fruit.iterator();
+	edge_data e =null;
+	if (it.hasNext())
 	{
-		Collection<Bots> b = Robots.values();
-		Iterator <edge_data> it=targets.iterator();
-		for(Bots bb:b)
-			if(it.hasNext())
-				bb.setlocaiton(Gui_Graph.getNode(it.next().getSrc()).getLocation());
-
+		e=it.next().getEdge();
+		if(e.getSrc()==src)
+			return e.getDest();
 	}
+	if(e != null)
+		return e.getSrc();
+	return 0;
 
-	/** 
-	 * Moves each of the robots along the edge, 
-	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
-	 * @param game
-	 * @param gg
-	 * @param log
-	 */
-	private void moveRobots(game_service game) {
-		List<String> log = game.move();
-		if(log!=null) {
-			long t = game.timeToEnd();
-			for(int i=0;i<log.size();i++) {
-				String robot_json = log.get(i);
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	String str = e.getActionCommand();
+	switch (str)
+	{
+	case "save"     :save();
+	break;
+	case "load"     :load();
+	break;
+	case "isConnect":isConnect();
+	break;
+	case "SP"       :SP();
+	break;
+	case "SPD"      :SPD();
+	break;
+	case "TSP"      :TSP();
+	break;
+	case "scenario"   :
+
+		;	help =new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
 				try {
-					JSONObject line = new JSONObject(robot_json);
-					JSONObject ttt = line.getJSONObject("Robot");
-					int rid = ttt.getInt("id");
-					int src = ttt.getInt("src");
-					int dest = ttt.getInt("dest");
-				
-					if(dest==-1) {	
-						dest = nextNode(Gui_Graph, src);
-						game.chooseNextEdge(rid, dest);
-						System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
-						System.out.println(ttt);
-					}
-				} 
-				catch (JSONException e) {e.printStackTrace();}
+					scenario();
+					help.interrupt();
+				}
+				catch (Exception e) {e.printStackTrace();}
 			}
-		}
-	}
-
-	
-	
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String str = e.getActionCommand();
-		switch (str)
-		{
-		case "save"     :save();
+		});
+		help.start();
 		break;
-		case "load"     :load();
-		break;
-		case "isConnect":isConnect();
-		break;
-		case "SP"       :SP();
-		break;
-		case "SPD"      :SPD();
-		break;
-		case "TSP"      :TSP();
-		break;
-		case "scenario"   :scenario();
-		break;
-		}
-
 	}
 
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+}
 
 
-	public static void main(String[] args) {
+@Override
+public void mouseClicked(MouseEvent e) {
+	// TODO Auto-generated method stub
 
-		GRAPH_GUI app = new GRAPH_GUI();
-		app.setVisible(true);
-	}
+}
+
+@Override
+public void mousePressed(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+}
+
+@Override
+public void mouseReleased(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+}
+
+@Override
+public void mouseEntered(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+}
+
+@Override
+public void mouseExited(MouseEvent e) {
+	// TODO Auto-generated method stub
+
+}
+
+
+public static void main(String[] args) {
+
+	GRAPH_GUI app = new GRAPH_GUI();
+	app.setVisible(true);
+}
 }

@@ -8,79 +8,72 @@ import dataStructure.node_data;
 import utils.Point3D;
 
 public class Bots {
-	int id;
+	int src ,dest ,id,speed;
 	Point3D locaiton ;
-	double speed;
-	node_data src;
-	node_data dest;
-	graph g ;
+	double value;
 
-
-	public Bots(graph g)
+	public Bots()
 	{
-		this.id=-1;
-		this.locaiton = null;
-		this.speed =-1;
-		this.src=null;
-		this.dest=null;
-		this.g=g;
+		src=dest=id=speed=-1;
+		this.locaiton=null;
+		this.value=0;
 	}
 
-	public Bots(int id,Point3D locaiton,graph g,double speed )
-	{
-		this.id=id;
-		this.locaiton = locaiton;
-		this.speed =speed;
-		this.src=null;
-		this.dest=null;
-		this.g=g;
-	}
-	//{"Robot":{"id":0,"value":0.0,"src":0,"dest":-1,"speed":1.0
-	//,"pos":"35.18753053591606,32.10378225882353,0.0"}}
-	public void initRobot(String json) throws JSONException
+	public void initBot (String json ) throws JSONException
 	{
 		JSONObject obj = new JSONObject(json);
 		JSONObject Robots = obj.getJSONObject("Robot");
 		this.id=Robots.getInt("id");
 		this.speed=Robots.getInt("speed");
-		int src1=Robots.getInt("src");
-		if(g.getNode(src1)!= null)
-			this.src=g.getNode(src1);
-		int dst =Robots.getInt("dest");
-		if(dst>-1)
-		{
-			if(g.getNode(dst)!= null)
-				this.src=g.getNode(dst);
-		}
-		 String pos= Robots.getString("pos");
-		 String str[]=pos.split(",");
-		 this.locaiton=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
-	
+		this.src=Robots.getInt("src");
+		this.dest=Robots.getInt("dest");
+		String pos= Robots.getString("pos");
+		String str[]=pos.split(",");
+		this.locaiton=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
 	}
 
+	public void setLocaiton(Point3D l)
+	{
+		this.locaiton=l;
+	}
+
+	public Point3D getLocaiton()
+	{
+		return this.locaiton;
+	}
+
+	public  void setSrc(int src)
+	{
+		this.src=src;
+	}
+
+	public int getSrc()
+	{
+		return this.src;
+	}
+
+	public  void setDest(int dest)
+	{
+		this.dest=dest;
+	}
+
+	public int getDest()
+	{
+		return this.dest;
+	}
+
+	public void addV(double value)
+	{
+		this.value+=value;
+	}
+
+	public double getV()
+	{
+		return this.value;
+	}
 	public int getId()
 	{
 		return this.id;
 	}
-
-	public  Point3D getlocaiton()
-	{
-		return this.locaiton; 
-	}
-
-	public  void setlocaiton(Point3D l)
-	{
-		this.locaiton=l; 
-	}
-
-	public  void setCurNode()
-	{
-
-	}
-
-
-
-
-
 
 }
