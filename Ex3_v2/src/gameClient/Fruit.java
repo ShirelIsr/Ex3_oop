@@ -102,7 +102,7 @@ public class Fruit {
 	}
 
 	public boolean pointOn(Point3D a , Point3D b , Point3D c) {
-		if (Math.abs(distance(a, c) + distance(b, c) - distance(a, b))<=0.001)
+		if (Math.abs(distance(a, c) + distance(b, c) - distance(a, b))<=0.000001)
 			return true; // C is on the line.
 		return false; 
 	}

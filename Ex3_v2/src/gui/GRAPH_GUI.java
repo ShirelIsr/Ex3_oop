@@ -47,6 +47,8 @@ import dataStructure.node_data;
 import gameClient.Bots;
 import gameClient.Fruit;
 import oop_dataStructure.OOP_DGraph;
+import oop_dataStructure.oop_edge_data;
+import oop_dataStructure.oop_graph;
 import utils.Point3D;
 
 public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener
@@ -430,36 +432,70 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
-		ArrayList <Integer> target=targets();
+		ArrayList <edge_data> target=targets();
 		setBots(target);
 		repaint();
 	}
-	private ArrayList <Integer> targets()
+	private ArrayList <edge_data> targets()
 	{
-		ArrayList <Integer> t=new ArrayList <Integer>();
+		ArrayList <edge_data> t=new ArrayList <edge_data>();
 		if (!_fruit.isEmpty())
 		{
 			Iterator <Fruit> it=_fruit.iterator();
 			while (it.hasNext())
 			{
 				Fruit f=it.next();
-				t.add(f.getEdge().getSrc());
+				t.add(f.getEdge());
 			}
 		}
 		return t;
 	}
 
-	private void setBots(ArrayList <Integer> targets)
+	private void setBots(ArrayList <edge_data> targets)
 	{
 		Collection<Bots> b = Robots.values();
-		Iterator <Integer> it=targets.iterator();
+		Iterator <edge_data> it=targets.iterator();
 		for(Bots bb:b)
 			if(it.hasNext())
-				bb.setlocaiton(Gui_Graph.getNode(it.next()).getLocation());
+				bb.setlocaiton(Gui_Graph.getNode(it.next().getSrc()).getLocation());
 
 	}
 
+	/** 
+	 * Moves each of the robots along the edge, 
+	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
+	 * @param game
+	 * @param gg
+	 * @param log
+	 */
+	private void moveRobots(game_service game) {
+		List<String> log = game.move();
+		if(log!=null) {
+			long t = game.timeToEnd();
+			for(int i=0;i<log.size();i++) {
+				String robot_json = log.get(i);
+				try {
+					JSONObject line = new JSONObject(robot_json);
+					JSONObject ttt = line.getJSONObject("Robot");
+					int rid = ttt.getInt("id");
+					int src = ttt.getInt("src");
+					int dest = ttt.getInt("dest");
+				
+					if(dest==-1) {	
+						dest = nextNode(Gui_Graph, src);
+						game.chooseNextEdge(rid, dest);
+						System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
+						System.out.println(ttt);
+					}
+				} 
+				catch (JSONException e) {e.printStackTrace();}
+			}
+		}
+	}
 
+	
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String str = e.getActionCommand();
