@@ -52,7 +52,8 @@ import oop_dataStructure.oop_graph;
 import utils.Point3D;
 import utils.StdDraw;
 
-public final class MyGameGui extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener
+
+public class MyGameGui  
 {
 	/**
 	 * 
@@ -66,6 +67,8 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 	private double yMin=Double.MIN_VALUE;
 	private double yMax=Double.MAX_VALUE;
 	private double BORDES=20;
+	game_service game;
+	
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
@@ -75,8 +78,8 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
-		 _fruit =new ArrayList <Fruit>();
-		 Robots=new HashMap <Integer,Bots>() ;
+		_fruit =new ArrayList <Fruit>();
+		Robots=new HashMap <Integer,Bots>() ;
 		set(Gui_Graph);
 		initGUI();
 	}
@@ -84,8 +87,8 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 	public MyGameGui()
 	{
 		this.Gui_Graph=null;
-		 _fruit =new ArrayList <Fruit>();
-		 Robots=new HashMap <Integer,Bots>() ;
+		_fruit =new ArrayList <Fruit>();
+		Robots=new HashMap <Integer,Bots>() ;
 		initGUI();
 	}
 
@@ -93,7 +96,7 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 	{
 		this.Gui_Graph=g;
 		set(Gui_Graph);
-		this.getBufferStrategy();
+		StdDraw.enableDoubleBuffering();
 		initGUI();
 	}
 
@@ -107,9 +110,10 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 		}
 		StdDraw.setXscale(xMin , xMax);
 		StdDraw.setYscale(yMin, yMax);
+		StdDraw.setG_GUI(this);
 		StdDraw.show();
 		paint();
-		
+
 	}
 	public void ThreadPaint(game_service game)
 	{
@@ -121,7 +125,7 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 				while(game.isRunning())
 				{
 					try {
-						Thread.sleep(1000);
+						Thread.sleep(100);
 						Iterator<String> f_iter = game.getFruits().iterator();
 						_fruit.clear();
 						if(f_iter.hasNext())
@@ -141,7 +145,7 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 							Bots ber = new Bots();
 							ber.initBot(string);
 						}
-						repaint();
+						paint();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -242,7 +246,6 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 				File SelectedFile=chooser.getSelectedFile();
 				g.init(SelectedFile.getAbsolutePath());
 				Gui_Graph=g.copy();
-				repaint();
 
 			}
 			catch(Exception ex)
@@ -303,7 +306,6 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 		{
 			Gui_Graph.getEdge(ans.get(s).getKey(),ans.get(d).getKey()).setTag(Double.MIN_EXPONENT);
 		}
-		repaint();
 
 	}
 	public void SPD() 
@@ -357,63 +359,19 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 			pathAns+="->"+ans.get(dst).getKey();
 		}
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
-		repaint();
 	}
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 
-	}
+	public void initGame(int scenario_num)  {
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-	public void Play_Automaticly()
-	{
-		;	help =new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				try {
-					playAuto();
-					//help.interrupt();
-				}
-				catch (Exception e) {e.printStackTrace();}
-			}
-		});
-		help.start();
-
-	}
-
-	public void playAuto() throws InterruptedException {
-		String num=  JOptionPane.showInputDialog("Please input the num");
-		int scenario_num = Integer.parseInt(num);
-		game_service game = Game_Server.getServer(scenario_num); // you have [0,23] games
+		game = Game_Server.getServer(scenario_num); // you have [0,23] games
 		String g = game.getGraph();
 		DGraph gg = new DGraph();
 		gg.init(g);
+		xMin=Double.MIN_VALUE;
+		xMax=Double.MAX_VALUE;;
+		yMin=Double.MIN_VALUE;
+		yMax=Double.MAX_VALUE;
 		this.Gui_Graph=gg;
 		set(Gui_Graph);
 		Iterator<String> f_iter = game.getFruits().iterator();
@@ -456,17 +414,52 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 				b.initBot(str);
 				Robots.put(b.getId(), b);	 
 			}
-			
-
+			setBots();
+			initGUI();
+			StdDraw.pause(30);
 		}
-		catch (JSONException e) {e.printStackTrace();}
-		setBots();
-		Thread.sleep(200);
-		playSolo(game);
-		paint();
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
+	public  void Play_Automaticly(String S)
+	{
+		try
+		{
+			int number = Integer.parseInt(S);
+			if(number>=0 && number<=23)
+			{
+				initGame(number);
+				playAuto(game);				
+
+			}
+			else
+			{
+				JFrame jinput = new JFrame();
+				JOptionPane.showMessageDialog(jinput,"Bad input");
+				jinput.dispose();
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	private void playAuto(game_service game2) {
+	
+		game.startGame();
+		ThreadPaint(game);
+		//ThreadMouse(game);
+		while(game.isRunning()) {
+			//initGUI();
+			moveRobots(game);
+		}
+		String results = game.toString();
+		System.out.println("Game Over: "+results);
+	}
 
 	private void setBots()
 	{
@@ -573,7 +566,7 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 
 		}
 	}
-	
+
 	public void setPoint(double x, double y) {
 		this.x = x;
 		this.y = y;
@@ -581,85 +574,10 @@ public final class MyGameGui extends JFrame implements ActionListener, MouseList
 
 
 
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//		String str = e.getActionCommand();
-//		switch (str)
-//		{
-//		case "save"     :save();
-//		break;
-//		case "load"     :load();
-//		break;
-//		case "isConnect":isConnect();
-//		break;
-//		case "SP"       :SP();
-//		break;
-//		case "SPD"      :SPD();
-//		break;
-//		case "TSP"      :TSP();
-//		break;
-//		case "playAuto"   :Pl
-//
-//			;	help =new Thread(new Runnable() {
-//
-//				@Override
-//				public void run() {
-//					// TODO Auto-generated method stub
-//					try {
-//						playAuto();
-//						help.interrupt();
-//					}
-//					catch (Exception e) {e.printStackTrace();}
-//				}
-//			});
-//			help.start();
-//			break;
-//		}
-//
-//	}
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-
-
-
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
 
-}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 }

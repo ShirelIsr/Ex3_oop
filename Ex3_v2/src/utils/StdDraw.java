@@ -73,6 +73,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import gameClient.MyGameGui;
@@ -484,6 +485,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 	static MyGameGui graph;
 	static boolean rePaint = false;
+	static Thread help;
 	/**
 	 *  The color black.
 	 */
@@ -1674,16 +1676,16 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
-//		chooser.setVisible(true);
-//		String filename = chooser.getFile();
-//		if (filename != null) {
-//			StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
-//		}
+		//		FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
+		//		chooser.setVisible(true);
+		//		String filename = chooser.getFile();
+		//		if (filename != null) {
+		//			StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
+		//		}
 		String act = e.getActionCommand();
 		switch (act) {
-//		case "Draw graph":graph.paint();
-//		break;
+		//		case "Draw graph":graph.paint();
+		//		break;
 		case "Draw from file":graph.load();
 		break;
 		case "Save to file" :graph.save();
@@ -1694,13 +1696,61 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "TSP enter all the nodes" : graph.TSP();
 		break;
-		case "Auto" : graph.Play_Automaticly();
-		break;
-		case "Manual" : graph.TSP();
-		break;
-		default:
-			break;
+		case "Auto" : 
+		{
+			JFrame jinput = new JFrame();
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			jinput.dispose();
+			threadauto(input);
 		}
+		break;
+		case "Manuale":
+
+		{
+			JFrame jinput = new JFrame();
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			jinput.dispose();
+			threadman(input);
+		}
+
+		break;
+		}
+	}
+
+	public static void threadman(String s)
+	{
+		help = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				//g.ThreadPaint(game);
+				//graph.Play_manual();
+				help.interrupt();
+			}
+		});
+		help.start();
+	}
+
+	public static void threadauto(String s)
+	{
+		help = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				//g.ThreadPaint(game);
+					graph.Play_Automaticly(s);
+				
+				help.interrupt();
+			}
+		});
+		help.start();
+	}
+
+	public static void setG_GUI(MyGameGui theG)
+	{
+		graph= theG;
 	}
 
 
