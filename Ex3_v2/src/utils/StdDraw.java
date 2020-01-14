@@ -73,6 +73,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
 import gameClient.MyGameGui;
@@ -484,6 +485,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 	static MyGameGui graph;
 	static boolean rePaint = false;
+	static Thread help;
 	/**
 	 *  The color black.
 	 */
@@ -719,21 +721,29 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	// create the menu bar (changed to private)
 	private static JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
-		JMenu menu = new JMenu("File");
-		JMenu menu1 = new JMenu("Play");
-		menuBar.add(menu);
-		menuBar.add(menu1);
-		JMenuItem menuItem1 = new JMenuItem(" Save...   ");
-		JMenuItem menuItem2 = new JMenuItem("Auto");
-		JMenuItem menuItem3 = new JMenuItem("Manual");
+		JMenu file = new JMenu("File");
+		JMenu play = new JMenu("Play");
+		JMenu algo = new JMenu("Algo");
+		menuBar.add(file);
+		menuBar.add(play);
+		menuBar.add(algo);
+		JMenuItem menuItem1 = new JMenuItem(" Save...");
+		JMenuItem auto = new JMenuItem("Auto");
+		JMenuItem manual = new JMenuItem("Manual");
+		JMenuItem SP = new JMenuItem("SP");
+		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
 		menuItem1.addActionListener(std);
-		menuItem2.addActionListener(std);
-		menuItem3.addActionListener(std);
+		auto.addActionListener(std);
+		manual.addActionListener(std);
+		TSP.addActionListener(std);
+		SP.addActionListener(std);
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		menu.add(menuItem1);
-		menu1.add(menuItem2);
-		menu1.add(menuItem3);
+		file.add(menuItem1);
+		play.add(auto);
+		play.add(manual);
+		algo.add(TSP);
+		algo.add(SP);
 		return menuBar;
 	}
 
@@ -1666,12 +1676,81 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
-		chooser.setVisible(true);
-		String filename = chooser.getFile();
-		if (filename != null) {
-			StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
+		//		FileDialog chooser = new FileDialog(StdDraw.frame, "Use a .png or .jpg extension", FileDialog.SAVE);
+		//		chooser.setVisible(true);
+		//		String filename = chooser.getFile();
+		//		if (filename != null) {
+		//			StdDraw.save(chooser.getDirectory() + File.separator + chooser.getFile());
+		//		}
+		String act = e.getActionCommand();
+		switch (act) {
+		//		case "Draw graph":graph.paint();
+		//		break;
+		case "Draw from file":graph.load();
+		break;
+		case "Save to file" :graph.save();
+		break;
+		case "find Shortest path" : graph.SP();
+		break;
+		case "find Shortest path distance" : graph.SPD();
+		break;
+		case "TSP enter all the nodes" : graph.TSP();
+		break;
+		case "Auto" : 
+		{
+			JFrame jinput = new JFrame();
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			jinput.dispose();
+			threadauto(input);
 		}
+		break;
+		case "Manuale":
+
+		{
+			JFrame jinput = new JFrame();
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			jinput.dispose();
+			threadman(input);
+		}
+
+		break;
+		}
+	}
+
+	public static void threadman(String s)
+	{
+		help = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				//g.ThreadPaint(game);
+				//graph.Play_manual();
+				help.interrupt();
+			}
+		});
+		help.start();
+	}
+
+	public static void threadauto(String s)
+	{
+		help = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+
+				//g.ThreadPaint(game);
+					graph.Play_Automaticly(s);
+				
+				help.interrupt();
+			}
+		});
+		help.start();
+	}
+
+	public static void setG_GUI(MyGameGui theG)
+	{
+		graph= theG;
 	}
 
 
