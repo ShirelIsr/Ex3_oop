@@ -52,7 +52,7 @@ import oop_dataStructure.oop_graph;
 import utils.Point3D;
 import utils.StdDraw;
 
-public final class MyGameGui  extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener
+public final class MyGameGui extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener
 {
 	/**
 	 * 
@@ -398,7 +398,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 				// TODO Auto-generated method stub
 				try {
 					playAuto();
-					help.interrupt();
+					//help.interrupt();
 				}
 				catch (Exception e) {e.printStackTrace();}
 			}
@@ -581,42 +581,42 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String str = e.getActionCommand();
-		switch (str)
-		{
-		case "save"     :save();
-		break;
-		case "load"     :load();
-		break;
-		case "isConnect":isConnect();
-		break;
-		case "SP"       :SP();
-		break;
-		case "SPD"      :SPD();
-		break;
-		case "TSP"      :TSP();
-		break;
-		case "playAuto"   :
-
-			;	help =new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					try {
-						playAuto();
-						help.interrupt();
-					}
-					catch (Exception e) {e.printStackTrace();}
-				}
-			});
-			help.start();
-			break;
-		}
-
-	}
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		String str = e.getActionCommand();
+//		switch (str)
+//		{
+//		case "save"     :save();
+//		break;
+//		case "load"     :load();
+//		break;
+//		case "isConnect":isConnect();
+//		break;
+//		case "SP"       :SP();
+//		break;
+//		case "SPD"      :SPD();
+//		break;
+//		case "TSP"      :TSP();
+//		break;
+//		case "playAuto"   :Pl
+//
+//			;	help =new Thread(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					// TODO Auto-generated method stub
+//					try {
+//						playAuto();
+//						help.interrupt();
+//					}
+//					catch (Exception e) {e.printStackTrace();}
+//				}
+//			});
+//			help.start();
+//			break;
+//		}
+//
+//	}
 
 
 	@Override
@@ -647,7 +647,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 
@@ -656,4 +656,10 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		MyGameGui app = new MyGameGui();
 
 }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
