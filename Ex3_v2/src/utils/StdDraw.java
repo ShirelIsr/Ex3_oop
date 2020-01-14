@@ -1704,7 +1704,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			threadauto(input);
 		}
 		break;
-		case "Manuale":
+		case "Manual":
 
 		{
 			JFrame jinput = new JFrame();
@@ -1818,7 +1818,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// this body is intentionally left empty
+		synchronized (mouseLock) {
+			mouseX = StdDraw.userX(e.getX());
+			mouseY = StdDraw.userY(e.getY());
+			isMousePressed = true;
+		}
 	}
 
 	/**

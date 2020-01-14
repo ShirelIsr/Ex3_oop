@@ -65,15 +65,17 @@ public class MyGameGui
 	private double xMax=Double.MAX_VALUE;;
 	private double yMin=Double.MIN_VALUE;
 	private double yMax=Double.MAX_VALUE;
-	private double BORDES=20;
+	private double x=0;
+	private double y=0;;
 	game_service game;
-	
+	private boolean flage =false;
+
+
+
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
-	double x;
-	double y;
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
@@ -81,6 +83,12 @@ public class MyGameGui
 		Robots=new HashMap <Integer,Bots>() ;
 		set(Gui_Graph);
 		initGUI();
+	}
+
+	public void setXY(double xpos,double ypos)
+	{
+		this.x= xpos;
+		this.y = ypos;
 	}
 
 	public MyGameGui()
@@ -123,34 +131,16 @@ public class MyGameGui
 				// TODO Auto-generated method stub
 				while(game.isRunning())
 				{
-					try {
-						Thread.sleep(100);
-						Iterator<String> f_iter = game.getFruits().iterator();
-						_fruit.clear();
-						if(f_iter.hasNext())
-						{
-							while(f_iter.hasNext())
-							{
-								String json = f_iter.next();
-								Fruit n = new Fruit(Gui_Graph);
-								n.initFruit(json);
-								_fruit.add(n);
-							}
-
+					if(Gui_Graph !=null)
+					{
+						try {
+							Thread.sleep(50);
+							paint();
 						}
-						//						bots.clear();
-						List<String> botsStr = game.getRobots();
-						for (String string : botsStr) {
-							Bots ber = new Bots();
-							ber.initBot(string);
+						catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-						paint();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
 				}
 				help.interrupt();
@@ -168,7 +158,7 @@ public class MyGameGui
 		{
 			Point3D p=node.getLocation();
 			StdDraw.setPenColor(Color.RED);
-			StdDraw.circle(p.x(),p.y(),6);
+			StdDraw.circle(p.x(),p.y(),0.00005);
 			StdDraw.text( p.x()+1, p.y()+1, ""+node.getKey());
 			Collection<edge_data> e =Gui_Graph.getE(node.getKey());
 			for(edge_data edge : e)
@@ -186,10 +176,9 @@ public class MyGameGui
 				Point3D pE=Gui_Graph.getNode(edge.getDest()).getLocation();
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
-				StdDraw.text((p.x()*3+pE.x())/4+0.07,(p.y()*3+pE.y())/4+0.07, ""+w);
+				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
 				StdDraw.setPenColor(Color.YELLOW);
-				StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),5);
-
+				StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.00005);
 			}
 			if (!_fruit.isEmpty())
 			{
@@ -201,18 +190,20 @@ public class MyGameGui
 					if(f.getType()==1)
 						StdDraw.setPenColor(Color.PINK);
 					else StdDraw.setPenColor(Color.ORANGE);
-					StdDraw.circle(pf.x(),pf.y(),6);
+					StdDraw.circle(pf.x(),pf.y(),0.00005);
 				}
 			}
 			Collection<Bots> bb = Robots.values();
-			for(Bots b:bb)
+			if(!bb.isEmpty())
 			{
-				Point3D pb=b.getLocaiton();
-				StdDraw.setPenColor(Color.BLACK);
-				StdDraw.circle(pb.x(),pb.y(),6);
+				for(Bots b:bb)
+				{
+					Point3D pb=b.getLocaiton();
+					StdDraw.setPenColor(Color.BLACK);
+					StdDraw.circle(pb.x(),pb.y(),0.00005);
+				}
+				StdDraw.show();
 			}
-			StdDraw.show();
-
 		}
 
 	}
@@ -245,7 +236,7 @@ public class MyGameGui
 				File SelectedFile=chooser.getSelectedFile();
 				g.init(SelectedFile.getAbsolutePath());
 				Gui_Graph=g.copy();
-				repaint();
+				paint();
 
 			}
 			catch(Exception ex)
@@ -306,7 +297,7 @@ public class MyGameGui
 		{
 			Gui_Graph.getEdge(ans.get(s).getKey(),ans.get(d).getKey()).setTag(Double.MIN_EXPONENT);
 		}
-		repaint();
+		paint();
 
 	}
 	public void SPD() 
@@ -360,7 +351,7 @@ public class MyGameGui
 			pathAns+="->"+ans.get(dst).getKey();
 		}
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
-		repaint();
+		paint();
 	}
 
 	public void initGame(int scenario_num)  {
@@ -425,21 +416,21 @@ public class MyGameGui
 
 	}
 
-	public  void Play_Automaticly(String S)
+	public  void Play_Automaticly(String scenario_num)
 	{
 		try
 		{
-			int number = Integer.parseInt(S);
-			if(number>=0 && number<=23)
+			int num = Integer.parseInt(scenario_num);
+			if(num>=0 && num<=23)
 			{
-				initGame(number);
+				initGame(num);
 				playAuto(game);				
 
 			}
 			else
 			{
 				JFrame jinput = new JFrame();
-				JOptionPane.showMessageDialog(jinput,"Bad input");
+				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
 				jinput.dispose();
 			}
 		}
@@ -448,9 +439,9 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void playAuto(game_service game2) {
-	
+		ThreadPaint(game);
 		game.startGame();
 		ThreadPaint(game);
 		//ThreadMouse(game);
@@ -471,7 +462,32 @@ public class MyGameGui
 				bb.setLocaiton(Gui_Graph.getNode(it.next().getEdge().getSrc()).getLocation());
 	}
 
+	public void Play_manual(String scenario_num)
+	{
+		try
+		{
+			int num = Integer.parseInt(scenario_num);
+			if(num>=0 && num<=23)
+			{
+				initGame(num);
+				ThreadPaint(game);
+				playSolo(game);				
 
+			}
+			else
+			{
+				JFrame jinput = new JFrame();
+				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
+				jinput.dispose();
+			}
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+
+	}
 	private void playSolo(game_service game)
 	{
 		game.startGame();
@@ -479,11 +495,110 @@ public class MyGameGui
 		//ThreadMouse(game);
 		while(game.isRunning()) {
 			//initGUI();
-			moveRobots(game);
+			moveRobotsManual(game);
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
 	}
+
+	private  void moveRobotsManual(game_service game)
+	{
+		List<String> log = game.move();
+		if(log!=null) {
+			long t = game.timeToEnd();
+			for(int i=0;i<log.size();i++) {
+				String robot_json = log.get(i);
+				try {
+					JSONObject line = new JSONObject(robot_json);
+					JSONObject ttt = line.getJSONObject("Robot");
+					int dest = nextNode(game);
+
+					if(dest==-1) {	
+						Bots rb=Robots.get(botToMove(game));
+						if(rb!=null)
+						{
+							System.out.println("you choose to move robot :"+rb.getId());
+							System.out.println(rb.getLocaiton().toString());
+							game.chooseNextEdge(rb.getId(), dest);
+
+						}
+						_fruit=new ArrayList <Fruit>();
+						_fruit.clear();
+						Iterator<String> f_iter = game.getFruits().iterator();
+						while(f_iter.hasNext())
+						{
+
+							Fruit f=new Fruit(Gui_Graph);
+							f.initFruit(f_iter.next());
+							_fruit.add(f);	 
+
+						}
+						Collection<Bots> robots =Robots.values();
+
+						for (Bots b : robots) 
+						{
+							Iterator <node_data> it= b.getPath().iterator();
+							while(it.hasNext())
+							{
+								node_data n=it.next();
+								b.setLocaiton(n.getLocation());
+								System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
+								System.out.println(ttt);
+								game.move();
+							}
+
+						}
+					}
+				}
+				catch (JSONException e) {e.printStackTrace();}
+			}
+		}
+
+		//paint();
+	}
+
+	private int botToMove(game_service game)
+	{
+		if (flage)
+		{
+			Collection<Bots> robots =Robots.values();
+			for (Bots b : robots) 
+			{
+				Point3D p=b.getLocaiton();
+				double dist=p.distance2D(new Point3D(x,y));
+				if(dist<=(xMax-xMin)*0.0006)
+				{
+					x=y=0;
+					flage=false;
+					return b.getId();
+				}
+			}
+		}
+		return -1;
+	}
+
+
+
+	private int nextNode(game_service game) {
+		if (flage)
+		{
+			Collection<node_data> nodes =Gui_Graph.getV();
+			for (node_data n : nodes) 
+			{
+				Point3D p=n.getLocation();
+				double dist=p.distance2D(new Point3D(x,y));
+				if(dist<=(xMax-xMin)*0.0006)
+				{
+					x=y=0;
+					flage=false;
+					return n.getKey();
+				}
+
+			}
+		}
+		return -1;
+	}
+
 
 
 	/** 
@@ -501,14 +616,14 @@ public class MyGameGui
 				String robot_json = log.get(i);
 				try {
 					JSONObject line = new JSONObject(robot_json);
-					JSONObject ttt = line.getJSONObject("Robot");
-					int rid = ttt.getInt("id");
-					int src = ttt.getInt("src");
-					int dest = ttt.getInt("dest");
-
-					if(dest==-1) {	
-						setPath(Robots.get(rid));
-					}
+					//								JSONObject ttt = line.getJSONObject("Robot");
+					//								int rid = ttt.getInt("id");
+					//								int src = ttt.getInt("src");
+					//								int dest = ttt.getInt("dest");
+					//			
+					//								if(dest==-1) {	
+					//									setPath(Robots.get(rid));
+					//								}
 					_fruit=new ArrayList <Fruit>();
 					_fruit.clear();
 					Iterator<String> f_iter = game.getFruits().iterator();
@@ -524,41 +639,33 @@ public class MyGameGui
 
 					for (Bots b : robots) 
 					{
-						Iterator <node_data> it= b.getPath().iterator();
-						while(it.hasNext())
+						if(b.dest==-1)
 						{
-							node_data n=it.next();
-							b.setLocaiton(n.getLocation());
-							System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
-							System.out.println(ttt);
-							game.move();
+							setPath(Robots.get(b.getId()));
+							Iterator <node_data> it= b.getPath().iterator();
+							while(it.hasNext())
+							{
+								node_data n=it.next();
+								b.setLocaiton(n.getLocation());
+								System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
+								//						System.out.println(ttt);
+								game.move();
+							}
 						}
-
+						b.setDest(-1);
 					}
 				}
 				catch (JSONException e) {e.printStackTrace();}
 			}
-		}
-		paint();
 
+		}}
+	//paint();
 
-	}
 
 	private void setPath(Bots b) {
-		Collection<edge_data> e =Gui_Graph.getE(b.getSrc());
 		edge_data l=null;
 		graph_algorithms gg=new Graph_Algo();
 		gg.init(Gui_Graph);
-		for(edge_data edge : e)
-		{
-			Iterator<Fruit> it =_fruit.iterator();
-			while (it.hasNext())
-			{
-				l=it.next().getEdge();
-				if(edge.getSrc()==l.getSrc())
-					b.setPath(gg.shortestPath(l.getSrc(), l.getDest()));
-			}
-		}
 		Iterator<Fruit> it =_fruit.iterator();
 		if(it.hasNext())
 		{
@@ -575,7 +682,7 @@ public class MyGameGui
 
 
 
-	
+
 
 
 	public static void main(String[] args) {
