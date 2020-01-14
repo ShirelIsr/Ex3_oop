@@ -389,6 +389,23 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		// TODO Auto-generated method stub
 
 	}
+	public void Play_Automaticly()
+	{
+		;	help =new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					playAuto();
+					help.interrupt();
+				}
+				catch (Exception e) {e.printStackTrace();}
+			}
+		});
+		help.start();
+
+	}
 
 	public void playAuto() throws InterruptedException {
 		String num=  JOptionPane.showInputDialog("Please input the num");
@@ -446,7 +463,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		setBots();
 		Thread.sleep(200);
 		playSolo(game);
-		paint(game);
+		paint();
 
 	}
 
@@ -528,7 +545,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 				catch (JSONException e) {e.printStackTrace();}
 			}
 		}
-		paint(game);
+		paint();
 
 
 	}
@@ -637,10 +654,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
-<<<<<<< HEAD
 
-=======
-		//app.setVisible(true);
->>>>>>> 8ec0d411511cdff429236e4779bdee11be43de33
-	}
+}
 }
