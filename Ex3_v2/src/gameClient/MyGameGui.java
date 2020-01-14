@@ -70,7 +70,8 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
-
+	double x;
+	double y;
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
@@ -555,6 +556,11 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 
 		}
 	}
+	
+	public void setPoint(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
 
 
 
@@ -631,6 +637,10 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
+<<<<<<< HEAD
 
+=======
+		//app.setVisible(true);
+>>>>>>> 8ec0d411511cdff429236e4779bdee11be43de33
 	}
 }
