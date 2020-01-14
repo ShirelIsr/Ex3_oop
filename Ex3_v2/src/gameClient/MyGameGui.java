@@ -74,13 +74,17 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
-
+		 _fruit =new ArrayList <Fruit>();
+		 Robots=new HashMap <Integer,Bots>() ;
 		set(Gui_Graph);
 		initGUI();
 	}
 
 	public MyGameGui()
 	{
+		this.Gui_Graph=null;
+		 _fruit =new ArrayList <Fruit>();
+		 Robots=new HashMap <Integer,Bots>() ;
 		initGUI();
 	}
 
@@ -88,7 +92,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	{
 		this.Gui_Graph=g;
 		set(Gui_Graph);
-
 		this.getBufferStrategy();
 		initGUI();
 	}
@@ -104,6 +107,8 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		StdDraw.setXscale(xMin , xMax);
 		StdDraw.setYscale(yMin, yMax);
 		StdDraw.show();
+		paint();
+		
 	}
 	public void ThreadPaint(game_service game)
 	{
@@ -150,7 +155,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		help.start();
 	}
 
-	public void paint(Graphics g)
+	public void paint()
 	{	
 		StdDraw.clear();
 		if (Gui_Graph==null) return;
@@ -190,8 +195,8 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 					Fruit f=it.next();
 					Point3D pf=f.getlocaiton();
 					if(f.getType()==1)
-						g.setColor(Color.PINK);
-					else g.setColor(Color.ORANGE);
+						StdDraw.setPenColor(Color.PINK);
+					else StdDraw.setPenColor(Color.ORANGE);
 					StdDraw.circle(pf.x(),pf.y(),6);
 				}
 			}
@@ -199,7 +204,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 			for(Bots b:bb)
 			{
 				Point3D pb=b.getLocaiton();
-				g.setColor(Color.black);
+				StdDraw.setPenColor(Color.BLACK);
 				StdDraw.circle(pb.x(),pb.y(),6);
 			}
 			StdDraw.show();
@@ -246,7 +251,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		}
 	}
 
-
 	private void set(graph g)
 	{
 		Collection<node_data> s = g.getV();
@@ -267,7 +271,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		this.yMax=y[s.size()-1];
 	}
 
-
 	public void isConnect() {
 		graph_algorithms g = new Graph_Algo();
 		g.init(Gui_Graph);
@@ -281,8 +284,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 			JOptionPane.showMessageDialog(null, "The graph is not connected", "isConnected", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
-
-
 
 	public void SP() 
 	{
@@ -388,8 +389,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 
 	}
 
-	public void scenario() throws InterruptedException {
-
+	public void playAuto() throws InterruptedException {
 		String num=  JOptionPane.showInputDialog("Please input the num");
 		int scenario_num = Integer.parseInt(num);
 		game_service game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -438,41 +438,25 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 				b.initBot(str);
 				Robots.put(b.getId(), b);	 
 			}
+			
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
-		ArrayList <edge_data> target=targets();
-		setBots(target);
+		setBots();
 		Thread.sleep(200);
 		playSolo(game);
-		repaint();
+		paint(game);
 
 	}
 
-	private ArrayList <edge_data> targets()
-	{
-		ArrayList <edge_data> t=new ArrayList <edge_data>();
-		if (!_fruit.isEmpty())
-		{
-			Iterator <Fruit> it=_fruit.iterator();
-			while (it.hasNext())
-			{
-				Fruit f=it.next();
-				t.add(f.getEdge());
-			}
-		}
-		return t;
-	}
 
-
-
-	private void setBots(ArrayList <edge_data> targets)
+	private void setBots()
 	{
 		Collection<Bots> b = Robots.values();
-		Iterator <edge_data> it=targets.iterator();
+		Iterator <Fruit> it=_fruit.iterator();
 		for(Bots bb:b)
 			if(it.hasNext())
-				bb.setLocaiton(Gui_Graph.getNode(it.next().getSrc()).getLocation());
+				bb.setLocaiton(Gui_Graph.getNode(it.next().getEdge().getSrc()).getLocation());
 	}
 
 
@@ -543,6 +527,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 				catch (JSONException e) {e.printStackTrace();}
 			}
 		}
+		paint(game);
 
 
 	}
@@ -590,7 +575,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 		break;
 		case "TSP"      :TSP();
 		break;
-		case "scenario"   :
+		case "playAuto"   :
 
 			;	help =new Thread(new Runnable() {
 
@@ -598,7 +583,7 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 				public void run() {
 					// TODO Auto-generated method stub
 					try {
-						scenario();
+						playAuto();
 						help.interrupt();
 					}
 					catch (Exception e) {e.printStackTrace();}
@@ -646,6 +631,6 @@ public final class MyGameGui  extends JFrame implements ActionListener, MouseLis
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
-		app.setVisible(true);
+
 	}
 }
