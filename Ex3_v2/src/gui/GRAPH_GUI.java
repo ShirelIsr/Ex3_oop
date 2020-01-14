@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
-import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -18,11 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.BiFunction;
 
 import javax.swing.JOptionPane;
 
@@ -32,12 +28,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import Server.Game_Server;
-import Server.game_service;
 import algorithms.Graph_Algo;
 import algorithms.graph_algorithms;
 import dataStructure.DGraph;
@@ -45,11 +35,6 @@ import dataStructure.NodeData;
 import dataStructure.edge_data;
 import dataStructure.graph;
 import dataStructure.node_data;
-import gameClient.Bots;
-import gameClient.Fruit;
-import oop_dataStructure.OOP_DGraph;
-import oop_dataStructure.oop_edge_data;
-import oop_dataStructure.oop_graph;
 import utils.Point3D;
 
 public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseListener, MouseMotionListener, KeyListener
@@ -62,23 +47,18 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	private double xMax=Double.MAX_VALUE;;
 	private double yMin=Double.MIN_VALUE;
 	private double yMax=Double.MAX_VALUE;
-	private double BORDES=20;
-	ArrayList <Fruit> _fruit ;
-	HashMap <Integer,Bots> Robots ;
+	
 	graph Gui_Graph;
-	Thread help;
-
+	
 	public GRAPH_GUI(graph g)
 	{
 		this.Gui_Graph=g;
-		this.getBufferStrategy();
 		set(Gui_Graph);
 		initGUI();
 	}
 
 	public GRAPH_GUI()
 	{
-		this.getBufferStrategy();
 		initGUI();
 	}
 
@@ -86,22 +66,21 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 	{
 		this.Gui_Graph=g;
 		set(Gui_Graph);
-		this.getBufferStrategy();
 		initGUI();
 	}
 
 	private void initGUI() 
 	{
-		this.setSize(900, 900);
+		this.setSize(1000, 1000);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		MenuBar menuBar = new MenuBar();
 		Menu file = new Menu("File");
 		Menu Graph_Menu = new Menu("Graph_Menu");
-		Menu game = new Menu("game");
+		Menu Rnd_Graph = new Menu("Rnd_Graph");
 		menuBar.add(file);
 		menuBar.add(Graph_Menu);
-		menuBar.add(game);
+		menuBar.add(Rnd_Graph);
 		this.setMenuBar(menuBar);
 		MenuItem save = new MenuItem("save");
 		save.addActionListener(this);
@@ -115,8 +94,14 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		SPD.addActionListener(this);
 		MenuItem TSP = new MenuItem("TSP");
 		TSP.addActionListener(this);
-		MenuItem scenario = new MenuItem("scenario");
-		scenario .addActionListener(this);
+		MenuItem AddEdge = new MenuItem("AddEdge");
+		AddEdge.addActionListener(this);
+		MenuItem RemoveEdge = new MenuItem("RemoveEdge");
+		RemoveEdge.addActionListener(this);
+		MenuItem Rnd_Graph1 = new MenuItem("Rnd Graph");
+		Rnd_Graph1.addActionListener(this);
+		MenuItem Rnd_Graph2 = new MenuItem("Rnd Graph Connect");
+		Rnd_Graph2 .addActionListener(this);
 
 		file.add(save);
 		file.add(load);
@@ -124,64 +109,23 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		Graph_Menu.add(SP);
 		Graph_Menu.add(SPD);
 		Graph_Menu.add(TSP);
-		game.add(scenario);
+		Graph_Menu.add(AddEdge);
+		Graph_Menu.add(RemoveEdge);
+		Rnd_Graph.add(Rnd_Graph1);
+		Rnd_Graph.add(Rnd_Graph2);
 		this.addMouseListener(this);
-	}
-	public void ThreadPaint(game_service game)
-	{
-		help = new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(game.isRunning())
-				{
-					try {
-						Thread.sleep(100);
-						Iterator<String> f_iter = game.getFruits().iterator();
-						_fruit.clear();
-						if(f_iter.hasNext())
-						{
-							while(f_iter.hasNext())
-							{
-								String json = f_iter.next();
-								Fruit n = new Fruit(Gui_Graph);
-								n.initFruit(json);
-								_fruit.add(n);
-							}
-
-						}
-						//						bots.clear();
-						List<String> botsStr = game.getRobots();
-						for (String string : botsStr) {
-							Bots ber = new Bots();
-							ber.initBot(string);
-						}
-						repaint();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (JSONException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				help.interrupt();
-			}
-		});
-		help.start();
 	}
 
 	public void paint(Graphics g)
-	{	
+	{
 		super.paint(g);
 		if (Gui_Graph==null) return;
 		Collection<node_data> s =Gui_Graph.getV();
 
 		for (node_data node : s) 
 		{
-			double x=scale(node.getLocation().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-			double y=scale(node.getLocation().y(),yMin,yMax,50,getHeight()-BORDES);
+			double x=scale(node.getLocation().x(),xMin,xMax,10,getWidth()-20);
+			double y=scale(node.getLocation().y(),yMin,yMax,70,getHeight()-20);
 			Point3D p=new Point3D(x,y);
 			g.setColor(Color.RED);
 			g.fillOval(p.ix(),p.iy(),12,12);
@@ -198,8 +142,8 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 				{
 					g.setColor(Color.BLUE);
 				}
-				x=scale(Gui_Graph.getNode(edge.getDest()).getLocation().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-				y=scale((Gui_Graph.getNode(edge.getDest()).getLocation().y()),yMin,yMax,50,getHeight()-BORDES);
+				 x=scale(Gui_Graph.getNode(edge.getDest()).getLocation().x(),xMin,xMax,10,getWidth()-20);
+				 y=scale((Gui_Graph.getNode(edge.getDest()).getLocation().y()),yMin,yMax,70,getHeight()-20);
 				Point3D pE=new Point3D(x,y);
 				g.drawLine(p.ix(), p.iy(), pE.ix(), pE.iy());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
@@ -208,33 +152,7 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 				g.fillOval((int)(((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),10,10);
 
 			}
-			if (!_fruit.isEmpty())
-			{
-				Iterator <Fruit> it=_fruit.iterator();
-				while (it.hasNext())
-				{
-					Fruit f=it.next();
-					x=scale(f.getlocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-					y=scale(f.getlocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
-					Point3D pf=new Point3D(x,y);
-					if(f.getType()==1)
-						g.setColor(Color.PINK);
-					else g.setColor(Color.ORANGE);
-					g.fillOval(pf.ix(),pf.iy(),12,12);
-				}
-			}
-			Collection<Bots> bb = Robots.values();
-			for(Bots b:bb)
-			{
-				x=scale(b.getLocaiton().x(),xMin,xMax,BORDES,getWidth()-BORDES);
-				y=scale(b.getLocaiton().y(),yMin,yMax,50,getHeight()-BORDES);
-				Point3D pb=new Point3D(x,y);
-				g.setColor(Color.black);
-				g.fillOval(pb.ix(),pb.iy(),12,12);
-			}
-
 		}
-
 	}
 	public void save() 
 	{
@@ -326,6 +244,46 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 
 
 
+	public void addEdge()
+	{
+		String src=  JOptionPane.showInputDialog("Please input the src");
+		String dst=  JOptionPane.showInputDialog("Please input the dest");
+		String w=  JOptionPane.showInputDialog("Please input the wahit");
+
+		try {
+			if(Integer.parseInt(w)<0)
+			{
+				JOptionPane.showMessageDialog(null,"ERR, weight could not be negative ", "graph: ", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			Gui_Graph.connect(Integer.parseInt(src), Integer.parseInt(dst), Integer.parseInt(w));
+		}
+		catch(Exception ex)
+		{
+			JOptionPane.showMessageDialog(null,"Err,ther is src/dest do not exist", "graph: ", JOptionPane.INFORMATION_MESSAGE);
+			ex.printStackTrace();
+			return;
+		}
+		JOptionPane.showMessageDialog(null,"the new edge number:"+Gui_Graph.edgeSize(), "graph: ", JOptionPane.INFORMATION_MESSAGE);
+		repaint();
+	}
+	public void RemoveEdge()
+	{
+		String src=  JOptionPane.showInputDialog("Please input the src");
+		String dst=  JOptionPane.showInputDialog("Please input the dest");
+		edge_data ans=null;
+		try {
+			ans=Gui_Graph.removeEdge(Integer.parseInt(src), Integer.parseInt(dst));
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		if(ans!=null)
+			JOptionPane.showMessageDialog(null,"the new edge number:"+Gui_Graph.edgeSize(), "graph: ", JOptionPane.INFORMATION_MESSAGE);
+		repaint();
+	}
+
 	public void SP() 
 	{
 		String src=  JOptionPane.showInputDialog("Please input the src ");
@@ -399,6 +357,60 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
 		repaint();
 	}
+	public void Rnd_Graph1() 
+	{
+		graph g=new DGraph();
+
+		for (int i=1;i<51;i++)
+		{
+			int ix=(int)(Math.random()*700)+100;
+			int iy=(int)(Math.random()*700)+100;
+			node_data v=new NodeData(i,new Point3D(ix,iy));
+			g.addNode(v);
+		}
+		for (int i=0;i<80;i++)
+		{
+			int src=(int)(Math.random()*50+1);
+			int dst=1;
+			do {
+				dst=(int)(Math.random()*50+1);
+			}while(dst==src);	
+			double w=Math.random()*100;
+			g.connect(src, dst, w);
+
+		}
+		this.Gui_Graph=g;
+		set(Gui_Graph);
+		repaint();
+	}
+
+	public void Rnd_Graph2() 
+	{
+		graph g=new DGraph();
+
+		for (int i=0;i<10;i++)
+		{
+			int ix=(int)(Math.random()*700)+100;
+			int iy=(int)(Math.random()*700)+100;
+			node_data v=new NodeData(i,new Point3D(ix,iy));
+			g.addNode(v);
+		}
+		Collection<node_data> s = g.getV();
+		for (node_data node1 : s) 
+		{
+			for (node_data node2 : s)
+			{
+				if(node1.getKey()!=node2.getKey())
+				{
+					double w=Math.random()*100;
+					g.connect(node1.getKey(), node2.getKey(), w);
+				}
+			}
+		}
+		this.Gui_Graph=g;
+		set(Gui_Graph);
+		repaint();
+	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -430,184 +442,6 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 
 	}
 
-	public void scenario() throws InterruptedException {
-
-		String num=  JOptionPane.showInputDialog("Please input the num");
-		int scenario_num = Integer.parseInt(num);
-		game_service game = Game_Server.getServer(scenario_num); // you have [0,23] games
-		String g = game.getGraph();
-		DGraph gg = new DGraph();
-		gg.init(g);
-		this.Gui_Graph=gg;
-		set(Gui_Graph);
-		Iterator<String> f_iter = game.getFruits().iterator();
-		if(_fruit==null)
-		{
-			_fruit=new ArrayList <Fruit>();
-		}
-		else _fruit.clear();
-		while(f_iter.hasNext())
-		{
-			try
-			{
-				Fruit f=new Fruit(Gui_Graph);
-				f.initFruit(f_iter.next());
-				_fruit.add(f);	 
-			}
-			catch (JSONException e) {e.printStackTrace();}
-		}
-		String info = game.toString();
-		JSONObject line;
-		try {
-			line = new JSONObject(info);
-			JSONObject ttt = line.getJSONObject("GameServer");
-			int rs = ttt.getInt("robots");
-			if(Robots ==null)
-				Robots=new HashMap<Integer,Bots>();
-			else Robots.clear();
-			int i=0;
-			while(i<rs)
-			{
-				int rnd =(int)Math.random()*Gui_Graph.nodeSize();
-				game.addRobot(rnd);
-				i++;
-			}
-			List<String> Bots = game.getRobots();
-			for (String str : Bots)
-			{
-				System.out.println(str);
-				Bots b= new Bots ();
-				b.initBot(str);
-				Robots.put(b.getId(), b);	 
-			}
-
-		}
-		catch (JSONException e) {e.printStackTrace();}
-		ArrayList <edge_data> target=targets();
-		setBots(target);
-		Thread.sleep(200);
-		playSolo(game);
-		repaint();
-
-	}
-
-	private ArrayList <edge_data> targets()
-	{
-		ArrayList <edge_data> t=new ArrayList <edge_data>();
-		if (!_fruit.isEmpty())
-		{
-			Iterator <Fruit> it=_fruit.iterator();
-			while (it.hasNext())
-			{
-				Fruit f=it.next();
-				t.add(f.getEdge());
-			}
-		}
-		return t;
-	}
-
-
-
-	private void setBots(ArrayList <edge_data> targets)
-	{
-		Collection<Bots> b = Robots.values();
-		Iterator <edge_data> it=targets.iterator();
-		for(Bots bb:b)
-			if(it.hasNext())
-				bb.setLocaiton(Gui_Graph.getNode(it.next().getSrc()).getLocation());
-	}
-
-
-	private void playSolo(game_service game)
-	{
-		game.startGame();
-		ThreadPaint(game);
-		//ThreadMouse(game);
-		while(game.isRunning()) {
-			//initGUI();
-			moveRobots(game);
-		}
-		String results = game.toString();
-		System.out.println("Game Over: "+results);
-	}
-
-
-	/** 
-	 * Moves each of the robots along the edge, 
-	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
-	 * @param game
-	 * @param gg
-	 * @param log
-	 */
-	private  void moveRobots(game_service game) {
-		List<String> log = game.move();
-		if(log!=null) {
-			long t = game.timeToEnd();
-			for(int i=0;i<log.size();i++) {
-				String robot_json = log.get(i);
-				try {
-					JSONObject line = new JSONObject(robot_json);
-					JSONObject ttt = line.getJSONObject("Robot");
-					int rid = ttt.getInt("id");
-					int src = ttt.getInt("src");
-					int dest = ttt.getInt("dest");
-
-					if(dest==-1) {	
-						dest = nextNode(src);
-						game.chooseNextEdge(rid, dest);
-
-					}
-					
-					Bots b =Robots.get(rid);
-					_fruit=new ArrayList <Fruit>();
-					_fruit.clear();
-					Iterator<String> f_iter = game.getFruits().iterator();
-					while(f_iter.hasNext())
-					{
-
-						Fruit f=new Fruit(Gui_Graph);
-						f.initFruit(f_iter.next());
-						_fruit.add(f);	 
-
-					}
-					b.setLocaiton(Gui_Graph.getNode(dest).getLocation());
-					System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
-					System.out.println(ttt);
-					game.move();
-				}
-				catch (JSONException e) {e.printStackTrace();}
-			}
-		}
-
-
-	}
-
-
-	private int nextNode( int src) {
-		Collection<edge_data> e =Gui_Graph.getE(src);
-		edge_data l=null;
-		for(edge_data edge : e)
-		{
-			Iterator<Fruit> it =_fruit.iterator();
-			while (it.hasNext())
-			{
-				l=it.next().getEdge();
-				if(edge.getSrc()==l.getSrc())
-					return l.getDest();
-
-			}
-		}
-		int ans = -1;
-		Iterator<edge_data> itr = e.iterator();
-		int s = e.size();
-		int r = (int)(Math.random()*s);
-		int i=0;
-		while(i<r) {itr.next();i++;}
-		ans = itr.next().getDest();
-		return ans;
-	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -626,25 +460,19 @@ public final class GRAPH_GUI  extends JFrame implements ActionListener, MouseLis
 		break;
 		case "TSP"      :TSP();
 		break;
-		case "scenario"   :
-
-			;	help =new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					try {
-						scenario();
-						help.interrupt();
-					}
-					catch (Exception e) {e.printStackTrace();}
-				}
-			});
-			help.start();
-			break;
+		case "AddEdge"      :addEdge();
+		break;
+		case "RemoveEdge"   :RemoveEdge();
+		break;
+		case "Rnd Graph"   :Rnd_Graph1();
+		break;
+		case "Rnd Graph Connect"   :Rnd_Graph2();
+		break;
 		}
 
 	}
+
+
 
 
 	@Override

@@ -1,5 +1,8 @@
 package gameClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,12 +14,14 @@ public class Bots {
 	int src ,dest ,id,speed;
 	Point3D locaiton ;
 	double value;
+	List<node_data> Path=new ArrayList<node_data>();
 
 	public Bots()
 	{
 		src=dest=id=speed=-1;
 		this.locaiton=null;
 		this.value=0;
+		Path =null;
 	}
 
 	public void initBot (String json ) throws JSONException
@@ -75,5 +80,16 @@ public class Bots {
 	{
 		return this.id;
 	}
+	
+	public void setPath(List<node_data> Path)
+	{
+		this.Path=Path;
+	}
+	public 	List<node_data> getPath()
+	{
+		return this.Path;
+	}
+	}
+	
 
-}
+
