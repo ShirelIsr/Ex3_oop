@@ -75,6 +75,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import gameClient.MyGameGui;
+
 /**
  *  The {@code StdDraw} class provides a basic capability for
  *  creating drawings with your programs. It uses a simple graphics model that
@@ -480,6 +482,8 @@ import javax.swing.KeyStroke;
  */
 public final class StdDraw implements ActionListener, MouseListener, MouseMotionListener, KeyListener {
 
+	static MyGameGui graph;
+	static boolean rePaint = false;
 	/**
 	 *  The color black.
 	 */
@@ -716,12 +720,20 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	private static JMenuBar createMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menu = new JMenu("File");
+		JMenu menu1 = new JMenu("Play");
 		menuBar.add(menu);
+		menuBar.add(menu1);
 		JMenuItem menuItem1 = new JMenuItem(" Save...   ");
+		JMenuItem menuItem2 = new JMenuItem("Auto");
+		JMenuItem menuItem3 = new JMenuItem("Manual");
 		menuItem1.addActionListener(std);
+		menuItem2.addActionListener(std);
+		menuItem3.addActionListener(std);
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		menu.add(menuItem1);
+		menu1.add(menuItem2);
+		menu1.add(menuItem3);
 		return menuBar;
 	}
 
@@ -1719,7 +1731,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// this body is intentionally left empty
+		graph.setPoint(StdDraw.userX(e.getX()), StdDraw.userX(e.getY()));
 	}
 
 	/**
