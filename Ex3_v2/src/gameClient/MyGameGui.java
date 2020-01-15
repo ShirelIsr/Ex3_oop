@@ -71,14 +71,12 @@ public class MyGameGui
 	game_service game;
 	private boolean flage =true;
 	private int botToMove;
-
-
-
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
 	Thread help2;
+	
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
@@ -122,13 +120,13 @@ public class MyGameGui
 		paint();
 
 	}
+
 	public void ThreadPaint(game_service game)
 	{
 		help = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				while(game.isRunning())
 				{
 					if(Gui_Graph !=null)
@@ -172,7 +170,6 @@ public class MyGameGui
 		});
 		help2.start();
 	}
-
 
 	public void paint()
 	{	
@@ -233,7 +230,6 @@ public class MyGameGui
 		}
 	}
 
-
 	public void save() 
 	{
 		graph_algorithms g = new Graph_Algo();
@@ -252,6 +248,7 @@ public class MyGameGui
 		}
 
 	}
+
 	public void load() 
 	{
 		Graph_Algo g = new Graph_Algo();
@@ -328,6 +325,7 @@ public class MyGameGui
 
 
 	}
+
 	public void SPD() 
 	{
 		String src=  JOptionPane.showInputDialog("Please input a starting point");
@@ -345,6 +343,7 @@ public class MyGameGui
 		}
 
 	}
+
 	public void TSP() 
 	{
 		List <Integer> targets =new ArrayList<Integer>();
@@ -382,7 +381,6 @@ public class MyGameGui
 		paint();
 
 	}
-
 
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -470,12 +468,11 @@ public class MyGameGui
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
 
-	private void playAuto(game_service game2) {
+	private void playAuto(game_service game) {
 		game.startGame();
 		ThreadMove(game);
 		ThreadPaint(game);
@@ -525,6 +522,7 @@ public class MyGameGui
 
 
 	}
+
 	private void playManual(game_service game)
 	{
 		game.startGame();
@@ -629,9 +627,6 @@ public class MyGameGui
 
 	}
 
-
-
-
 	private int nextNode(game_service game) {
 		if (!flage)
 		{
@@ -671,10 +666,6 @@ public class MyGameGui
 		return -1;
 	}
 
-
-
-
-
 	private void setPath(Bots b) {
 		Fruit l=null;
 		Fruit toremove=null;
@@ -694,15 +685,12 @@ public class MyGameGui
 			}
 		}
 		_fruit.remove(toremove);
-		}
+	}
 
+	public static void main(String[] args) {
 
-
-
-		public static void main(String[] args) {
-
-			MyGameGui app = new MyGameGui();
-
-		}
+		MyGameGui app = new MyGameGui();
 
 	}
+
+}
