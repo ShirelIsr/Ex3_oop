@@ -1725,7 +1725,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			public void run() {
 
 				//g.ThreadPaint(game);
-				//graph.Play_manual();
+				graph.Play_manual(s);
 				help.interrupt();
 			}
 		});
@@ -1810,7 +1810,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		graph.setPoint(StdDraw.userX(e.getX()), StdDraw.userX(e.getY()));
+		graph.setPoint(StdDraw.userX(e.getX()), StdDraw.userY(e.getY()));
 	}
 
 	/**
