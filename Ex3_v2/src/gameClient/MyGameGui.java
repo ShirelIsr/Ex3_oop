@@ -61,7 +61,7 @@ public class MyGameGui
 	private static final long serialVersionUID = 1L;
 	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
-	private static DecimalFormat df2 = new DecimalFormat("#.###");
+	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
 	private double xMin=Double.MIN_VALUE;
 	private double xMax=Double.MAX_VALUE;;
 	private double yMin=Double.MIN_VALUE;
@@ -90,8 +90,7 @@ public class MyGameGui
 	{
 		this.x= xpos;
 		this.y = ypos;
-		this.flage=false;
-		System.out.println((x+"+"+y));
+		flage=false;
 	}
 
 	public MyGameGui()
@@ -132,8 +131,9 @@ public class MyGameGui
 					if(Gui_Graph !=null)
 					{
 						try {
-							Thread.sleep(50);
 							paint();
+							Thread.sleep(50);
+				
 						}
 						catch (Exception e) {
 							// TODO Auto-generated catch block
@@ -141,12 +141,18 @@ public class MyGameGui
 						}
 					}
 				}
-				help.interrupt();
+				try {
+				help.stop();
+				}
+				catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
 			}
 		});
 		help.start();
 	}
-
+	
 	public void ThreadMove(game_service game)
 	{
 		help2 = new Thread(new Runnable() {
@@ -157,13 +163,16 @@ public class MyGameGui
 				while(game.isRunning())
 				{
 					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
+						game.move();
+						
+						Thread.sleep(100);
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					game.move();
+
 				}
+				System.out.println("YES");
 				help2.interrupt();
 			}
 
@@ -203,6 +212,7 @@ public class MyGameGui
 				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
 			}
 		}
+
 		if (!_fruit.isEmpty())
 		{
 			Iterator <Fruit> it=_fruit.iterator();
@@ -392,7 +402,6 @@ public class MyGameGui
 		yMin=Double.MIN_VALUE;
 		yMax=Double.MAX_VALUE;
 		this.Gui_Graph=gg;
-		set(Gui_Graph);
 		Iterator<String> f_iter = game.getFruits().iterator();
 		if(_fruit==null)
 		{
@@ -441,7 +450,7 @@ public class MyGameGui
 			}
 			initGUI();
 			paint();
-			StdDraw.pause(30);
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -473,16 +482,22 @@ public class MyGameGui
 	}
 
 	private void playAuto(game_service game) {
+		//ThreadPaint(game);
 		game.startGame();
-		ThreadMove(game);
-		ThreadPaint(game);
-		//ThreadMouse(game);
+		//ThreadMove(game);
 		while(game.isRunning()) {
-			//initGUI();
 			moveRobots(game);
+			paint();
+			if(game.isRunning() && game.timeToEnd() > 100)
+			{
+				System.out.println(game.timeToEnd());
+			game.move();
+			}
 		}
+		if(game!=null) {
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
+		}
 	}
 
 	private List<Integer> setBots()
@@ -527,7 +542,7 @@ public class MyGameGui
 	{
 		game.startGame();
 		ThreadPaint(game);
-		ThreadMove(game);
+		//	ThreadMove(game);
 		while(game.isRunning()) {
 			//initGUI();
 			moveRobotsManual(game);
@@ -549,6 +564,7 @@ public class MyGameGui
 					{
 						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
 						game.chooseNextEdge(rb.getId(), dest);
+						game.move();
 
 					}
 					_fruit.clear();
@@ -556,21 +572,18 @@ public class MyGameGui
 					Iterator<String> f_iter = game.getFruits().iterator();
 					while(f_iter.hasNext())
 					{
-
 						Fruit f=new Fruit(Gui_Graph);
 						f.initFruit(f_iter.next());
 						_fruit.add(f);	 
-
 					}
 					Robots.clear();
 					List<String> botsStr = game.getRobots();
 					for (String string : botsStr) {
 						Bots ber = new Bots();
-						System.out.println(string);
+						//		System.out.println(string);
 						ber.initBot(string);
 						Robots.put(ber.getId(), ber);
 					}
-
 				}
 
 			}
@@ -583,7 +596,6 @@ public class MyGameGui
 	private  void moveRobots(game_service game) {
 		List<String> log = game.move();
 		if(log!=null) {
-			long t = game.timeToEnd();
 			try {
 				_fruit=new ArrayList <Fruit>();
 				_fruit.clear();
@@ -606,18 +618,17 @@ public class MyGameGui
 						while(it.hasNext())
 						{
 							node_data n=it.next();
-							System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
+							//System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
 							game.chooseNextEdge(b.getId(), n.getKey());
 						}
 						b.setPath(null);
 					}
-
 				}
 				Robots.clear();
 				List<String> botsStr = game.getRobots();
 				for (String string : botsStr) {
 					Bots ber = new Bots();
-					System.out.println(string);
+					//System.out.println(string);
 					ber.initBot(string);
 					Robots.put(ber.getId(), ber);
 				}
@@ -676,11 +687,16 @@ public class MyGameGui
 		if(it.hasNext())
 		{
 			l=it.next();
-			double temp=gg.shortestPathDist(b.getSrc(), l.getEdge().getDest());
+			double temp=gg.shortestPathDist(b.getSrc(), l.getEdge().getSrc());
+			if(temp==0)
+			{
+				b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
+			}
 			if(temp<=min)
 			{
 				min=temp;
-				b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getDest()));
+				b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getSrc()));
+				b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
 				toremove=l;
 			}
 		}

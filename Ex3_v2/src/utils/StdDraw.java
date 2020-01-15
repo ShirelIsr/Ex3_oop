@@ -1732,21 +1732,30 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		});
 		help.start();
 	}
-
+	static boolean startRun = true;
+	static Thread help2;
 	public static void threadauto(String s)
 	{
-		help = new Thread(new Runnable() {
+		help2 = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-
+				if(startRun)
+				{
 				//g.ThreadPaint(game);
-					graph.Play_Automaticly(s);
-				
-				help.interrupt();
+				graph.Play_Automaticly(s);
+				startRun=false;
+				}
+
+				try {
+					help2.stop();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		help.start();
+		help2.start();
 	}
 
 	public static void setG_GUI(MyGameGui theG)
