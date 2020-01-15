@@ -92,7 +92,7 @@ public class MyGameGui
 	{
 		this.x= xpos;
 		this.y = ypos;
-		flage=false;
+		//flage=false;
 	}
 
 	public MyGameGui()
@@ -424,15 +424,15 @@ public class MyGameGui
 		}
 	}
 
-	private void playAuto() {
+	private void  playAuto() {
 		game.startGame();
 		while(game.isRunning())
 		{
 			moveRobots(game);
 			paint();
-			if(game.timeToEnd()<=1000)
-				break;
-			
+//			if(game.timeToEnd()<=1000)
+//				break;
+
 		}
 
 		System.out.println("Game Over :" +game.toString());
@@ -478,11 +478,9 @@ public class MyGameGui
 	}
 	private void playManual(game_service game)
 	{
-		paint();
 		game.startGame();
 		while(game.isRunning()) {
 			moveRobotsManual(game);
-			game.move();
 			paint();
 		}
 		String results = game.toString();
@@ -518,8 +516,10 @@ public class MyGameGui
 						Bots ber = new Bots();
 						//		System.out.println(string);
 						ber.initBot(string);
+						System.out.println(string);
 						Robots.put(ber.getId(), ber);
 					}
+					paint();
 				}
 
 			}
@@ -555,8 +555,10 @@ public class MyGameGui
 						{
 							node_data n=it.next();
 							game.chooseNextEdge(b.getId(), n.getKey());
+							game.move();
 						}
 						b.setPath(null);
+						b.setDest(-1);
 					}
 				}
 				Robots.clear();
@@ -578,7 +580,7 @@ public class MyGameGui
 
 
 	private int nextNode(game_service game) {
-		if (!flage)
+		if (flage)
 		{
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
@@ -590,7 +592,7 @@ public class MyGameGui
 				{
 					System.out.println(b.getId());
 					x=y=0;
-					flage=true;
+					flage=false;
 					botToMove= b.getId();
 					return -1;
 				}
@@ -602,9 +604,9 @@ public class MyGameGui
 			{
 				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
+				x=y=0;
 				if(dist<=(xMax-xMin)*0.01)
 				{
-					x=y=0;
 					flage=true;
 					return n.getDest();
 				}
@@ -625,17 +627,27 @@ public class MyGameGui
 		if(it.hasNext())
 		{
 			l=it.next();
-			double temp=gg.shortestPathDist(b.getSrc(), l.getEdge().getSrc());
-			if(temp==0)
+			double temp;
+			if(l.getEdge().getSrc()==b.getSrc())
 			{
-				b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
+				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getDest());
+				if(temp<min)
+				{
+					toremove=l;
+					min=temp;
+					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
+				}
 			}
-			if(temp<=min)
+			else
 			{
-				min=temp;
-				b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getSrc()));
-				b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
-				toremove=l;
+				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getSrc());
+				if(temp<min)
+				{
+					toremove=l;
+					min=temp;
+					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getSrc()));
+					b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
+				}	
 			}
 		}
 		_fruit.remove(toremove);
