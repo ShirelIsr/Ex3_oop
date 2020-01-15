@@ -61,7 +61,7 @@ public class MyGameGui
 	private static final long serialVersionUID = 1L;
 	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
-//	private static DecimalFormat df2 = new DecimalFormat("#.###");
+	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
 	private double xMin=Double.MIN_VALUE;
 	private double xMax=Double.MAX_VALUE;;
 	private double yMin=Double.MIN_VALUE;
@@ -133,8 +133,9 @@ public class MyGameGui
 					if(Gui_Graph !=null)
 					{
 						try {
-							Thread.sleep(50);
 							paint();
+							Thread.sleep(50);
+				
 						}
 						catch (Exception e) {
 							// TODO Auto-generated catch block
@@ -142,12 +143,18 @@ public class MyGameGui
 						}
 					}
 				}
-				help.interrupt();
+				try {
+				help.stop();
+				}
+				catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
 			}
 		});
 		help.start();
 	}
-
+	
 	public void ThreadMove(game_service game)
 	{
 		help2 = new Thread(new Runnable() {
@@ -158,13 +165,16 @@ public class MyGameGui
 				while(game.isRunning())
 				{
 					try {
-						Thread.sleep(8);
-					} catch (InterruptedException e) {
+						game.move();
+						
+						Thread.sleep(100);
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					game.move();
+
 				}
+				System.out.println("YES");
 				help2.interrupt();
 			}
 
@@ -205,6 +215,7 @@ public class MyGameGui
 				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
 			}
 		}
+
 		if (!_fruit.isEmpty())
 		{
 			Iterator <Fruit> it=_fruit.iterator();
@@ -441,7 +452,7 @@ public class MyGameGui
 			}
 			initGUI();
 			paint();
-			StdDraw.pause(30);
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -474,14 +485,23 @@ public class MyGameGui
 	}
 
 	private void playAuto(game_service game) {
-		ThreadMove(game);
-		ThreadPaint(game);
+		
+		//ThreadPaint(game);
 		game.startGame();
+		//ThreadMove(game);
 		while(game.isRunning()) {
 			moveRobots(game);
+			paint();
+			if(game.isRunning() && game.timeToEnd() > 100)
+			{
+				System.out.println(game.timeToEnd());
+			game.move();
+			}
 		}
+		if(game!=null) {
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
+		}
 	}
 
 	private List<Integer> setBots()
@@ -525,7 +545,7 @@ public class MyGameGui
 	{
 		game.startGame();
 		ThreadPaint(game);
-	//	ThreadMove(game);
+		//	ThreadMove(game);
 		while(game.isRunning()) {
 			//initGUI();
 			moveRobotsManual(game);
@@ -563,7 +583,7 @@ public class MyGameGui
 					List<String> botsStr = game.getRobots();
 					for (String string : botsStr) {
 						Bots ber = new Bots();
-				//		System.out.println(string);
+						//		System.out.println(string);
 						ber.initBot(string);
 						Robots.put(ber.getId(), ber);
 					}
@@ -606,13 +626,12 @@ public class MyGameGui
 						}
 						b.setPath(null);
 					}
-
 				}
 				Robots.clear();
 				List<String> botsStr = game.getRobots();
 				for (String string : botsStr) {
 					Bots ber = new Bots();
-					System.out.println(string);
+					//System.out.println(string);
 					ber.initBot(string);
 					Robots.put(ber.getId(), ber);
 				}
@@ -689,12 +708,12 @@ public class MyGameGui
 			}
 		}
 		_fruit.remove(toremove);
-		}
+	}
 
-		public static void main(String[] args) {
+	public static void main(String[] args) {
 
-			MyGameGui app = new MyGameGui();
-
-		}
+		MyGameGui app = new MyGameGui();
 
 	}
+
+}
