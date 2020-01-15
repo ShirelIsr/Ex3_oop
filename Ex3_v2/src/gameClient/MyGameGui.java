@@ -119,68 +119,9 @@ public class MyGameGui
 		StdDraw.setG_GUI(this);
 		StdDraw.show();
 		paint();
-
 	}
-	public void ThreadPaint(game_service game)
-	{
-		help = new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(game.isRunning())
-				{
-					if(Gui_Graph !=null)
-					{
-						try {
-							paint();
-							Thread.sleep(50);
-				
-						}
-						catch (Exception e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-				try {
-				help.stop();
-				}
-				catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-			}
-		});
-		help.start();
-	}
-	
-	public void ThreadMove(game_service game)
-	{
-		help2 = new Thread(new Runnable() {
 
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				while(game.isRunning())
-				{
-					try {
-						game.move();
-						
-						Thread.sleep(100);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-				}
-				System.out.println("YES");
-				help2.interrupt();
-			}
-
-		});
-		help2.start();
-	}
 
 
 	public void paint()
@@ -452,7 +393,7 @@ public class MyGameGui
 			}
 			initGUI();
 			paint();
-			
+
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -468,8 +409,7 @@ public class MyGameGui
 			if(num>=0 && num<=23)
 			{
 				initGame(num);
-				playAuto(game);				
-
+				playAuto();				
 			}
 			else
 			{
@@ -484,24 +424,19 @@ public class MyGameGui
 		}
 	}
 
-	private void playAuto(game_service game) {
-		
-		//ThreadPaint(game);
+	private void playAuto() {
 		game.startGame();
-		//ThreadMove(game);
-		while(game.isRunning()) {
+		while(game.isRunning())
+		{
 			moveRobots(game);
 			paint();
-			if(game.isRunning() && game.timeToEnd() > 100)
-			{
-				System.out.println(game.timeToEnd());
-			game.move();
-			}
+			if(game.timeToEnd()<=1000)
+				break;
+			
 		}
-		if(game!=null) {
-		String results = game.toString();
-		System.out.println("Game Over: "+results);
-		}
+
+		System.out.println("Game Over :" +game.toString());
+
 	}
 
 	private List<Integer> setBots()
@@ -543,12 +478,12 @@ public class MyGameGui
 	}
 	private void playManual(game_service game)
 	{
+		paint();
 		game.startGame();
-		ThreadPaint(game);
-		//	ThreadMove(game);
 		while(game.isRunning()) {
-			//initGUI();
 			moveRobotsManual(game);
+			game.move();
+			paint();
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
@@ -567,8 +502,6 @@ public class MyGameGui
 					{
 						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
 						game.chooseNextEdge(rb.getId(), dest);
-						game.move();
-
 					}
 					_fruit.clear();
 					_fruit=new ArrayList <Fruit>();
@@ -621,20 +554,20 @@ public class MyGameGui
 						while(it.hasNext())
 						{
 							node_data n=it.next();
-							//System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
 							game.chooseNextEdge(b.getId(), n.getKey());
 						}
 						b.setPath(null);
 					}
 				}
 				Robots.clear();
+
 				List<String> botsStr = game.getRobots();
 				for (String string : botsStr) {
 					Bots ber = new Bots();
-					//System.out.println(string);
 					ber.initBot(string);
 					Robots.put(ber.getId(), ber);
 				}
+
 			}
 			catch (JSONException e) {e.printStackTrace();}
 		}
@@ -659,7 +592,6 @@ public class MyGameGui
 					x=y=0;
 					flage=true;
 					botToMove= b.getId();
-					//		System.out.println("the boot is :"+botToMove+"in node "+b.getSrc());
 					return -1;
 				}
 			}
@@ -674,7 +606,6 @@ public class MyGameGui
 				{
 					x=y=0;
 					flage=true;
-					//	System.out.println("the dest is :"+n.getDest());
 					return n.getDest();
 				}
 
