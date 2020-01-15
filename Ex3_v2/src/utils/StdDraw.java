@@ -486,6 +486,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	static MyGameGui graph;
 	static boolean rePaint = false;
 	static Thread help;
+	static boolean isPaint = false;
 	/**
 	 *  The color black.
 	 */
@@ -1751,6 +1752,12 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	public static void setG_GUI(MyGameGui theG)
 	{
 		graph= theG;
+	}
+	public static void setIsPaint() {
+		isPaint=true;
+	}
+	public static boolean getIsPaint() {
+		return isPaint;
 	}
 
 

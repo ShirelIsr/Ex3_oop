@@ -104,8 +104,11 @@ public class MyGameGui
 
 	private void initGUI() 
 	{
-		StdDraw.enableDoubleBuffering();
-		StdDraw.setCanvasSize(800, 600);
+		if(!StdDraw.getIsPaint()) {
+			StdDraw.setCanvasSize(800, 600);
+			StdDraw.enableDoubleBuffering();
+			StdDraw.setIsPaint();
+		}
 		if (Gui_Graph!=null) 
 		{
 			set(this.Gui_Graph);
@@ -176,31 +179,31 @@ public class MyGameGui
 				StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.00005);
 			}
 		}
-			if (!_fruit.isEmpty())
+		if (!_fruit.isEmpty())
+		{
+			Iterator <Fruit> it=_fruit.iterator();
+			while (it.hasNext())
 			{
-				Iterator <Fruit> it=_fruit.iterator();
-				while (it.hasNext())
-				{
-					Fruit f=it.next();
-					Point3D pf=f.getlocaiton();
-					if(f.getType()==1)
-						StdDraw.setPenColor(Color.PINK);
-					else StdDraw.setPenColor(Color.ORANGE);
-					StdDraw.circle(pf.x(),pf.y(),0.00005);
-				}
-			}
-			Collection<Bots> bb = Robots.values();
-			if(!bb.isEmpty())
-			{
-				for(Bots b:bb)
-				{
-					Point3D pb=b.getLocaiton();
-					StdDraw.setPenColor(Color.BLACK);
-					StdDraw.circle(pb.x(),pb.y(),0.00005);
-				}
-				StdDraw.show();
+				Fruit f=it.next();
+				Point3D pf=f.getlocaiton();
+				if(f.getType()==1)
+					StdDraw.setPenColor(Color.PINK);
+				else StdDraw.setPenColor(Color.ORANGE);
+				StdDraw.circle(pf.x(),pf.y(),0.00005);
 			}
 		}
+		Collection<Bots> bb = Robots.values();
+		if(!bb.isEmpty())
+		{
+			for(Bots b:bb)
+			{
+				Point3D pb=b.getLocaiton();
+				StdDraw.setPenColor(Color.BLACK);
+				StdDraw.circle(pb.x(),pb.y(),0.00005);
+			}
+			StdDraw.show();
+		}
+	}
 
 
 	public void save() 
@@ -485,9 +488,7 @@ public class MyGameGui
 	}
 	private void playSolo(game_service game)
 	{
-		paint();
 		game.startGame();
-		//ThreadMouse(game);
 		while(game.isRunning()) {
 			//initGUI();
 			moveRobotsManual(game);
@@ -500,12 +501,8 @@ public class MyGameGui
 	{
 		List<String> log = game.move();
 		if(log!=null) {
+			try {
 			long t = game.timeToEnd();
-			for(int i=0;i<log.size();i++) {
-				String robot_json = log.get(i);
-				try {
-					JSONObject line = new JSONObject(robot_json);
-					JSONObject ttt = line.getJSONObject("Robot");
 					int dest = nextNode(game);
 					if(dest!=-1) {	
 						Bots rb=Robots.get(botToMove);
@@ -514,8 +511,6 @@ public class MyGameGui
 							System.out.println("you choose to move robot :"+rb.getId());
 							System.out.println(rb.getLocaiton().toString());
 							game.chooseNextEdge(rb.getId(), dest);
-							game.move();
-
 						}
 						_fruit=new ArrayList <Fruit>();
 						_fruit.clear();
@@ -528,89 +523,77 @@ public class MyGameGui
 							_fruit.add(f);	 
 
 						}
-				
+
 						//bots.clear();
 						List<String> botsStr = game.getRobots();
 						for (String string : botsStr) {
 							Bots ber = new Bots();
 							ber.initBot(string);
-							Robots.put(ber.getId(), ber);
+							Robots.put(ber.getSrc(), ber);
 						}
+						ThreadPaint(game);
 					}
-				paint();
 			}
-			catch (JSONException e) {e.printStackTrace();}
-		}
+					catch (JSONException e) {e.printStackTrace();}
+				}
+			
+		
+		//paint();
 	}
-	//paint();
-}
 
 
-
-
-
-private int nextNode(game_service game) {
-	if (!flage)
-	{
-		Collection<Bots> robots =Robots.values();
-		for (Bots b : robots) 
+	private int nextNode(game_service game) {
+		if (!flage)
 		{
-			Point3D p=b.getLocaiton();
-			double dist=p.distance2D(new Point3D(x,y));
-			if(dist<=(xMax-xMin)*0.006)
+			Collection<Bots> robots =Robots.values();
+			for (Bots b : robots) 
 			{
-				System.out.println(b.getId());
-				x=y=0;
-				flage=true;
-				botToMove= b.getId();
-				System.out.println("the boot is :"+botToMove);
-				return -1;
+				Point3D p=b.getLocaiton();
+				double dist=p.distance2D(new Point3D(x,y));
+				if(dist<=(xMax-xMin)*0.006)
+				{
+					System.out.println(b.getId());
+					x=y=0;
+					flage=true;
+					botToMove= b.getId();
+					System.out.println("the boot is :"+botToMove);
+					return -1;
+				}
+			}
+			int b=Robots.get(botToMove).getSrc();
+			Collection<edge_data> edges =Gui_Graph.getE(b);
+			for (edge_data n :  edges) 
+			{
+				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
+				double dist=p.distance2D(new Point3D(x,y));
+				if(dist<=(xMax-xMin)*0.006)
+				{
+					x=y=0;
+					flage=true;
+					System.out.println("the dest is :"+n.getDest());
+					return n.getDest();
+				}
+
 			}
 		}
-		int b=Robots.get(botToMove).getSrc();
-		Collection<edge_data> edges =Gui_Graph.getE(b);
-		for (edge_data n :  edges) 
-		{
-			Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
-			double dist=p.distance2D(new Point3D(x,y));
-			if(dist<=(xMax-xMin)*0.006)
-			{
-				x=y=0;
-				flage=true;
-				System.out.println("the dest is :"+n.getDest());
-				return n.getDest();
-			}
-
-		}
+		return -1;
 	}
-	return -1;
-}
 
 
 
-/** 
- * Moves each of the robots along the edge, 
- * in case the robot is on a node the next destination (next edge) is chosen (randomly).
- * @param game
- * @param gg
- * @param log
- */
-private  void moveRobots(game_service game) {
-	List<String> log = game.move();
-	if(log!=null) {
-		long t = game.timeToEnd();
-		for(int i=0;i<log.size();i++) {
-			String robot_json = log.get(i);
+	/** 
+	 * Moves each of the robots along the edge, 
+	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
+	 * @param game
+	 * @param gg
+	 * @param log
+	 */
+	private  void moveRobots(game_service game) {
+		List<String> log = game.move();
+		if(log!=null) {
+			long t = game.timeToEnd();
 			try {
-				JSONObject line = new JSONObject(robot_json);
-				//								JSONObject ttt = line.getJSONObject("Robot");
-				//								int rid = ttt.getInt("id");
-				//								int src = ttt.getInt("src");
-				//								int dest = ttt.getInt("dest");
-				//			
-				//								if(dest==-1) {	
-				//									setPath(Robots.get(rid));
-				//								}
+
 				_fruit=new ArrayList <Fruit>();
 				_fruit.clear();
 				Iterator<String> f_iter = game.getFruits().iterator();
@@ -623,52 +606,52 @@ private  void moveRobots(game_service game) {
 
 				}
 				Collection<Bots> robots =Robots.values();
-
 				for (Bots b : robots) 
 				{
-					if(b.dest==-1)
+					if(b.getPath()!=null)
 					{
 						setPath(Robots.get(b.getId()));
 						Iterator <node_data> it= b.getPath().iterator();
 						while(it.hasNext())
 						{
 							node_data n=it.next();
-							b.setLocaiton(n.getLocation());
+							b.setDest(n.getKey());
 							System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
 							//						System.out.println(ttt);
+							game.chooseNextEdge(b.getId(), b.getDest());
 							game.move();
 						}
 					}
-					b.setDest(-1);
 				}
 			}
 			catch (JSONException e) {e.printStackTrace();}
+
+
+		}}
+	//paint();
+
+
+	private void setPath(Bots b) {
+		Fruit l=null;
+		graph_algorithms gg=new Graph_Algo();
+		gg.init(Gui_Graph);
+		Iterator<Fruit> it =_fruit.iterator();
+		if(it.hasNext())
+		{
+			l=it.next();
+			b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getDest()));
+			_fruit.remove(l);
+
 		}
-
-	}}
-//paint();
+	}
 
 
-private void setPath(Bots b) {
-	edge_data l=null;
-	graph_algorithms gg=new Graph_Algo();
-	gg.init(Gui_Graph);
-	Iterator<Fruit> it =_fruit.iterator();
-	if(it.hasNext())
-	{
-		l=it.next().getEdge();
-		b.setPath(gg.shortestPath(b.getSrc(), l.getDest()));
+
+
+	public static void main(String[] args) {
+
+		MyGameGui app = new MyGameGui();
 
 	}
-}
-
-
-
-
-public static void main(String[] args) {
-
-	MyGameGui app = new MyGameGui();
-
-}
 
 }
