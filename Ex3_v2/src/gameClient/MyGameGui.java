@@ -111,7 +111,7 @@ public class MyGameGui
 		{
 			set(this.Gui_Graph);
 		}
-		StdDraw.setXscale(xMin , xMax);
+		StdDraw.setXscale(xMin, xMax);
 		StdDraw.setYscale(yMin, yMax);
 		StdDraw.setG_GUI(this);
 		StdDraw.show();
@@ -154,7 +154,7 @@ public class MyGameGui
 		{
 			Point3D p=node.getLocation();
 			StdDraw.setPenColor(Color.RED);
-			StdDraw.circle(p.x(),p.y(),0.00005);
+			StdDraw.circle(p.x(),p.y(),0.0001);
 			StdDraw.text( p.x()+1, p.y()+1, ""+node.getKey());
 			Collection<edge_data> e =Gui_Graph.getE(node.getKey());
 			for(edge_data edge : e)
@@ -173,8 +173,8 @@ public class MyGameGui
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
 				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
-				StdDraw.setPenColor(Color.YELLOW);
-				StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.00005);
+				//StdDraw.setPenColor(Color.YELLOW);
+				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
 			}
 		}
 		if (!_fruit.isEmpty())
@@ -187,7 +187,7 @@ public class MyGameGui
 				if(f.getType()==1)
 					StdDraw.setPenColor(Color.PINK);
 				else StdDraw.setPenColor(Color.ORANGE);
-				StdDraw.circle(pf.x(),pf.y(),0.00005);
+				StdDraw.circle(pf.x(),pf.y(),0.0001);
 			}
 		}
 		Collection<Bots> bb = Robots.values();
@@ -197,7 +197,7 @@ public class MyGameGui
 			{
 				Point3D pb=b.getLocaiton();
 				StdDraw.setPenColor(Color.BLACK);
-				StdDraw.circle(pb.x(),pb.y(),0.00005);
+				StdDraw.circle(pb.x(),pb.y(),0.0002);
 			}
 			StdDraw.show();
 		}
@@ -354,13 +354,13 @@ public class MyGameGui
 	}
 
 
-	public void initGame(int scenario_num)  {
+	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
 		String g = game.getGraph();
 		DGraph gg = new DGraph();
 		gg.init(g);
 		xMin=Double.MIN_VALUE;
-		xMax=Double.MAX_VALUE;;
+		xMax=Double.MAX_VALUE;
 		yMin=Double.MIN_VALUE;
 		yMax=Double.MAX_VALUE;
 		this.Gui_Graph=gg;
@@ -518,7 +518,7 @@ public class MyGameGui
 							System.out.println("you choose to move robot :"+rb.getId());
 							System.out.println(rb.getLocaiton().toString());
 							game.chooseNextEdge(rb.getId(), dest);
-							game.move();
+							//game.move();
 
 						}
 						_fruit=new ArrayList <Fruit>();
@@ -561,7 +561,7 @@ public class MyGameGui
 			{
 				Point3D p=b.getLocaiton();
 				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=(xMax-xMin)*0.006)
+				if(dist<=(xMax-xMin)*0.01)
 				{
 					System.out.println(b.getId());
 					x=y=0;
@@ -573,11 +573,11 @@ public class MyGameGui
 			}
 			int b=Robots.get(botToMove).getSrc();
 			Collection<edge_data> edges =Gui_Graph.getE(b);
-			for (edge_data n :  edges) 
+			for (edge_data n : edges) 
 			{
 				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=(xMax-xMin)*0.006)
+				if(dist<=(xMax-xMin)*0.0002)
 				{
 					x=y=0;
 					flage=true;
