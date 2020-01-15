@@ -1834,11 +1834,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		synchronized (mouseLock) {
-			mouseX = StdDraw.userX(e.getX());
-			mouseY = StdDraw.userY(e.getY());
-			isMousePressed = true;
-		}
+//		synchronized (mouseLock) {
+//			mouseX = StdDraw.userX(e.getX());
+//			mouseY = StdDraw.userY(e.getY());
+//			isMousePressed = true;
+//		}
 	}
 
 	/**
