@@ -52,6 +52,7 @@ import oop_dataStructure.oop_graph;
 import utils.Point3D;
 import utils.StdDraw;
 
+
 public class MyGameGui  
 {
 	/**
@@ -77,6 +78,7 @@ public class MyGameGui
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
+	Thread help2;
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
@@ -113,7 +115,7 @@ public class MyGameGui
 		{
 			set(this.Gui_Graph);
 		}
-		StdDraw.setXscale(xMin , xMax);
+		StdDraw.setXscale(xMin, xMax);
 		StdDraw.setYscale(yMin, yMax);
 		StdDraw.setG_GUI(this);
 		StdDraw.show();
@@ -147,6 +149,31 @@ public class MyGameGui
 		help.start();
 	}
 
+	public void ThreadMove(game_service game)
+	{
+		help2 = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(game.isRunning())
+				{
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					game.move();
+				}
+				help2.interrupt();
+			}
+
+		});
+		help2.start();
+	}
+
+
 	public void paint()
 	{	
 		StdDraw.clear();
@@ -156,8 +183,8 @@ public class MyGameGui
 		{
 			Point3D p=node.getLocation();
 			StdDraw.setPenColor(Color.RED);
-			StdDraw.circle(p.x(),p.y(),0.00005);
-			StdDraw.text( p.x()+1, p.y()+1, ""+node.getKey());
+			StdDraw.circle(p.x(),p.y(),0.0001);
+			StdDraw.text( p.x()+0.0001, p.y()+0.0001, ""+node.getKey());
 			Collection<edge_data> e =Gui_Graph.getE(node.getKey());
 			for(edge_data edge : e)
 			{
@@ -175,8 +202,8 @@ public class MyGameGui
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
 				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
-				StdDraw.setPenColor(Color.YELLOW);
-				StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.00005);
+				//StdDraw.setPenColor(Color.YELLOW);
+				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
 			}
 		}
 		if (!_fruit.isEmpty())
@@ -189,7 +216,7 @@ public class MyGameGui
 				if(f.getType()==1)
 					StdDraw.setPenColor(Color.PINK);
 				else StdDraw.setPenColor(Color.ORANGE);
-				StdDraw.circle(pf.x(),pf.y(),0.00005);
+				StdDraw.circle(pf.x(),pf.y(),0.0001);
 			}
 		}
 		Collection<Bots> bb = Robots.values();
@@ -199,7 +226,8 @@ public class MyGameGui
 			{
 				Point3D pb=b.getLocaiton();
 				StdDraw.setPenColor(Color.BLACK);
-				StdDraw.circle(pb.x(),pb.y(),0.00005);
+
+				StdDraw.circle(pb.x(),pb.y(),0.0002);
 			}
 			StdDraw.show();
 		}
@@ -298,6 +326,7 @@ public class MyGameGui
 		}
 		paint();
 
+
 	}
 	public void SPD() 
 	{
@@ -351,15 +380,17 @@ public class MyGameGui
 		}
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
 		paint();
+
 	}
 
-	public void initGame(int scenario_num)  {
+
+	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
 		String g = game.getGraph();
 		DGraph gg = new DGraph();
 		gg.init(g);
 		xMin=Double.MIN_VALUE;
-		xMax=Double.MAX_VALUE;;
+		xMax=Double.MAX_VALUE;
 		yMin=Double.MIN_VALUE;
 		yMax=Double.MAX_VALUE;
 		this.Gui_Graph=gg;
@@ -390,6 +421,12 @@ public class MyGameGui
 				Robots=new HashMap<Integer,Bots>();
 			else Robots.clear();
 			int i=0;
+			Iterator <Integer> it =setBots().iterator();
+			while((i<rs)&&(it.hasNext()))
+			{
+				game.addRobot(it.next());
+				i++;
+			}
 			while(i<rs)
 			{
 				int rnd =(int)Math.random()*Gui_Graph.nodeSize();
@@ -404,7 +441,6 @@ public class MyGameGui
 				b.initBot(str);
 				Robots.put(b.getId(), b);	 
 			}
-			setBots();
 			initGUI();
 			paint();
 			StdDraw.pause(30);
@@ -440,8 +476,8 @@ public class MyGameGui
 	}
 
 	private void playAuto(game_service game2) {
-		ThreadPaint(game);
 		game.startGame();
+		ThreadMove(game);
 		ThreadPaint(game);
 		//ThreadMouse(game);
 		while(game.isRunning()) {
@@ -452,13 +488,16 @@ public class MyGameGui
 		System.out.println("Game Over: "+results);
 	}
 
-	private void setBots()
+	private List<Integer> setBots()
 	{
-		Collection<Bots> b = Robots.values();
 		Iterator <Fruit> it=_fruit.iterator();
-		for(Bots bb:b)
-			if(it.hasNext())
-				bb.setLocaiton(Gui_Graph.getNode(it.next().getEdge().getSrc()).getLocation());
+		ArrayList <Integer> nodes=new ArrayList<Integer>();
+		if(it.hasNext())
+		{
+			edge_data e=it.next().getEdge();
+			nodes.add(Gui_Graph.getNode(e.getSrc()).getKey());
+		}
+		return  nodes;
 	}
 
 	public void Play_manual(String scenario_num)
@@ -469,7 +508,7 @@ public class MyGameGui
 			if(num>=0 && num<=23)
 			{
 				initGame(num);
-				playSolo(game);				
+				playManual(game);				
 
 			}
 			else
@@ -486,9 +525,11 @@ public class MyGameGui
 
 
 	}
-	private void playSolo(game_service game)
+	private void playManual(game_service game)
 	{
 		game.startGame();
+		ThreadPaint(game);
+		ThreadMove(game);
 		while(game.isRunning()) {
 			//initGUI();
 			moveRobotsManual(game);
@@ -502,98 +543,50 @@ public class MyGameGui
 		List<String> log = game.move();
 		if(log!=null) {
 			try {
-			long t = game.timeToEnd();
-					int dest = nextNode(game);
-					if(dest!=-1) {	
-						Bots rb=Robots.get(botToMove);
-						if(rb!=null)
-						{
-							System.out.println("you choose to move robot :"+rb.getId());
-							System.out.println(rb.getLocaiton().toString());
-							game.chooseNextEdge(rb.getId(), dest);
-						}
-						_fruit=new ArrayList <Fruit>();
-						_fruit.clear();
-						Iterator<String> f_iter = game.getFruits().iterator();
-						while(f_iter.hasNext())
-						{
+				long t = game.timeToEnd();
+				int dest = nextNode(game);
+				if(dest!=-1) {	
+					Bots rb=Robots.get(botToMove);
+					if(rb!=null)
+					{
+						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
+						game.chooseNextEdge(rb.getId(), dest);
 
-							Fruit f=new Fruit(Gui_Graph);
-							f.initFruit(f_iter.next());
-							_fruit.add(f);	 
-
-						}
-
-						//bots.clear();
-						List<String> botsStr = game.getRobots();
-						for (String string : botsStr) {
-							Bots ber = new Bots();
-							ber.initBot(string);
-							Robots.put(ber.getSrc(), ber);
-						}
-						ThreadPaint(game);
 					}
-			}
-					catch (JSONException e) {e.printStackTrace();}
-				}
-			
-		
-		//paint();
-	}
+					_fruit.clear();
+					_fruit=new ArrayList <Fruit>();
+					Iterator<String> f_iter = game.getFruits().iterator();
+					while(f_iter.hasNext())
+					{
 
+						Fruit f=new Fruit(Gui_Graph);
+						f.initFruit(f_iter.next());
+						_fruit.add(f);	 
 
-	private int nextNode(game_service game) {
-		if (!flage)
-		{
-			Collection<Bots> robots =Robots.values();
-			for (Bots b : robots) 
-			{
-				Point3D p=b.getLocaiton();
-				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=(xMax-xMin)*0.006)
-				{
-					System.out.println(b.getId());
-					x=y=0;
-					flage=true;
-					botToMove= b.getId();
-					System.out.println("the boot is :"+botToMove);
-					return -1;
-				}
-			}
-			int b=Robots.get(botToMove).getSrc();
-			Collection<edge_data> edges =Gui_Graph.getE(b);
-			for (edge_data n :  edges) 
-			{
-				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
-				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=(xMax-xMin)*0.006)
-				{
-					x=y=0;
-					flage=true;
-					System.out.println("the dest is :"+n.getDest());
-					return n.getDest();
+					}
+					Robots.clear();
+					List<String> botsStr = game.getRobots();
+					for (String string : botsStr) {
+						Bots ber = new Bots();
+						System.out.println(string);
+						ber.initBot(string);
+						Robots.put(ber.getId(), ber);
+					}
+
 				}
 
 			}
+			catch (JSONException e) {e.printStackTrace();}
 		}
-		return -1;
+
+
 	}
 
-
-
-	/** 
-	 * Moves each of the robots along the edge, 
-	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
-	 * @param game
-	 * @param gg
-	 * @param log
-	 */
 	private  void moveRobots(game_service game) {
 		List<String> log = game.move();
 		if(log!=null) {
 			long t = game.timeToEnd();
 			try {
-
 				_fruit=new ArrayList <Fruit>();
 				_fruit.clear();
 				Iterator<String> f_iter = game.getFruits().iterator();
@@ -608,50 +601,108 @@ public class MyGameGui
 				Collection<Bots> robots =Robots.values();
 				for (Bots b : robots) 
 				{
-					if(b.getPath()!=null)
+					if(b.getDest()==-1)
 					{
 						setPath(Robots.get(b.getId()));
 						Iterator <node_data> it= b.getPath().iterator();
 						while(it.hasNext())
 						{
 							node_data n=it.next();
-							b.setDest(n.getKey());
 							System.out.println("Turn to node: "+n.getKey()+"  time to end:"+(t/1000));
-							//						System.out.println(ttt);
-							game.chooseNextEdge(b.getId(), b.getDest());
-							game.move();
+							game.chooseNextEdge(b.getId(), n.getKey());
 						}
+						b.setPath(null);
 					}
+
+				}
+				Robots.clear();
+				List<String> botsStr = game.getRobots();
+				for (String string : botsStr) {
+					Bots ber = new Bots();
+					System.out.println(string);
+					ber.initBot(string);
+					Robots.put(ber.getId(), ber);
 				}
 			}
 			catch (JSONException e) {e.printStackTrace();}
+		}
+
+	}
 
 
-		}}
-	//paint();
+
+
+	private int nextNode(game_service game) {
+		if (!flage)
+		{
+			Collection<Bots> robots =Robots.values();
+			for (Bots b : robots) 
+			{
+				Point3D p=b.getLocaiton();
+				double dist=p.distance2D(new Point3D(x,y));
+
+				if(dist<=(xMax-xMin)*0.01)
+				{
+					System.out.println(b.getId());
+					x=y=0;
+					flage=true;
+					botToMove= b.getId();
+					//		System.out.println("the boot is :"+botToMove+"in node "+b.getSrc());
+					return -1;
+				}
+			}
+			int b=Robots.get(botToMove).getSrc();
+			//	System.out.println(b);
+			Collection<edge_data> edges =Gui_Graph.getE(b);
+			for (edge_data n : edges) 
+			{
+				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
+				double dist=p.distance2D(new Point3D(x,y));
+				if(dist<=(xMax-xMin)*0.01)
+				{
+					x=y=0;
+					flage=true;
+					//	System.out.println("the dest is :"+n.getDest());
+					return n.getDest();
+				}
+
+			}
+		}
+		return -1;
+	}
+
+
+
 
 
 	private void setPath(Bots b) {
 		Fruit l=null;
+		Fruit toremove=null;
 		graph_algorithms gg=new Graph_Algo();
 		gg.init(Gui_Graph);
+		double min=Double.MAX_VALUE;
 		Iterator<Fruit> it =_fruit.iterator();
 		if(it.hasNext())
 		{
 			l=it.next();
-			b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getDest()));
-			_fruit.remove(l);
+			double temp=gg.shortestPathDist(b.getSrc(), l.getEdge().getDest());
+			if(temp<=min)
+			{
+				min=temp;
+				b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getDest()));
+				toremove=l;
+			}
+		}
+		_fruit.remove(toremove);
+		}
+
+
+
+
+		public static void main(String[] args) {
+
+			MyGameGui app = new MyGameGui();
 
 		}
-	}
-
-
-
-
-	public static void main(String[] args) {
-
-		MyGameGui app = new MyGameGui();
 
 	}
-
-}
