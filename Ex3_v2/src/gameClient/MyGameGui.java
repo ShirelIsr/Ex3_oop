@@ -1,39 +1,22 @@
 package gameClient;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.Robot;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.io.File;
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.BiFunction;
+
 
 import javax.swing.JOptionPane;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -90,7 +73,7 @@ public class MyGameGui
 	{
 		this.x= xpos;
 		this.y = ypos;
-		//flag=false;
+
 	}
 
 	public MyGameGui()
@@ -147,8 +130,7 @@ public class MyGameGui
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
 				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
-				//StdDraw.setPenColor(Color.YELLOW);
-				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
+			
 			}
 		}
 
@@ -419,7 +401,7 @@ public class MyGameGui
 		}
 	}
 
-	private void playAuto() {
+	private void  playAuto() {
 		game.startGame();
 		while(game.isRunning())
 		{
@@ -427,6 +409,7 @@ public class MyGameGui
 			paint();
 			if(game.timeToEnd()<=1000)
 				break;
+
 
 		}
 
@@ -473,7 +456,6 @@ public class MyGameGui
 		game.startGame();
 		while(game.isRunning()) {
 			moveRobotsManual(game);
-			game.move();
 			paint();
 			if(game.timeToEnd()<=1000)
 				break;
@@ -513,8 +495,10 @@ public class MyGameGui
 						Bots ber = new Bots();
 						//System.out.println(string);
 						ber.initBot(string);
+					//	System.out.println(string);
 						Robots.put(ber.getId(), ber);
 					}
+					paint();
 				}
 			catch (JSONException e) {e.printStackTrace();}
 		}
@@ -548,8 +532,10 @@ public class MyGameGui
 						{
 							node_data n=it.next();
 							game.chooseNextEdge(b.getId(), n.getKey());
+							game.move();
 						}
 						b.setPath(null);
+						b.setDest(-1);
 					}
 				}
 				Robots.clear();
@@ -570,6 +556,7 @@ public class MyGameGui
 	private int nextNode(game_service game) {
 		Point3D a = new Point3D(x,y);
 		if (!flag)
+
 		{
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
@@ -582,6 +569,7 @@ public class MyGameGui
 					//System.out.println(x+""+y);
 					x=y=0;
 					flag=true;
+
 					botToMove= b.getId();
 					return -1;
 				}
@@ -595,6 +583,7 @@ public class MyGameGui
 			{
 				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
+				x=y=0;
 				if(dist<=(xMax-xMin)*0.01)
 				{
 					//x=y=0;
@@ -617,17 +606,27 @@ public class MyGameGui
 		if(it.hasNext())
 		{
 			l=it.next();
-			double temp=gg.shortestPathDist(b.getSrc(), l.getEdge().getSrc());
-			if(temp==0)
+			double temp;
+			if(l.getEdge().getSrc()==b.getSrc())
 			{
-				b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
+				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getDest());
+				if(temp<min)
+				{
+					toremove=l;
+					min=temp;
+					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
+				}
 			}
-			if(temp<=min)
+			else
 			{
-				min=temp;
-				b.setPath(gg.shortestPath(b.getSrc(), l.getEdge().getSrc()));
-				b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
-				toremove=l;
+				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getSrc());
+				if(temp<min)
+				{
+					toremove=l;
+					min=temp;
+					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getSrc()));
+					b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
+				}	
 			}
 		}
 		_fruit.remove(toremove);
