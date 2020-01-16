@@ -430,8 +430,8 @@ public class MyGameGui
 		{
 			moveRobots(game);
 			paint();
-//			if(game.timeToEnd()<=1000)
-//				break;
+			if(game.timeToEnd()<=1000)
+				break;
 
 		}
 
