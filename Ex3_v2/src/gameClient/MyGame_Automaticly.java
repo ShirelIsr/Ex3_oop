@@ -21,12 +21,13 @@ import dataStructure.node_data;
 public class MyGame_Automaticly implements MyGame{
 
 	game_service game;
-	private boolean flag=false;
 	private int botToMove;
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private double x,y;
+	int i;
+
 	@Override
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -81,12 +82,11 @@ public class MyGame_Automaticly implements MyGame{
 				Robots.put(b.getId(), b);
 			}
 
-	}
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 
 	@Override
@@ -103,52 +103,54 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public void moveRobot() {
-		List<String> log = game.move();
-		if(log!=null) {
-			try {
-				_fruit=new ArrayList <Fruit>();
-				_fruit.clear();
-				Iterator<String> f_iter = game.getFruits().iterator();
-				while(f_iter.hasNext())
-				{
-					Fruit f=new Fruit(_graph);
-					f.initFruit(f_iter.next());
-					_fruit.add(f);	 
-				}
-				Collection<Bots> robots =Robots.values();
-				for (Bots b : robots) 
-				{
-					if(b.dest==-1)
-					{
-						botToMove=b.getId();
-						b.setDest(setPath());
-						Iterator <node_data> it= b.getPath().iterator();
-						while(it.hasNext())
-						{
-							int dest=it.next().getKey();
-							game.chooseNextEdge(b.getId(), dest);
-						}
-						b.setPath(null);
-						b.setDest(-1);
-					}
-				}
-				Robots.clear();
-				List<String> botsStr = game.getRobots();
-				for (String string : botsStr)
-				{
-					Bots ber = new Bots();
-					ber.initBot(string);
-					Robots.put(ber.getId(), ber);
-				}
-
+		try {
+			_fruit=new ArrayList <Fruit>();
+			_fruit.clear();
+			Iterator<String> f_iter = game.getFruits().iterator();
+			while(f_iter.hasNext())
+			{
+				Fruit f=new Fruit(_graph);
+				f.initFruit(f_iter.next());
+				_fruit.add(f);	 
 			}
-			catch (JSONException e) {e.printStackTrace();}
+			Collection<Bots> robots =Robots.values();
+			for (Bots b : robots) 
+			{
+				if(b.dest==-1)
+				{
+					botToMove=b.getId();
+					i+=setPath();
+					Iterator <node_data> it= b.getPath().iterator();
+					while(it.hasNext())
+					{
+						int dest=it.next().getKey();
+						game.chooseNextEdge(b.getId(), dest);
+					}
+					b.setPath(null);
+					b.setDest(-1);
+				}
+			}
+
+			Robots.clear();
+			List<String> botsStr = game.getRobots();
+			for (String string : botsStr)
+			{
+				Bots ber = new Bots();
+				ber.initBot(string);
+				Robots.put(ber.getId(), ber);
+			}
+		game.move();
+
 		}
+		catch (JSONException e) {e.printStackTrace();}
+		
 	}
 
+	
 	@Override
 	public int setPath() {
 		Fruit l=null;
+		Fruit remove=null;
 		graph_algorithms gg=new Graph_Algo(_graph);
 		double min=Double.MAX_VALUE;
 		Iterator<Fruit> it =_fruit.iterator();
@@ -162,6 +164,7 @@ public class MyGame_Automaticly implements MyGame{
 				if(temp<min)
 				{
 					min=temp;
+					remove=l;
 					ArrayList<node_data> tempPath=new ArrayList<node_data> ();
 					tempPath.add(_graph.getNode(l.getEdge().getSrc()));
 					tempPath.add(_graph.getNode(l.getEdge().getDest()));
@@ -175,12 +178,14 @@ public class MyGame_Automaticly implements MyGame{
 				if(temp<min)
 				{
 					min=temp;
+					remove=l;
 					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getSrc()));
 					b.getPath().add(_graph.getNode(l.getEdge().getDest()));
 				}	
 			}
 		}
-	return 1;	
+		_fruit.remove(remove);
+		return b.getPath().size();
 	}
 
 	@Override
@@ -207,7 +212,7 @@ public class MyGame_Automaticly implements MyGame{
 	public void setXY(double x, double y) {
 		this.x=x;
 		this. y=y;
-		
+
 	}
 
 }

@@ -21,7 +21,7 @@ public interface MyGame {
 	 * @return
 	 */
 	public  List<edge_data> setBots();
-
+	
 	/**
 	 * 
 	 * @param game

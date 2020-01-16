@@ -166,8 +166,9 @@ public class MyGameGui
 			StdDraw.show();
 		}
 		StdDraw.setPenColor(Color.black);
-		StdDraw.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-		StdDraw.text(this.xMin+ 0.004, this.yMin + 0.001, "time: " + time);
+		StdDraw.setFont(new Font("TimesRoman", Font.PLAIN, 50));
+		System.out.println(time);
+		StdDraw.textLeft(this.xMax- 0.0004,this.yMax- 0.0004,"time: " + time);
 	}
 
 	public void Play_manual(String scenario_num)
@@ -235,20 +236,18 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-		private void  playAuto() {
+	
+	private void  playAuto() {
 			game.startGame();
 			while(game.isRunning())
 			{
 				m.moveRobot();
 				paint();
 				time = game.timeToEnd() / 1000;
-				if(time<=10)
+				if(game.timeToEnd()<=10)
 					break;
-	
 			}
-	
 			System.out.println("Game Over :" +game.toString());
-	
 		}
 	public void save() 
 	{
