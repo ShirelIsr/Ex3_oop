@@ -10,7 +10,7 @@ import dataStructure.graph;
 import dataStructure.node_data;
 import utils.Point3D;
 
-public class Bots {
+public class Bots implements IBots{
 	int src ,dest ,id,speed;
 	Point3D locaiton ;
 	double value;
@@ -23,8 +23,9 @@ public class Bots {
 		this.value=0;
 		Path =null;
 	}
-
-	public void initBot (String json ) throws JSONException
+	
+	@Override
+	public void initBot(String json) throws JSONException
 	{
 		JSONObject obj = new JSONObject(json);
 		JSONObject Robots = obj.getJSONObject("Robot");
@@ -36,56 +37,69 @@ public class Bots {
 		String str[]=pos.split(",");
 		this.locaiton=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
 	}
-
+	
+	@Override
 	public void setLocaiton(Point3D l)
 	{
 		this.locaiton=l;
 	}
-
+	
+	@Override
 	public Point3D getLocaiton()
 	{
 		return this.locaiton;
 	}
-
+	
+	@Override
 	public  void setSrc(int src)
 	{
 		this.src=src;
 	}
-
+	
+	@Override
 	public int getSrc()
 	{
 		return this.src;
 	}
-
+	
+	@Override
 	public  void setDest(int dest)
 	{
 		this.dest=dest;
 	}
-
+	
+	@Override
 	public int getDest()
 	{
 		return this.dest;
 	}
-
+	
+	@Override
 	public void addV(double value)
 	{
 		this.value+=value;
 	}
-
+	
+	@Override
 	public double getV()
 	{
 		return this.value;
 	}
+	
+	@Override
 	public int getId()
 	{
 		return this.id;
 	}
 	
+	@Override
 	public void setPath(List<node_data> Path)
 	{
 		this.Path=Path;
 	}
-	public 	List<node_data> getPath()
+	
+	@Override
+	public List<node_data> getPath()
 	{
 		return this.Path;
 	}

@@ -64,7 +64,7 @@ public class Fruit {
 		this.locaiton=l;
 	}
 
-	public  Point3D getlocaiton()
+	public Point3D getlocaiton()
 	{
 		return this.locaiton; 
 	}

@@ -1,39 +1,22 @@
 package gameClient;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Menu;
-import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.Robot;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.io.File;
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.BiFunction;
+
 
 import javax.swing.JOptionPane;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -69,16 +52,14 @@ public class MyGameGui
 	private double x=0;
 	private double y=0;
 	game_service game;
-	private boolean flage =true;
+	private boolean flag=false;
 	private int botToMove;
-
-
-
 	ArrayList <Fruit> _fruit ;
 	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
 	Thread help2;
+
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
@@ -92,7 +73,7 @@ public class MyGameGui
 	{
 		this.x= xpos;
 		this.y = ypos;
-		//flage=false;
+
 	}
 
 	public MyGameGui()
@@ -120,9 +101,6 @@ public class MyGameGui
 		StdDraw.show();
 		paint();
 	}
-
-
-
 
 	public void paint()
 	{	
@@ -152,8 +130,7 @@ public class MyGameGui
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
 				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
-				//StdDraw.setPenColor(Color.YELLOW);
-				//StdDraw.circle((((p.x()*3+pE.x())/4)),(int)((p.y()*3+pE.y())/4),0.003);
+			
 			}
 		}
 
@@ -184,7 +161,6 @@ public class MyGameGui
 		}
 	}
 
-
 	public void save() 
 	{
 		graph_algorithms g = new Graph_Algo();
@@ -203,6 +179,7 @@ public class MyGameGui
 		}
 
 	}
+
 	public void load() 
 	{
 		Graph_Algo g = new Graph_Algo();
@@ -279,6 +256,7 @@ public class MyGameGui
 
 
 	}
+
 	public void SPD() 
 	{
 		String src=  JOptionPane.showInputDialog("Please input a starting point");
@@ -296,6 +274,7 @@ public class MyGameGui
 		}
 
 	}
+
 	public void TSP() 
 	{
 		List <Integer> targets =new ArrayList<Integer>();
@@ -333,7 +312,6 @@ public class MyGameGui
 		paint();
 
 	}
-
 
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -419,7 +397,6 @@ public class MyGameGui
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 	}
@@ -460,28 +437,27 @@ public class MyGameGui
 			{
 				initGame(num);
 				playManual(game);				
-
 			}
 			else
 			{
 				JFrame jinput = new JFrame();
-				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
+				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected");
 				jinput.dispose();
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
-
-
 	}
+
 	private void playManual(game_service game)
 	{
 		game.startGame();
 		while(game.isRunning()) {
 			moveRobotsManual(game);
 			paint();
+			if(game.timeToEnd()<=1000)
+				break;
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
@@ -500,7 +476,9 @@ public class MyGameGui
 					{
 						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
 						game.chooseNextEdge(rb.getId(), dest);
+						game.move();
 					}
+				}
 					_fruit.clear();
 					_fruit=new ArrayList <Fruit>();
 					Iterator<String> f_iter = game.getFruits().iterator();
@@ -514,15 +492,13 @@ public class MyGameGui
 					List<String> botsStr = game.getRobots();
 					for (String string : botsStr) {
 						Bots ber = new Bots();
-						//		System.out.println(string);
+						//System.out.println(string);
 						ber.initBot(string);
-						System.out.println(string);
+					//	System.out.println(string);
 						Robots.put(ber.getId(), ber);
 					}
 					paint();
 				}
-
-			}
 			catch (JSONException e) {e.printStackTrace();}
 		}
 
@@ -576,27 +552,29 @@ public class MyGameGui
 
 	}
 
-
-
-
 	private int nextNode(game_service game) {
-		if (flage)
+		Point3D a = new Point3D(x,y);
+		if (!flag)
+
 		{
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
 				Point3D p=b.getLocaiton();
 				double dist=p.distance2D(new Point3D(x,y));
-
-				if(dist<=(xMax-xMin)*0.01)
+				if(dist<=0.0005)
 				{
 					System.out.println(b.getId());
+					//System.out.println(x+""+y);
 					x=y=0;
-					flage=false;
+					flag=true;
+
 					botToMove= b.getId();
 					return -1;
 				}
 			}
+			return -1;
+		} else {
 			int b=Robots.get(botToMove).getSrc();
 			//	System.out.println(b);
 			Collection<edge_data> edges =Gui_Graph.getE(b);
@@ -607,15 +585,15 @@ public class MyGameGui
 				x=y=0;
 				if(dist<=(xMax-xMin)*0.01)
 				{
-					flage=true;
+					//x=y=0;
+					flag=false;
+					System.out.println(x+""+y);
 					return n.getDest();
 				}
-
 			}
 		}
 		return -1;
 	}
-
 
 	private void setPath(Bots b) {
 		Fruit l=null;
