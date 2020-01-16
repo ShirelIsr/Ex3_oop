@@ -1,6 +1,7 @@
 package gameClient;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,20 +52,17 @@ public class MyGameGui
 	private double yMax=Double.MAX_VALUE;
 	private double x=0;
 	private double y=0;
+	static long time=0;
 	game_service game;
-	private boolean flag=false;
-	private int botToMove;
-	ArrayList <Fruit> _fruit ;
-	HashMap <Integer,Bots> Robots ;
 	graph Gui_Graph;
 	Thread help;
 	Thread help2;
+	MyGame m;
 
 	public MyGameGui(graph g)
 	{
 		this.Gui_Graph=g;
-		_fruit =new ArrayList <Fruit>();
-		Robots=new HashMap <Integer,Bots>() ;
+		m=null;
 		set(Gui_Graph);
 		initGUI();
 	}
@@ -73,14 +71,16 @@ public class MyGameGui
 	{
 		this.x= xpos;
 		this.y = ypos;
+		m.setXY(x, y);
+		
 
 	}
 
 	public MyGameGui()
 	{
 		this.Gui_Graph=null;
-		_fruit =new ArrayList <Fruit>();
-		Robots=new HashMap <Integer,Bots>() ;
+		m=null;
+
 		initGUI();
 	}
 
@@ -91,6 +91,11 @@ public class MyGameGui
 			StdDraw.enableDoubleBuffering();
 			StdDraw.setIsPaint();
 		}
+		if(m!=null)
+		{
+			 this.Gui_Graph=m.getGraph();
+			 
+		} 
 		if (Gui_Graph!=null) 
 		{
 			set(this.Gui_Graph);
@@ -109,6 +114,7 @@ public class MyGameGui
 		Collection<node_data> s =Gui_Graph.getV();
 		for (node_data node : s) 
 		{
+			StdDraw.setFont(new Font("TimesRoman", Font.PLAIN, 12));
 			Point3D p=node.getLocation();
 			StdDraw.setPenColor(Color.RED);
 			StdDraw.circle(p.x(),p.y(),0.0001);
@@ -130,10 +136,10 @@ public class MyGameGui
 				StdDraw.line(p.x(), p.y(), pE.x(), pE.y());
 				double w=Math.floor(edge.getWeight() * 100) / 100;
 				StdDraw.text((p.x()*3+pE.x())/4+0.0000015,(p.y()*3+pE.y())/4+0.0000015, ""+w);
-			
+
 			}
 		}
-
+		ArrayList <Fruit> _fruit =m.getFruits();
 		if (!_fruit.isEmpty())
 		{
 			Iterator <Fruit> it=_fruit.iterator();
@@ -142,12 +148,12 @@ public class MyGameGui
 				Fruit f=it.next();
 				Point3D pf=f.getlocaiton();
 				if(f.getType()==1)
-					StdDraw.setPenColor(Color.PINK);
+					StdDraw.setPenColor(Color.DARK_GRAY);
 				else StdDraw.setPenColor(Color.ORANGE);
 				StdDraw.circle(pf.x(),pf.y(),0.0001);
 			}
 		}
-		Collection<Bots> bb = Robots.values();
+		Collection<Bots> bb = m.getRobotes();
 		if(!bb.isEmpty())
 		{
 			for(Bots b:bb)
@@ -159,8 +165,91 @@ public class MyGameGui
 			}
 			StdDraw.show();
 		}
+		StdDraw.setPenColor(Color.black);
+		StdDraw.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		StdDraw.text(this.xMin+ 0.004, this.yMin + 0.001, "time: " + time);
 	}
 
+	public void Play_manual(String scenario_num)
+	{
+		try
+		{
+			int num = Integer.parseInt(scenario_num);
+			if(num>=0 && num<=23)
+			{
+				m=new MyGame_Manual();
+				m.initGame(num);
+				this.game=m.getGame();
+				initGUI();
+				playManual();
+				
+
+			}
+			else
+			{
+				JFrame jinput = new JFrame();
+				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected");
+				jinput.dispose();
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	private void playManual()
+		{
+			game.startGame();
+			while(game.isRunning()) {
+				m.moveRobot();
+				paint();
+				time = game.timeToEnd() / 1000;
+				if(time<=10)
+					break;
+			}
+			String results = game.toString();
+			System.out.println("Game Over: "+results);
+		}
+	
+
+	public  void Play_Automaticly(String scenario_num)
+	{
+		try
+		{
+			int num = Integer.parseInt(scenario_num);
+			if(num>=0 && num<=23)
+			{
+				m=new MyGame_Automaticly();
+				m.initGame(num);
+				this.game=m.getGame();
+				initGUI();
+				playAuto();
+			}
+			else
+			{
+				JFrame jinput = new JFrame();
+				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
+				jinput.dispose();
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		private void  playAuto() {
+			game.startGame();
+			while(game.isRunning())
+			{
+				m.moveRobot();
+				paint();
+				time = game.timeToEnd() / 1000;
+				if(time<=10)
+					break;
+	
+			}
+	
+			System.out.println("Game Over :" +game.toString());
+	
+		}
 	public void save() 
 	{
 		graph_algorithms g = new Graph_Algo();
@@ -313,323 +402,6 @@ public class MyGameGui
 
 	}
 
-	public void initGame(int scenario_num) {
-		game = Game_Server.getServer(scenario_num); // you have [0,23] games
-		String g = game.getGraph();
-		DGraph gg = new DGraph();
-		gg.init(g);
-		xMin=Double.MIN_VALUE;
-		xMax=Double.MAX_VALUE;
-		yMin=Double.MIN_VALUE;
-		yMax=Double.MAX_VALUE;
-		this.Gui_Graph=gg;
-		Iterator<String> f_iter = game.getFruits().iterator();
-		if(_fruit==null)
-		{
-			_fruit=new ArrayList <Fruit>();
-		}
-		else _fruit.clear();
-		while(f_iter.hasNext())
-		{
-			try
-			{
-				Fruit f=new Fruit(Gui_Graph);
-				f.initFruit(f_iter.next());
-				_fruit.add(f);	 
-			}
-			catch (JSONException e) {e.printStackTrace();}
-		}
-		String info = game.toString();
-		JSONObject line;
-		try {
-			line = new JSONObject(info);
-			JSONObject ttt = line.getJSONObject("GameServer");
-			int rs = ttt.getInt("robots");
-			if(Robots ==null)
-				Robots=new HashMap<Integer,Bots>();
-			else Robots.clear();
-			int i=0;
-			Iterator <Integer> it =setBots().iterator();
-			while((i<rs)&&(it.hasNext()))
-			{
-				game.addRobot(it.next());
-				i++;
-			}
-			while(i<rs)
-			{
-				int rnd =(int)Math.random()*Gui_Graph.nodeSize();
-				game.addRobot(rnd);
-				i++;
-			}
-			List<String> Bots = game.getRobots();
-			for (String str : Bots)
-			{
-				System.out.println(str);
-				Bots b= new Bots ();
-				b.initBot(str);
-				Robots.put(b.getId(), b);	 
-			}
-			initGUI();
-			paint();
-
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	public  void Play_Automaticly(String scenario_num)
-	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
-			if(num>=0 && num<=23)
-			{
-				initGame(num);
-				playAuto();				
-			}
-			else
-			{
-				JFrame jinput = new JFrame();
-				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
-				jinput.dispose();
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void  playAuto() {
-		game.startGame();
-		while(game.isRunning())
-		{
-			moveRobots(game);
-			paint();
-			if(game.timeToEnd()<=1000)
-				break;
-
-		}
-
-		System.out.println("Game Over :" +game.toString());
-
-	}
-
-	private List<Integer> setBots()
-	{
-		Iterator <Fruit> it=_fruit.iterator();
-		ArrayList <Integer> nodes=new ArrayList<Integer>();
-		if(it.hasNext())
-		{
-			edge_data e=it.next().getEdge();
-			nodes.add(Gui_Graph.getNode(e.getSrc()).getKey());
-		}
-		return  nodes;
-	}
-
-	public void Play_manual(String scenario_num)
-	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
-			if(num>=0 && num<=23)
-			{
-				initGame(num);
-				playManual(game);				
-			}
-			else
-			{
-				JFrame jinput = new JFrame();
-				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected");
-				jinput.dispose();
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void playManual(game_service game)
-	{
-		game.startGame();
-		while(game.isRunning()) {
-			moveRobotsManual(game);
-			paint();
-			if(game.timeToEnd()<=1000)
-				break;
-		}
-		String results = game.toString();
-		System.out.println("Game Over: "+results);
-	}
-
-	private  void moveRobotsManual(game_service game)
-	{
-		List<String> log = game.move();
-		if(log!=null) {
-			try {
-				long t = game.timeToEnd();
-				int dest = nextNode(game);
-				if(dest!=-1) {	
-					Bots rb=Robots.get(botToMove);
-					if(rb!=null)
-					{
-						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
-						game.chooseNextEdge(rb.getId(), dest);
-						game.move();
-					}
-				}
-					_fruit.clear();
-					_fruit=new ArrayList <Fruit>();
-					Iterator<String> f_iter = game.getFruits().iterator();
-					while(f_iter.hasNext())
-					{
-						Fruit f=new Fruit(Gui_Graph);
-						f.initFruit(f_iter.next());
-						_fruit.add(f);	 
-					}
-					Robots.clear();
-					List<String> botsStr = game.getRobots();
-					for (String string : botsStr) {
-						Bots ber = new Bots();
-						//System.out.println(string);
-						ber.initBot(string);
-					//	System.out.println(string);
-						Robots.put(ber.getId(), ber);
-					}
-					paint();
-				}
-			catch (JSONException e) {e.printStackTrace();}
-		}
-
-
-	}
-
-	private  void moveRobots(game_service game) {
-		List<String> log = game.move();
-		if(log!=null) {
-			try {
-				_fruit=new ArrayList <Fruit>();
-				_fruit.clear();
-				Iterator<String> f_iter = game.getFruits().iterator();
-				while(f_iter.hasNext())
-				{
-
-					Fruit f=new Fruit(Gui_Graph);
-					f.initFruit(f_iter.next());
-					_fruit.add(f);	 
-
-				}
-				Collection<Bots> robots =Robots.values();
-				for (Bots b : robots) 
-				{
-					if(b.getDest()==-1)
-					{
-						setPath(Robots.get(b.getId()));
-						Iterator <node_data> it= b.getPath().iterator();
-						while(it.hasNext())
-						{
-							node_data n=it.next();
-							game.chooseNextEdge(b.getId(), n.getKey());
-							game.move();
-						}
-						b.setPath(null);
-						b.setDest(-1);
-					}
-				}
-				Robots.clear();
-
-				List<String> botsStr = game.getRobots();
-				for (String string : botsStr) {
-					Bots ber = new Bots();
-					ber.initBot(string);
-					Robots.put(ber.getId(), ber);
-				}
-
-			}
-			catch (JSONException e) {e.printStackTrace();}
-		}
-
-	}
-
-	private int nextNode(game_service game) {
-		Point3D a = new Point3D(x,y);
-		if (!flag)
-
-		{
-			Collection<Bots> robots =Robots.values();
-			for (Bots b : robots) 
-			{
-				Point3D p=b.getLocaiton();
-				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=0.0005)
-				{
-					System.out.println(b.getId());
-					//System.out.println(x+""+y);
-					x=y=0;
-					flag=true;
-
-					botToMove= b.getId();
-					return -1;
-				}
-			}
-			return -1;
-		} else {
-			int b=Robots.get(botToMove).getSrc();
-			//	System.out.println(b);
-			Collection<edge_data> edges =Gui_Graph.getE(b);
-			for (edge_data n : edges) 
-			{
-				Point3D p=Gui_Graph.getNode(n.getDest()).getLocation();
-				double dist=p.distance2D(new Point3D(x,y));
-				x=y=0;
-				if(dist<=(xMax-xMin)*0.01)
-				{
-					//x=y=0;
-					flag=false;
-					System.out.println(x+""+y);
-					return n.getDest();
-				}
-			}
-		}
-		return -1;
-	}
-
-	private void setPath(Bots b) {
-		Fruit l=null;
-		Fruit toremove=null;
-		graph_algorithms gg=new Graph_Algo();
-		gg.init(Gui_Graph);
-		double min=Double.MAX_VALUE;
-		Iterator<Fruit> it =_fruit.iterator();
-		if(it.hasNext())
-		{
-			l=it.next();
-			double temp;
-			if(l.getEdge().getSrc()==b.getSrc())
-			{
-				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getDest());
-				if(temp<min)
-				{
-					toremove=l;
-					min=temp;
-					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getDest()));
-				}
-			}
-			else
-			{
-				temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getSrc());
-				if(temp<min)
-				{
-					toremove=l;
-					min=temp;
-					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getSrc()));
-					b.getPath().add(Gui_Graph.getNode(l.getEdge().getDest()));
-				}	
-			}
-		}
-		_fruit.remove(toremove);
-	}
 
 	public static void main(String[] args) {
 
