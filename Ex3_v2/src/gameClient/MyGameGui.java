@@ -403,6 +403,12 @@ public class MyGameGui
 
 	private void  playAuto() {
 		game.startGame();
+		/////start kml logger
+		KML_Logger kml = new KML_Logger();
+		kml.setGame(game);
+		kml.setGraph(Gui_Graph);
+		kml.createKML();
+		//////
 		while(game.isRunning())
 		{
 			moveRobots(game);
