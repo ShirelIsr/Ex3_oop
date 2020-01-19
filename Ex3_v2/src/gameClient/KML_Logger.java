@@ -171,9 +171,8 @@ public class KML_Logger {
 		KML += up+edges+vertex;
 	}	
 
-	public void createRFKML(MyGame g) {
-		this.kGame=g;
-		this.game=kGame.getGame();
+	public void createRFKML() {
+	
 		String now = java.time.LocalDate.now()+"T"+java.time.LocalTime.now();
 		String after ="";
 		LocalTime t1 = LocalTime.now();
@@ -307,16 +306,17 @@ public class KML_Logger {
 					"		</Point>\r\n" + 
 					"	</Placemark>";
 		}
-		KML =KML+ robot+fruit;
-		save(KML);
+
+		KML += robot+fruit;
+//		save(KML);
 	}
 
-	public void save(String k) {
+	public void save() {
 		try {
-			k+="</Document>\r\n" + 
+			KML+="</Document>\r\n" + 
 					"</kml>";
 			FileWriter fw = new FileWriter("test.kml");
-			fw.write(k);
+			fw.write(KML);
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
