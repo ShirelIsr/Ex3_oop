@@ -437,5 +437,37 @@
 				35.18910131880549,32.103618700840336,0 35.19597880064568,32.10154696638656,0 
 			</coordinates>
 		</LineString>
+	</Placemark><Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.19597880064568,32.10154696638656,0</coordinates>
+		</Point>
+	</Placemark><Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.197656770719604,32.10191878639921,0</coordinates>
+		</Point>
 	</Placemark></Document>
 </kml>

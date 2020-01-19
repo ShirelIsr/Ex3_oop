@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import org.json.JSONException;
 
-import com.sun.tools.javac.util.List;
+
 
 import Server.game_service;
 import dataStructure.graph;
@@ -20,7 +20,10 @@ public class KML_Logger {
 	game_service game;
 	MyGame kGame;
 
-	public KML_Logger() {
+	public KML_Logger(MyGame g) {
+		this.kGame=g;
+		this.game=kGame.getGame();
+		this.graph=kGame.getGraph();
 
 	}
 

@@ -92,7 +92,7 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public List<edge_data> setBots() {
-
+		
 		Iterator <Fruit> it=_fruit.iterator();
 		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
 		while(it.hasNext())
@@ -147,7 +147,7 @@ public class MyGame_Automaticly implements MyGame{
 				ber.initBot(string);
 				Robots.put(ber.getId(), ber);
 			}
-
+		
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
@@ -163,37 +163,33 @@ public class MyGame_Automaticly implements MyGame{
 		double min=Double.MAX_VALUE;
 		Iterator<edge_data> it =targets.iterator();
 		IBots b=Robots.get(botToMove);
-		if(it.hasNext())
+		while(it.hasNext())
 		{
 			l=it.next();
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-//				if(temp<min)
-//				{
-//					min=temp;
+				if(temp<min)
+				{
+					min=temp;
 					remove=l;
 					ArrayList<node_data> tempPath=new ArrayList<node_data> ();
 					tempPath.add(_graph.getNode(l.getSrc()));
 					tempPath.add(_graph.getNode(l.getDest()));
-					if(b.getPath()!=null)
-						b.setPath(null);
 					b.setPath(tempPath);
-				//}
+				}
 			}
 			else
 			{
 				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc());
 				temp+=l.getWeight();
-//				if(temp<min)
-//				{
-					//min=temp;
+				if(temp<min)
+				{
+					min=temp;
 					remove=l;
-					if(b.getPath()!=null)
-						b.setPath(null);
 					b.setPath(gg.shortestPath(b.getSrc(),l.getSrc()));
 					b.getPath().add(_graph.getNode(l.getDest()));
-				//}	
+				}	
 			}
 		}
 		targets.remove(remove);

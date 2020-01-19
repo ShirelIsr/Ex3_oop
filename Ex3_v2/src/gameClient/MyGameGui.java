@@ -91,8 +91,8 @@ public class MyGameGui
 		}
 		if(m!=null)
 		{
-			 this.Gui_Graph=m.getGraph();
-			 
+			this.Gui_Graph=m.getGraph();
+
 		} 
 		if (Gui_Graph!=null) 
 		{
@@ -194,19 +194,19 @@ public class MyGameGui
 		}
 	}
 	private void playManual()
-		{
-			game.startGame();
-			while(game.isRunning()) {
-				m.moveRobot();
-				paint();
-				time = game.timeToEnd() / 1000;
-				if(time<=10)
-					break;
-			}
-			String results = game.toString();
-			System.out.println("Game Over: "+results);
+	{
+		game.startGame();
+		while(game.isRunning()) {
+			m.moveRobot();
+			paint();
+			time = game.timeToEnd() / 1000;
+			if(time<=10)
+				break;
 		}
-	
+		String results = game.toString();
+		System.out.println("Game Over: "+results);
+	}
+
 
 	public  void Play_Automaticly(String scenario_num)
 	{
@@ -232,23 +232,22 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-	
+
 	private void  playAuto() {
-			k.setGraph(Gui_Graph);
-			k.setGame(game);
-			k.createKML();
-			game.startGame();
-			while(game.isRunning())
-			{
-				m.moveRobot();
-				paint();
-				time = game.timeToEnd() / 1000;
-				if(game.timeToEnd()<=15)
-					break;
-			}
-			System.out.println("Game Over :" +game.toString());
+		game.startGame();
+		k=new KML_Logger(m);
+		k.createKML();
+		while(game.isRunning())
+		{
+			m.moveRobot();
+			paint();
+			time = game.timeToEnd() / 1000;
+			if(game.timeToEnd()<=15)
+				break;
 		}
-	
+		System.out.println("Game Over :" +game.toString());
+	}
+
 	public void save() 
 	{
 		graph_algorithms g = new Graph_Algo();
