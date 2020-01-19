@@ -1,0 +1,5840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>icon.kml</name>
+	<Style id="sh_wheel_chair_accessible">
+		<IconStyle>
+			<color>ffffaa00</color>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/purple-stars.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<BalloonStyle>
+		</BalloonStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+	<StyleMap id="msn_wheel_chair_accessible">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#sn_wheel_chair_accessible</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#sh_wheel_chair_accessible</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="sn_wheel_chair_accessible">
+		<IconStyle>
+			<color>ffffaa00</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/purple-stars.png</href>
+			</Icon>
+			<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+		</IconStyle>
+		<ListStyle>
+		</ListStyle>
+	</Style>
+		<name>ED1.kml</name>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.3</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/purple-stars.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>2.8</width>
+		</LineStyle>
+	</Style>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<scale>1.1</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/purple-stars.png</href>
+			</Icon>
+			<hotSpot x="20" y="2" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<LineStyle>
+			<color>ff0055ff</color>
+			<width>2.8</width>
+		</LineStyle>
+	</Style>
+<Placemark>
+		<name>1.3118716362419698</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19589389346247,32.10152879327731,0 35.19381366747377,32.102419275630254,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.232037506070033</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19589389346247,32.10152879327731,0 35.20319591121872,32.10318254621849,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.8635670623870366</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20319591121872,32.10318254621849,0 35.19589389346247,32.10152879327731,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.8015954015822042</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20319591121872,32.10318254621849,0 35.20752617756255,32.1025646605042,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5784991011275615</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20752617756255,32.1025646605042,0 35.20319591121872,32.10318254621849,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.0631605142699874</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20752617756255,32.1025646605042,0 35.21007339305892,32.10107446554622,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.7938753352369698</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20752617756255,32.1025646605042,0 35.20797194027441,32.104854472268904,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.440561778177153</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.21007339305892,32.10107446554622,0 35.20752617756255,32.1025646605042,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.2539385028794277</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.21007339305892,32.10107446554622,0 35.21310882485876,32.104636394957986,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.8418222744214585</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.21310882485876,32.104636394957986,0 35.21007339305892,32.10107446554622,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.1422264879958028</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.21310882485876,32.104636394957986,0 35.212111165456015,32.106235628571426,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5855912911662344</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.212111165456015,32.106235628571426,0 35.21310882485876,32.104636394957986,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.734311926030133</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.212111165456015,32.106235628571426,0 35.20797194027441,32.104854472268904,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.8474047229605628</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20797194027441,32.104854472268904,0 35.20752617756255,32.1025646605042,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.4964304236123005</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20797194027441,32.104854472268904,0 35.212111165456015,32.106235628571426,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.237565124536135</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20797194027441,32.104854472268904,0 35.205764353510894,32.106326494117646,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5786081900467002</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.205764353510894,32.106326494117646,0 35.20797194027441,32.104854472268904,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.3717352984705653</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.205764353510894,32.106326494117646,0 35.20154022114608,32.10594485882353,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.2817370911337442</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20154022114608,32.10594485882353,0 35.205764353510894,32.106326494117646,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5328553219807337</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.20154022114608,32.10594485882353,0 35.19805902663438,32.10525428067227,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.9855087252581762</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19805902663438,32.10525428067227,0 35.20154022114608,32.10594485882353,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.2861739185896588</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19805902663438,32.10525428067227,0 35.197400995964486,32.10510889579832,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5815006562559664</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.197400995964486,32.10510889579832,0 35.19805902663438,32.10525428067227,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.4962204797190428</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.197400995964486,32.10510889579832,0 35.19351649233253,32.1061811092437,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.3784147388591739</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19351649233253,32.1061811092437,0 35.197400995964486,32.10510889579832,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.9316059913913906</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19351649233253,32.1061811092437,0 35.18950462792575,32.10788938151261,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.0666986438224981</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.18950462792575,32.10788938151261,0 35.19351649233253,32.1061811092437,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5484109702862576</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.18950462792575,32.10788938151261,0 35.189568308313156,32.106617263865544,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.823489852982211</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.189568308313156,32.106617263865544,0 35.18950462792575,32.10788938151261,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.011071987085077</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.189568308313156,32.106617263865544,0 35.18869800968523,32.104927164705884,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.3207562671517605</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.18869800968523,32.104927164705884,0 35.189568308313156,32.106617263865544,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.118950355920981</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.18869800968523,32.104927164705884,0 35.187594216303474,32.10378225882353,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.8726071511162605</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.187594216303474,32.10378225882353,0 35.19381366747377,32.102419275630254,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.635946027210021</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.187594216303474,32.10378225882353,0 35.18869800968523,32.104927164705884,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.4418017651347552</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19381366747377,32.102419275630254,0 35.19589389346247,32.10152879327731,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>1.5677693324851103</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				35.19381366747377,32.102419275630254,0 35.187594216303474,32.10378225882353,0 
+			</coordinates>
+		</LineString>
+	</Placemark><Placemark>
+		<name>0</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.19589389346247,32.10152879327731,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>1</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.20319591121872,32.10318254621849,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>2</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.20752617756255,32.1025646605042,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>3</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.21007339305892,32.10107446554622,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>4</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.21310882485876,32.104636394957986,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>5</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212111165456015,32.106235628571426,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>6</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.20797194027441,32.104854472268904,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>7</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.205764353510894,32.106326494117646,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>8</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.20154022114608,32.10594485882353,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>9</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.19805902663438,32.10525428067227,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>10</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.197400995964486,32.10510889579832,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>11</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.19351649233253,32.1061811092437,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>12</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18950462792575,32.10788938151261,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>13</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189568308313156,32.106617263865544,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>14</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18869800968523,32.104927164705884,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>15</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.187594216303474,32.10378225882353,0</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark>
+		<name>16</name>
+		<styleUrl>#m_ylw-pushpin</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.19381366747377,32.102419275630254,0</coordinates>
+		</Point>
+	</Placemark>
+		<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.204637700</begin>
+            <end>2020-01-19T22:38:06.304637700</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18876785728456,32.10506280707638,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.204637700</begin>
+            <end>2020-01-19T22:38:06.304637700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.204637700</begin>
+            <end>2020-01-19T22:38:06.304637700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.305517700</begin>
+            <end>2020-01-19T22:38:06.405517700</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.188849565796986,32.10522148305696,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.305517700</begin>
+            <end>2020-01-19T22:38:06.405517700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.305517700</begin>
+            <end>2020-01-19T22:38:06.405517700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.405823400</begin>
+            <end>2020-01-19T22:38:06.505823400</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.188910847181305,32.105340490042394,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.405823400</begin>
+            <end>2020-01-19T22:38:06.505823400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.405823400</begin>
+            <end>2020-01-19T22:38:06.505823400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.506540100</begin>
+            <end>2020-01-19T22:38:06.606540100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18897674114294,32.105468454542866,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.506540100</begin>
+            <end>2020-01-19T22:38:06.606540100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.506540100</begin>
+            <end>2020-01-19T22:38:06.606540100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.606584900</begin>
+            <end>2020-01-19T22:38:06.706584900</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189045929802646,32.105602817268355,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.606584900</begin>
+            <end>2020-01-19T22:38:06.706584900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.606584900</begin>
+            <end>2020-01-19T22:38:06.706584900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.706631100</begin>
+            <end>2020-01-19T22:38:06.806631100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18911116482466,32.10572950212382,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.706631100</begin>
+            <end>2020-01-19T22:38:06.806631100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.706631100</begin>
+            <end>2020-01-19T22:38:06.806631100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.807648300</begin>
+            <end>2020-01-19T22:38:06.907648300</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189178376665524,32.105860025914296,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.807648300</begin>
+            <end>2020-01-19T22:38:06.907648300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.807648300</begin>
+            <end>2020-01-19T22:38:06.907648300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.907881800</begin>
+            <end>2020-01-19T22:38:07.007881800</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18924558850639,32.10599054970477,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.907881800</begin>
+            <end>2020-01-19T22:38:07.007881800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:06.907881800</begin>
+            <end>2020-01-19T22:38:07.007881800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.007961800</begin>
+            <end>2020-01-19T22:38:07.107961800</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18930950564917,32.10611467527023,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.007961800</begin>
+            <end>2020-01-19T22:38:07.107961800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.007961800</begin>
+            <end>2020-01-19T22:38:07.107961800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.108405300</begin>
+            <end>2020-01-19T22:38:07.208405300</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189378694308886,32.10624903799572,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.108405300</begin>
+            <end>2020-01-19T22:38:07.208405300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.108405300</begin>
+            <end>2020-01-19T22:38:07.208405300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.209171100</begin>
+            <end>2020-01-19T22:38:07.309171100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18944327039129,32.10637444320618,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.209171100</begin>
+            <end>2020-01-19T22:38:07.309171100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.209171100</begin>
+            <end>2020-01-19T22:38:07.309171100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.309390</begin>
+            <end>2020-01-19T22:38:07.409390</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18951048223215,32.10650496699665,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.309390</begin>
+            <end>2020-01-19T22:38:07.409390</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.309390</begin>
+            <end>2020-01-19T22:38:07.409390</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.409627800</begin>
+            <end>2020-01-19T22:38:07.509627800</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189568308313156,32.106617263865544,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.409627800</begin>
+            <end>2020-01-19T22:38:07.509627800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.409627800</begin>
+            <end>2020-01-19T22:38:07.509627800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.510633600</begin>
+            <end>2020-01-19T22:38:07.610633600</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189564920853904,32.106684933785154,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.510633600</begin>
+            <end>2020-01-19T22:38:07.610633600</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.510633600</begin>
+            <end>2020-01-19T22:38:07.610633600</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.611531900</begin>
+            <end>2020-01-19T22:38:07.711531900</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189561288938826,32.10675748710103,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.611531900</begin>
+            <end>2020-01-19T22:38:07.711531900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.611531900</begin>
+            <end>2020-01-19T22:38:07.711531900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.712407800</begin>
+            <end>2020-01-19T22:38:07.812407800</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18955786655731,32.106825854648676,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.712407800</begin>
+            <end>2020-01-19T22:38:07.812407800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.712407800</begin>
+            <end>2020-01-19T22:38:07.812407800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.812747</begin>
+            <end>2020-01-19T22:38:07.912747</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18955426956449,32.10689771033651,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.812747</begin>
+            <end>2020-01-19T22:38:07.912747</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.812747</begin>
+            <end>2020-01-19T22:38:07.912747</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.913422100</begin>
+            <end>2020-01-19T22:38:08.013422100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.189550707493936,32.106968868396315,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.913422100</begin>
+            <end>2020-01-19T22:38:08.013422100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:07.913422100</begin>
+            <end>2020-01-19T22:38:08.013422100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.014393900</begin>
+            <end>2020-01-19T22:38:08.114393900</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18954725019016,32.107037933572,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.014393900</begin>
+            <end>2020-01-19T22:38:08.114393900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.014393900</begin>
+            <end>2020-01-19T22:38:08.114393900</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.114543100</begin>
+            <end>2020-01-19T22:38:08.214543100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18954379288638,32.10710699874769,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.114543100</begin>
+            <end>2020-01-19T22:38:08.214543100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.114543100</begin>
+            <end>2020-01-19T22:38:08.214543100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.215005100</begin>
+            <end>2020-01-19T22:38:08.315005100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18954019589357,32.107178854435524,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.215005100</begin>
+            <end>2020-01-19T22:38:08.315005100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.215005100</begin>
+            <end>2020-01-19T22:38:08.315005100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.315337400</begin>
+            <end>2020-01-19T22:38:08.415337400</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18953666874527,32.10724931486728,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.315337400</begin>
+            <end>2020-01-19T22:38:08.415337400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.315337400</begin>
+            <end>2020-01-19T22:38:08.415337400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.416212800</begin>
+            <end>2020-01-19T22:38:08.516212800</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18953324636376,32.10731768241493,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.416212800</begin>
+            <end>2020-01-19T22:38:08.516212800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.416212800</begin>
+            <end>2020-01-19T22:38:08.516212800</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.516338700</begin>
+            <end>2020-01-19T22:38:08.616338700</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.1895296842932,32.107388840474734,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.516338700</begin>
+            <end>2020-01-19T22:38:08.616338700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.516338700</begin>
+            <end>2020-01-19T22:38:08.616338700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.617286200</begin>
+            <end>2020-01-19T22:38:08.717286200</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18952622698942,32.10745790565042,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.617286200</begin>
+            <end>2020-01-19T22:38:08.717286200</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.617286200</begin>
+            <end>2020-01-19T22:38:08.717286200</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.717785200</begin>
+            <end>2020-01-19T22:38:08.817785200</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18952283953017,32.10752557557003,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.717785200</begin>
+            <end>2020-01-19T22:38:08.817785200</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.717785200</begin>
+            <end>2020-01-19T22:38:08.817785200</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.817831700</begin>
+            <end>2020-01-19T22:38:08.917831700</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18951910284831,32.107600221770014,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.817831700</begin>
+            <end>2020-01-19T22:38:08.917831700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.817831700</begin>
+            <end>2020-01-19T22:38:08.917831700</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.917901100</begin>
+            <end>2020-01-19T22:38:09.017901100</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18951571538906,32.10766789168963,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.917901100</begin>
+            <end>2020-01-19T22:38:09.017901100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:08.917901100</begin>
+            <end>2020-01-19T22:38:09.017901100</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.018059300</begin>
+            <end>2020-01-19T22:38:09.118059300</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.1895121533185,32.107739049749426,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.018059300</begin>
+            <end>2020-01-19T22:38:09.118059300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.018059300</begin>
+            <end>2020-01-19T22:38:09.118059300</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.118593500</begin>
+            <end>2020-01-19T22:38:09.218593500</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18950866109247,32.10780881255315,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.118593500</begin>
+            <end>2020-01-19T22:38:09.218593500</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.118593500</begin>
+            <end>2020-01-19T22:38:09.218593500</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark>	<name>Robot.kml</name> 
+					<Style id="sn_motorcycling"> 
+						<IconStyle>
+							<color>ff00aa00</color> 
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_motorcycling">
+						<IconStyle>
+							<color>ff00aa00</color>
+							<scale>0.9</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<StyleMap id="msn_motorcycling">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_motorcycling</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_motorcycling</styleUrl>
+						</Pair>
+					</StyleMap>
+"		<Placemark>
+		<name>0</name>
+		<LookAt>
+			<longitude>35.20057915651626</longitude>
+			<latitude>32.10642421692141</latitude>
+			<altitude>0</altitude>
+			<heading>0.001400841528527689</heading>
+			<tilt>48.82445584719025</tilt>
+			<range>2429.727375786245</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.219187400</begin>
+            <end>2020-01-19T22:38:09.319187400</end>
+        </TimeSpan>		<styleUrl>#msn_motorcycling</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.18950523871095,32.1078771801008,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.219187400</begin>
+            <end>2020-01-19T22:38:09.319187400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.206679711961414,32.10571613186106,0</coordinates>
+		</Point>
+	</Placemark>	<name>fruit.kml</name>
+					<StyleMap id="msn_dollar">
+						<Pair>
+							<key>normal</key>
+							<styleUrl>#sn_dollar</styleUrl>
+						</Pair>
+						<Pair>
+							<key>highlight</key>
+							<styleUrl>#sh_dollar</styleUrl>
+						</Pair>
+					</StyleMap>
+					<Style id="sn_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.945455</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>\r\n" + 
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>
+					<Style id="sh_dollar">
+						<IconStyle>
+							<color>ff7f00ff</color>
+							<scale>0.8</scale>
+							<Icon>
+								<href>http://maps.google.com/mapfiles/kml/shapes/parks.png</href>
+							</Icon>
+							<hotSpot x="0.5" y="0" xunits="fraction" yunits="fraction"/>
+						</IconStyle>
+						<BalloonStyle>
+						</BalloonStyle>
+						<ListStyle>
+						</ListStyle>
+					</Style>	<Placemark>
+		<name>-1</name>
+		<LookAt>
+			<longitude>35.20049765372926</longitude>
+			<latitude>32.10519390930328</latitude>
+			<altitude>0</altitude>
+			<heading>0.04871208709312937</heading>
+			<tilt>48.08517247511922</tilt>
+			<range>2516.536413792175</range>
+			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+		</LookAt>
+		<TimeSpan>
+            <begin>2020-01-19T22:38:09.219187400</begin>
+            <end>2020-01-19T22:38:09.319187400</end>
+        </TimeSpan>		<styleUrl>#msn_dollar</styleUrl>
+		<Point>
+			<gx:drawOrder>1</gx:drawOrder>
+			<coordinates>35.212669424769075,32.105340746955505,0</coordinates>
+		</Point>
+	</Placemark></Document>
+</kml>

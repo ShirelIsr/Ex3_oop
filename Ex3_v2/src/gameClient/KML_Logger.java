@@ -312,7 +312,8 @@ public class KML_Logger {
 		try {
 			KML+="</Document>\r\n" + 
 					"</kml>";
-			FileWriter fw = new FileWriter("test.kml");
+			
+			FileWriter fw = new FileWriter("23.kml");
 			fw.write(KML);
 			fw.close();
 		} catch (IOException e) {

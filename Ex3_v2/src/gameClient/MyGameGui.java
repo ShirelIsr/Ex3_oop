@@ -420,7 +420,7 @@ public class MyGameGui
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					System.err.println("123123");
+					//System.err.println("123123");
 					k.createRFKML();
 					
 				}
