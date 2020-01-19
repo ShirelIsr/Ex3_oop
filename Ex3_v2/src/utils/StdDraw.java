@@ -61,7 +61,7 @@ import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.TreeSet;
 import java.util.NoSuchElementException;
@@ -76,6 +76,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import Server.game_service;
+import gameClient.KML_Logger;
 import gameClient.MyGameGui;
 
 /**
@@ -1670,6 +1672,30 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			System.out.println("Invalid image file type: " + suffix);
 		}
 	}
+//	KML_Logger kml = new KML_Logger();
+//	//
+//	Thread KMLt;
+//	public void KMLthread(game_service game)
+//	{
+//		KMLt = new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				while(game.isRunning())
+//				{
+//					long timeToSleep = 100;
+//					try {
+//						Thread.sleep(timeToSleep);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//					kml.createRFKML();;
+//					
+//				}
+//			}
+//		});
+//		KMLt.start();
+//	}
 
 
 	/**
