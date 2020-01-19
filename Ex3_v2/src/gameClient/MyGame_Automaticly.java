@@ -27,7 +27,7 @@ public class MyGame_Automaticly implements MyGame{
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private double x,y;
-	private long timeToMov;
+	long timeToMov;
 	int i;
 
 	@Override
@@ -92,7 +92,7 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public List<edge_data> setBots() {
-		
+
 		Iterator <Fruit> it=_fruit.iterator();
 		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
 		while(it.hasNext())
@@ -134,11 +134,8 @@ public class MyGame_Automaticly implements MyGame{
 					b.setDest(-1);
 				}
 			}
-			if(timeToMov-game.timeToEnd()<100)
-			{
-				timeToMov=game.timeToEnd();
+	
 				game.move();
-			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -147,7 +144,7 @@ public class MyGame_Automaticly implements MyGame{
 				ber.initBot(string);
 				Robots.put(ber.getId(), ber);
 			}
-		
+
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
