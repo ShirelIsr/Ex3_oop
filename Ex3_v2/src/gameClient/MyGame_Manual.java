@@ -169,7 +169,7 @@ public  class MyGame_Manual implements MyGame {
 				Point3D p=_graph.getNode(n.getDest()).getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
 				x=y=0;
-				if(dist<=0.0006)
+				if(dist<=0.0007)
 				{
 					//x=y=0;
 					flag=false;

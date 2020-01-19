@@ -16,6 +16,7 @@ public class Fruit {
 	Point3D location;
 	edge_data edge ;
 	graph g;
+	public final double EPSILON = 0.0000001;
 
 
 
@@ -81,7 +82,6 @@ public class Fruit {
 	public void setEdge()
 	{
 		Collection<node_data> s =g.getV();
-
 		for (node_data node : s) 
 		{
 			Collection<edge_data> edges =g.getE(node.getKey());
@@ -92,21 +92,16 @@ public class Fruit {
 			}
 		}
 		if (this.edge==null) throw new RuntimeException("ERR, the point is'nt on the graph");
-
-
 	}
 	public edge_data getEdge()
 	{
-		if (this.edge !=null) return edge;
-		return null;
+		return this.edge;
 	}
 
 	public boolean pointOn(Point3D a , Point3D b , Point3D c) {
-		if (Math.abs(distance(a, c) + distance(b, c) - distance(a, b))<=0.000001)
+		if (Math.abs((a.distance2D(c) + b.distance2D(c)-a.distance2D(b)))<=EPSILON)
 			return true; // C is on the line.
 		return false; 
 	}
-	public double distance(Point3D a , Point3D b) {
-		return Math.sqrt( Math.pow((a.x() - b.x()), 2) + Math.pow((a.y() - b.y()), 2) );
-	}
+
 }

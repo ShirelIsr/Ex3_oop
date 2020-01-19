@@ -243,7 +243,7 @@ public class MyGameGui
 				m.moveRobot();
 				paint();
 				time = game.timeToEnd() / 1000;
-				if(game.timeToEnd()<=10)
+				if(game.timeToEnd()<=15)
 					break;
 			}
 			System.out.println("Game Over :" +game.toString());
