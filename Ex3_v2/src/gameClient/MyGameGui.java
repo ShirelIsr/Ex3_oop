@@ -235,10 +235,11 @@ public class MyGameGui
 
 	private void  playAuto() {
 		game.startGame();
-		KMLthread(game);
+		
 		k=new KML_Logger(m);
 		k.createENKML();
-		k.createRFKML();
+//		k.createRFKML();
+		KMLthread(game);
 		while(game.isRunning())
 		{
 			m.moveRobot();
@@ -247,6 +248,7 @@ public class MyGameGui
 			if(game.timeToEnd()<=15)
 				break;
 		}
+		k.save();
 		System.out.println("Game Over :" +game.toString());
 	}
 
@@ -400,11 +402,12 @@ public class MyGameGui
 	}
 	
 	////////////////////////////////////////////////////////
-	KML_Logger kml = new KML_Logger();
+	//KML_Logger kml = new KML_Logger();
 	//
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
+		System.out.println("123");
 		KMLt = new Thread(new Runnable() {
 
 			@Override
@@ -417,7 +420,8 @@ public class MyGameGui
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					kml.createRFKML();;
+					System.err.println("123123");
+					k.createRFKML();
 					
 				}
 			}

@@ -305,15 +305,15 @@ public class KML_Logger {
 					"	</Placemark>";
 		}
 		KML += robot+fruit;
-		save(KML);
+//		save(KML);
 	}
 
-	public void save(String k) {
+	public void save() {
 		try {
-			k+="</Document>\r\n" + 
+			KML+="</Document>\r\n" + 
 					"</kml>";
 			FileWriter fw = new FileWriter("test.kml");
-			fw.write(k);
+			fw.write(KML);
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
