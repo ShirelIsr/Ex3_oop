@@ -18,12 +18,12 @@ public interface IBots {
 	 * 
 	 * @param l
 	 */
-	public void setLocaiton(Point3D l);
+	public void setLocation(Point3D l);
 	/**
 	 * 
 	 * @return
 	 */
-	public Point3D getLocaiton();
+	public Point3D getLocation();
 	/**
 	 * 
 	 * @param src

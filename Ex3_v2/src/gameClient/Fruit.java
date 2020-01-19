@@ -13,7 +13,7 @@ import utils.Point3D;
 public class Fruit {
 	int type;
 	double value;
-	Point3D locaiton;
+	Point3D location;
 	edge_data edge ;
 	graph g;
 
@@ -22,7 +22,7 @@ public class Fruit {
 	public Fruit ( int type,Point3D locaiton, double value,graph g)
 	{
 		this.type=type;
-		this.locaiton = locaiton;
+		this.location = locaiton;
 		this.value=value;
 		this.edge=null;
 	}
@@ -31,7 +31,7 @@ public class Fruit {
 	public Fruit(graph gui_Graph) {
 		this.g=gui_Graph;
 		this.edge=null;
-		this.locaiton=null;
+		this.location=null;
 		this.type=0;
 		this.value=-1;
 	}
@@ -45,7 +45,7 @@ public class Fruit {
 		this.type=Fruits.getInt("type");
 		this.value=Fruits.getDouble("value");
 		Point3D p=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
-		this.locaiton=p;
+		this.location=p;
 		setEdge();
 	}
 
@@ -61,12 +61,12 @@ public class Fruit {
 
 	public void setLocaiton(Point3D l)
 	{
-		this.locaiton=l;
+		this.location=l;
 	}
 
-	public Point3D getlocaiton()
+	public Point3D getLocation()
 	{
-		return this.locaiton; 
+		return this.location; 
 	}
 
 	public void setvalue(double value)
@@ -87,7 +87,7 @@ public class Fruit {
 			Collection<edge_data> edges =g.getE(node.getKey());
 			for(edge_data e : edges)
 			{
-				if(pointOn(g.getNode(e.getSrc()).getLocation(),g.getNode(e.getDest()).getLocation(),this.locaiton))
+				if(pointOn(g.getNode(e.getSrc()).getLocation(),g.getNode(e.getDest()).getLocation(),this.location))
 					this.edge=e;
 			}
 		}

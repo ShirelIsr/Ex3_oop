@@ -2,7 +2,13 @@ package gameClient;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+
+import org.json.JSONException;
+
+import com.sun.tools.javac.util.List;
 
 import Server.game_service;
 import dataStructure.graph;
@@ -12,6 +18,7 @@ import dataStructure.node_data;
 public class KML_Logger {
 	graph graph;
 	game_service game;
+	MyGame kGame;
 
 	public KML_Logger() {
 
@@ -232,12 +239,61 @@ public class KML_Logger {
 						"	</Placemark>";
 			}
 		}
+			
+			//kGame.(game.getRobots());
+			
+			//now.initFruit(game.getFruits());
+			
+			Collection<Bots> robots = kGame.getRobotes();
+			ArrayList<Fruit> fruits = kGame.getFruits();
+			
+			String robot = "";
+			for (Bots kBot: robots) {
+			   robot += "<Placemark>\r\n" + 
+						"		<name>"+kBot.id+"</name>\r\n" + 
+						"		<LookAt>\r\n" + 
+						"			<longitude>35.20057915651626</longitude>\r\n" + 
+						"			<latitude>32.10642421692141</latitude>\r\n" + 
+						"			<altitude>0</altitude>\r\n" + 
+						"			<heading>0.001400841528527689</heading>\r\n" + 
+						"			<tilt>48.82445584719025</tilt>\r\n" + 
+						"			<range>2429.727375786245</range>\r\n" + 
+						"			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>\r\n" + 
+						"		</LookAt>\r\n" + 
+						"		<styleUrl>#msn_motorcycling</styleUrl>\r\n" + 
+						"		<Point>\r\n" + 
+						"			<gx:drawOrder>1</gx:drawOrder>\r\n" + 
+						"			<coordinates>"+kBot.getLocation().x()+","+kBot.getLocation().y()+",0</coordinates>\r\n" + 
+						"		</Point>\r\n" + 
+						"	</Placemark>";
+			}
+			
+			String fruit = "" ;
+			for (Fruit kFruit : fruits) {
+			   fruit += "<Placemark>\r\n" + 
+						"		<name>"+kFruit.getType()+"</name>\r\n" + 
+						"		<LookAt>\r\n" + 
+						"			<longitude>35.20049765372926</longitude>\r\n" + 
+						"			<latitude>32.10519390930328</latitude>\r\n" + 
+						"			<altitude>0</altitude>\r\n" + 
+						"			<heading>0.04871208709312937</heading>\r\n" + 
+						"			<tilt>48.08517247511922</tilt>\r\n" + 
+						"			<range>2516.536413792175</range>\r\n" + 
+						"			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>\r\n" + 
+						"		</LookAt>\r\n" + 
+						"		<styleUrl>#msn_dollar</styleUrl>\r\n" + 
+						"		<Point>\r\n" + 
+						"			<gx:drawOrder>1</gx:drawOrder>\r\n" + 
+						"			<coordinates>"+kFruit.getLocation().x()+","+kFruit.getLocation().y()+",0</coordinates>\r\n" + 
+						"		</Point>\r\n" + 
+						"	</Placemark>";
+			}
 
 
 		String down = "</Document>\r\n" + 
 				"</kml>";
 
-		String file = up+vertex+edges+down;
+		String file = up+vertex+edges+robots+fruit+down;
 		save(file);
 	}
 	public void save(String k) {
@@ -249,5 +305,4 @@ public class KML_Logger {
 			e.printStackTrace();
 		}
 	}
-
 }

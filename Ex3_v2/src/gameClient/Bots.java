@@ -12,14 +12,14 @@ import utils.Point3D;
 
 public class Bots implements IBots{
 	int src ,dest ,id,speed;
-	Point3D locaiton ;
+	Point3D location ;
 	double value;
 	List<node_data> Path=new ArrayList<node_data>();
 
 	public Bots()
 	{
 		src=dest=id=speed=-1;
-		this.locaiton=null;
+		this.location=null;
 		this.value=0;
 		Path =null;
 	}
@@ -35,19 +35,19 @@ public class Bots implements IBots{
 		this.dest=Robots.getInt("dest");
 		String pos= Robots.getString("pos");
 		String str[]=pos.split(",");
-		this.locaiton=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
+		this.location=new Point3D(Double.parseDouble(str[0]),Double.parseDouble(str[1]),Double.parseDouble(str[2]));
 	}
 	
 	@Override
-	public void setLocaiton(Point3D l)
+	public void setLocation(Point3D l)
 	{
-		this.locaiton=l;
+		this.location=l;
 	}
 	
 	@Override
-	public Point3D getLocaiton()
+	public Point3D getLocation()
 	{
-		return this.locaiton;
+		return this.location;
 	}
 	
 	@Override
