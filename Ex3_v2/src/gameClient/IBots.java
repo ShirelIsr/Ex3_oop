@@ -45,22 +45,22 @@ public interface IBots {
 	 */
 	public int getDest();
 	/**
-	 * 
+	 * Updates the amount of points earned by the robot.
 	 * @param value
 	 */
 	public void addV(double value);
 	/**
-	 * 
+	 * Returns the amount of points the robot has accumulated.
 	 * @return
 	 */
 	public double getV();
 	/**
-	 * 
+	 *  Returns the robot ID.
 	 * @return
 	 */
 	public int getId();
 	/**
-	 * 
+	 *  Updates the list of vertices to the robot's path.
 	 * @param Path
 	 */
 	public void setPath(List<node_data> Path);
