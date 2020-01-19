@@ -36,7 +36,11 @@ public class Fruit {
 		this.type=0;
 		this.value=-1;
 	}
-
+/**
+ *  Initializes the fruit from the resulting json file data.
+ * @param json
+ * @throws JSONException
+ */
 	public void initFruit (String json) throws JSONException
 	{
 		JSONObject obj = new JSONObject(json);
@@ -49,36 +53,58 @@ public class Fruit {
 		this.location=p;
 		setEdge();
 	}
-
+/**
+ * Updates the fruit type.
+ * @param type
+ */
 	public void setType(int type)
 	{
 		this.type=type;
 	}
-
+/**
+ * Returns the type of fruit.
+ * @return
+ */
 	public int getType()
 	{
 		return this.type;
 	}
-
+/**
+ * Updates the fruit location.
+ * @param l
+ */
 	public void setLocaiton(Point3D l)
 	{
 		this.location=l;
 	}
-
+/**
+ *  Returns the location of the fruit.
+ * @return
+ */
 	public Point3D getLocation()
 	{
 		return this.location; 
 	}
-
+/**
+ *  Updates the fruit score value.
+ * @param value
+ */
 	public void setvalue(double value)
 	{
 		this.value=value;
 	}
-
+/**
+ * Returns the fruit score value.
+ * @return
+ */
 	public double getValue()
 	{
 		return this.value;
 	}
+	/**
+	 * 
+	 * Mounts the edge on which the fruit is located.
+	 */
 	public void setEdge()
 	{
 		Collection<node_data> s =g.getV();
@@ -93,10 +119,22 @@ public class Fruit {
 		}
 		if (this.edge==null) throw new RuntimeException("ERR, the point is'nt on the graph");
 	}
+	/**
+	 *  Returns the edge on which the fruit is located
+	 * @return
+	 */
 	public edge_data getEdge()
 	{
 		return this.edge;
 	}
+	/**
+	 * Auxiliary function for the fruit position on a rib, 
+	 * the function calculates whether a point is on a straight line and returns true and false respectively.
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 
 	public boolean pointOn(Point3D a , Point3D b , Point3D c) {
 		if (Math.abs((a.distance2D(c) + b.distance2D(c)-a.distance2D(b)))<=EPSILON)

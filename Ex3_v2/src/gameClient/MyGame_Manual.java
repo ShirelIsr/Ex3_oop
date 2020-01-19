@@ -24,7 +24,9 @@ public  class MyGame_Manual implements MyGame {
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private double x,y;
-
+/**
+ * Gets the game number and creates the game based on server data, everything is called from the json file.
+ */
 	@Override
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -84,7 +86,9 @@ public  class MyGame_Manual implements MyGame {
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * Returns a list of the fruit locations, allowing the bots to be strategically placed.
+ */
 
 	@Override
 	public List<edge_data> setBots() {
@@ -97,7 +101,9 @@ public  class MyGame_Manual implements MyGame {
 		}
 		return  nodes;
 	}
-
+/**
+ * Allows the robots to move by the desired algorithm.
+ */
 	@Override
 	public void moveRobot() {
 		List<String> log = game.move();
@@ -138,7 +144,10 @@ public  class MyGame_Manual implements MyGame {
 
 
 	}
-
+/**
+ *  Updates the location of user-clicked points,
+ *   when a robot is clicked Updates the robottomove field and if a relevant vertex is moved it returns the code number.
+ */
 	@Override
 	public int setPath() {
 		if (!flag)
@@ -187,18 +196,30 @@ public  class MyGame_Manual implements MyGame {
 		this.x=x;
 		this.y=y;
 	}
+	/**
+	 * Returns the graph on which the game is held.
+	 */
 	@Override
 	public graph getGraph() {
 		return this._graph;
 	}
+	/**
+	 * Returns the list of "fruits".
+	 */
 	@Override
 	public ArrayList<Fruit> getFruits() {
 		return this._fruit;
 	}
+	/**
+	 *  Returns a collection of bots that play the game.
+	 */
 	@Override
 	public Collection<Bots> getRobotes() {
 		return Robots.values();
 	}
+	/**
+	 * Returns the game
+	 */
 	@Override
 	public game_service getGame() {
 		return this.game;

@@ -21,15 +21,17 @@ import dataStructure.node_data;
 public class MyGame_Automaticly implements MyGame{
 
 	game_service game;
-	private int botToMove;
 	ArrayList <Fruit> _fruit ;
 	List <edge_data> targets ;
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
+	private int botToMove;
 	private double x,y;
-	private long timeToMov;
+	long timeToMov;
 	int i;
-
+/**
+ * Gets the game number and creates the game based on server data, everything is called from the json file.
+ */
 	@Override
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -88,11 +90,13 @@ public class MyGame_Automaticly implements MyGame{
 		}
 		catch (Exception e) {	e.printStackTrace();}
 	}
-
+/**
+ * Returns a list of the fruit locations, allowing the bots to be strategically placed.
+ */
 
 	@Override
 	public List<edge_data> setBots() {
-		
+
 		Iterator <Fruit> it=_fruit.iterator();
 		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
 		while(it.hasNext())
@@ -101,7 +105,9 @@ public class MyGame_Automaticly implements MyGame{
 		}
 		return  Edges;
 	}
-
+/**
+ * Allows the robots to move by the desired algorithm.
+ */
 	@Override
 	public void moveRobot() {
 		try {
@@ -134,11 +140,8 @@ public class MyGame_Automaticly implements MyGame{
 					b.setDest(-1);
 				}
 			}
-			if(timeToMov-game.timeToEnd()<100)
-			{
-				timeToMov=game.timeToEnd();
+	
 				game.move();
-			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -147,13 +150,15 @@ public class MyGame_Automaticly implements MyGame{
 				ber.initBot(string);
 				Robots.put(ber.getId(), ber);
 			}
-		
+
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
 
 	}
-
+/**
+ * Applies the shortest path to "fruit", inserting into a field in the desired robot
+ */
 
 	@Override
 	public int setPath() {
@@ -195,27 +200,37 @@ public class MyGame_Automaticly implements MyGame{
 		targets.remove(remove);
 		return b.getPath().size();
 	}
-
+/**
+ * Returns the graph on which the game is held.
+ */
 	@Override
 	public graph getGraph() {
 		return this._graph;
 	}
-
+/**
+ * Returns the list of "fruits".
+ */
 	@Override
 	public ArrayList<Fruit> getFruits() {
 		return this._fruit;
 	}
-
+/**
+ *  Returns a collection of bots that play the game.
+ */
 	@Override
 	public Collection<Bots> getRobotes() {
 		return Robots.values();
 	}
+	/**
+	 * Returns the game
+	 */
 
 	@Override
 	public game_service getGame() {
 		return this.game;
 	}
 
+	
 	@Override
 	public void setXY(double x, double y) {
 		this.x=x;
