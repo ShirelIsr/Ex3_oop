@@ -23,9 +23,11 @@ public class MyGame_Automaticly implements MyGame{
 	game_service game;
 	private int botToMove;
 	ArrayList <Fruit> _fruit ;
+	List <edge_data> targets ;
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private double x,y;
+	private long timeToMov;
 	int i;
 
 	@Override
@@ -81,24 +83,23 @@ public class MyGame_Automaticly implements MyGame{
 				b.initBot(str);
 				Robots.put(b.getId(), b);
 			}
+			this.timeToMov=game.timeToEnd();
 
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+		catch (Exception e) {	e.printStackTrace();}
 	}
 
 
 	@Override
 	public List<edge_data> setBots() {
+
 		Iterator <Fruit> it=_fruit.iterator();
-		ArrayList <edge_data> nodes=new ArrayList<edge_data>();
+		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
 		while(it.hasNext())
 		{
-			nodes.add(it.next().getEdge());
-			//System.out.println(s);
+			Edges.add(it.next().getEdge());
 		}
-		return  nodes;
+		return  Edges;
 	}
 
 	@Override
@@ -113,6 +114,9 @@ public class MyGame_Automaticly implements MyGame{
 				f.initFruit(f_iter.next());
 				_fruit.add(f);	 
 			}
+			if(targets != null) targets.clear();
+			targets=new ArrayList<edge_data>();			
+			targets=setBots();
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
@@ -130,7 +134,11 @@ public class MyGame_Automaticly implements MyGame{
 					b.setDest(-1);
 				}
 			}
-
+			if(timeToMov-game.timeToEnd()<100)
+			{
+				timeToMov=game.timeToEnd();
+				game.move();
+			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -139,52 +147,56 @@ public class MyGame_Automaticly implements MyGame{
 				ber.initBot(string);
 				Robots.put(ber.getId(), ber);
 			}
-		game.move();
+
 
 		}
 		catch (JSONException e) {e.printStackTrace();}
-		
+
 	}
 
-	
+
 	@Override
 	public int setPath() {
-		Fruit l=null;
-		Fruit remove=null;
+		edge_data l=null;
+		edge_data remove=null;
 		graph_algorithms gg=new Graph_Algo(_graph);
 		double min=Double.MAX_VALUE;
-		Iterator<Fruit> it =_fruit.iterator();
+		Iterator<edge_data> it =targets.iterator();
 		IBots b=Robots.get(botToMove);
-		while(it.hasNext())
+		if(it.hasNext())
 		{
 			l=it.next();
-			if(l.getEdge().getSrc()==b.getSrc())
+			if(l.getSrc()==b.getSrc())
 			{
-				double temp=l.getEdge().getWeight();
-				if(temp<min)
-				{
-					min=temp;
+				double temp=l.getWeight();
+//				if(temp<min)
+//				{
+//					min=temp;
 					remove=l;
 					ArrayList<node_data> tempPath=new ArrayList<node_data> ();
-					tempPath.add(_graph.getNode(l.getEdge().getSrc()));
-					tempPath.add(_graph.getNode(l.getEdge().getDest()));
+					tempPath.add(_graph.getNode(l.getSrc()));
+					tempPath.add(_graph.getNode(l.getDest()));
+					if(b.getPath()!=null)
+						b.setPath(null);
 					b.setPath(tempPath);
-				}
+				//}
 			}
 			else
 			{
-				double temp=gg.shortestPathDist(b.getSrc(),l.getEdge().getSrc());
-				temp+=l.getEdge().getWeight();
-				if(temp<min)
-				{
-					min=temp;
+				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc());
+				temp+=l.getWeight();
+//				if(temp<min)
+//				{
+					//min=temp;
 					remove=l;
-					b.setPath(gg.shortestPath(b.getSrc(),l.getEdge().getSrc()));
-					b.getPath().add(_graph.getNode(l.getEdge().getDest()));
-				}	
+					if(b.getPath()!=null)
+						b.setPath(null);
+					b.setPath(gg.shortestPath(b.getSrc(),l.getSrc()));
+					b.getPath().add(_graph.getNode(l.getDest()));
+				//}	
 			}
 		}
-		_fruit.remove(remove);
+		targets.remove(remove);
 		return b.getPath().size();
 	}
 
