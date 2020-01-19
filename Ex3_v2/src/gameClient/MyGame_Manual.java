@@ -143,7 +143,7 @@ public  class MyGame_Manual implements MyGame {
 	public int setPath() {
 		if (!flag)
 		{
-			Collection<Bots> robots =Robots.values();
+			Collection<Bots> robots = Robots.values();
 			for (Bots b : robots) 
 			{
 				Point3D p=b.getLocation();

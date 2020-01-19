@@ -235,8 +235,10 @@ public class MyGameGui
 
 	private void  playAuto() {
 		game.startGame();
+		KMLthread(game);
 		k=new KML_Logger(m);
-		k.createKML();
+		k.createENKML();
+		k.createRFKML();
 		while(game.isRunning())
 		{
 			m.moveRobot();
@@ -396,7 +398,33 @@ public class MyGameGui
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
 		paint();
 	}
+	
+	////////////////////////////////////////////////////////
+	KML_Logger kml = new KML_Logger();
+	//
+	Thread KMLt;
+	public void KMLthread(game_service game)
+	{
+		KMLt = new Thread(new Runnable() {
 
+			@Override
+			public void run() {
+				while(game.isRunning())
+				{
+					long timeToSleep = 100;
+					try {
+						Thread.sleep(timeToSleep);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					kml.createRFKML();;
+					
+				}
+			}
+		});
+		KMLt.start();
+	}
+	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
