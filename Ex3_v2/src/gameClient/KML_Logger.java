@@ -293,7 +293,7 @@ public class KML_Logger {
 		String down = "</Document>\r\n" + 
 				"</kml>";
 
-		String file = up+vertex+edges+robots+fruit+down;
+		String file = up+vertex+edges+robot+fruit+down;
 		save(file);
 	}
 	public void save(String k) {

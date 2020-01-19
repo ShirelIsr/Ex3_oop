@@ -58,6 +58,7 @@ public class MyGameGui
 	Thread help;
 	Thread help2;
 	MyGame m;
+	KML_Logger k;
 
 	public MyGameGui(graph g)
 	{
@@ -233,6 +234,9 @@ public class MyGameGui
 	}
 	
 	private void  playAuto() {
+			k.setGraph(Gui_Graph);
+			k.setGame(game);
+			k.createKML();
 			game.startGame();
 			while(game.isRunning())
 			{
@@ -244,6 +248,7 @@ public class MyGameGui
 			}
 			System.out.println("Game Over :" +game.toString());
 		}
+	
 	public void save() 
 	{
 		graph_algorithms g = new Graph_Algo();
