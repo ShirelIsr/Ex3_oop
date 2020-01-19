@@ -140,8 +140,9 @@ public class MyGame_Automaticly implements MyGame{
 					b.setDest(-1);
 				}
 			}
-	
+		
 				game.move();
+			
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -198,7 +199,7 @@ public class MyGame_Automaticly implements MyGame{
 			}
 		}
 		targets.remove(remove);
-		return b.getPath().size();
+		return b.getPath().size()+1;
 	}
 /**
  * Returns the graph on which the game is held.
