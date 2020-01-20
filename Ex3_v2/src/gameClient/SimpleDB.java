@@ -22,7 +22,7 @@ public class SimpleDB {
 	public static void main(String[] args) {
 			int id1 = 999;  // "dummy existing ID  
 			int level = 0;
-			allUsers();
+			//allUsers();
 			printLog();
 			String kml = getKML(id1,level);
 			System.out.println("***** KML file example: ******");

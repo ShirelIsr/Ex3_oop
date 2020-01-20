@@ -242,8 +242,6 @@ public class MyGameGui
 		 m.MoveThread();
 		while(game.isRunning())
 		{
-			if(game.timeToEnd()<=15)
-				break;
 			m.moveRobot();
 			paint();
 			time = game.timeToEnd() / 1000;
