@@ -59,6 +59,10 @@ public interface MyGame {
 	 * @param y
 	 */
 	public void setXY(double x, double y);
+/**
+ * 
+ */
+	public void MoveThread();
 	
 	
 	

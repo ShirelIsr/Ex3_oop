@@ -12,8 +12,7 @@ import java.util.List;
 
 
 import javax.swing.JOptionPane;
-
-
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileSystemView;
@@ -196,12 +195,11 @@ public class MyGameGui
 	private void playManual()
 	{
 		game.startGame();
+		 m.MoveThread();
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
 			time = game.timeToEnd() / 1000;
-			if(time<=10)
-				break;
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
@@ -232,21 +230,23 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	private void  playAuto() {
 		game.startGame();
 		
 		k=new KML_Logger(m);
 		k.createENKML();
-//		k.createRFKML();
 		KMLthread(game);
+		 m.MoveThread();
 		while(game.isRunning())
 		{
+			if(game.timeToEnd()<=15)
+				break;
 			m.moveRobot();
 			paint();
 			time = game.timeToEnd() / 1000;
-			if(game.timeToEnd()<=15)
-				break;
 		}
 		k.save();
 		System.out.println("Game Over :" +game.toString());
@@ -400,12 +400,12 @@ public class MyGameGui
 		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
 		paint();
 	}
-	
+
 	////////////////////////////////////////////////////////
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
-		System.out.println("123");
+	//	System.out.println("123");
 		KMLt = new Thread(new Runnable() {
 
 			@Override
@@ -418,8 +418,9 @@ public class MyGameGui
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+
 					k.createRFKML();
-					
+
 				}
 			}
 		});
@@ -428,7 +429,6 @@ public class MyGameGui
 	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 		MyGameGui app = new MyGameGui();
-		
 	}
 
 }

@@ -126,22 +126,20 @@ public class MyGame_Automaticly implements MyGame{
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
-				if(b.dest==-1)
+				if(b.getDest()==-1)
 				{
 					botToMove=b.getId();
 					i+=setPath();
 					Iterator <node_data> it= b.getPath().iterator();
 					while(it.hasNext())
 					{
-						int dest=it.next().getKey();
-						game.chooseNextEdge(b.getId(), dest);
+						game.chooseNextEdge(b.getId(), it.next().getKey());
 					}
-					b.setPath(null);
 					b.setDest(-1);
+					b.setPath(null);
 				}
 			}
-	
-				game.move();
+				
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -174,7 +172,7 @@ public class MyGame_Automaticly implements MyGame{
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-				if(temp<min)
+				if(temp<=min)
 				{
 					min=temp;
 					remove=l;
@@ -186,19 +184,18 @@ public class MyGame_Automaticly implements MyGame{
 			}
 			else
 			{
-				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc());
-				temp+=l.getWeight();
-				if(temp<min)
+				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
+				if(temp<=min)
 				{
-					min=temp;
 					remove=l;
+					min=temp;
 					b.setPath(gg.shortestPath(b.getSrc(),l.getSrc()));
 					b.getPath().add(_graph.getNode(l.getDest()));
 				}	
 			}
 		}
 		targets.remove(remove);
-		return b.getPath().size();
+		return 1;
 	}
 /**
  * Returns the graph on which the game is held.
@@ -237,5 +234,28 @@ public class MyGame_Automaticly implements MyGame{
 		this. y=y;
 
 	}
+	Thread MoveT;
+	@Override
+	public void MoveThread()
+	{
+	//	System.out.println("123");
+		MoveT = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(game!=null)
+				{
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					game.move();
+				}
+			}
+		});
+		MoveT.start();
+	}
+
 
 }

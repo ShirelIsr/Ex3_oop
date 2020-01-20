@@ -22,6 +22,7 @@ public class KML_Logger {
 
 	}
 	
+
 	public KML_Logger(MyGame g) {
 		this.kGame=g;
 		this.game=kGame.getGame();
@@ -171,6 +172,7 @@ public class KML_Logger {
 	}	
 
 	public void createRFKML() {
+	
 		String now = java.time.LocalDate.now()+"T"+java.time.LocalTime.now();
 		String after ="";
 		LocalTime t1 = LocalTime.now();
@@ -304,6 +306,7 @@ public class KML_Logger {
 					"		</Point>\r\n" + 
 					"	</Placemark>";
 		}
+
 		KML += robot+fruit;
 //		save(KML);
 	}

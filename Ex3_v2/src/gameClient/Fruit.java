@@ -36,11 +36,11 @@ public class Fruit {
 		this.type=0;
 		this.value=-1;
 	}
-/**
- *  Initializes the fruit from the resulting json file data.
- * @param json
- * @throws JSONException
- */
+	/**
+	 *  Initializes the fruit from the resulting json file data.
+	 * @param json
+	 * @throws JSONException
+	 */
 	public void initFruit (String json) throws JSONException
 	{
 		JSONObject obj = new JSONObject(json);
@@ -53,50 +53,50 @@ public class Fruit {
 		this.location=p;
 		setEdge();
 	}
-/**
- * Updates the fruit type.
- * @param type
- */
+	/**
+	 * Updates the fruit type.
+	 * @param type
+	 */
 	public void setType(int type)
 	{
 		this.type=type;
 	}
-/**
- * Returns the type of fruit.
- * @return
- */
+	/**
+	 * Returns the type of fruit.
+	 * @return
+	 */
 	public int getType()
 	{
 		return this.type;
 	}
-/**
- * Updates the fruit location.
- * @param l
- */
+	/**
+	 * Updates the fruit location.
+	 * @param l
+	 */
 	public void setLocaiton(Point3D l)
 	{
 		this.location=l;
 	}
-/**
- *  Returns the location of the fruit.
- * @return
- */
+	/**
+	 *  Returns the location of the fruit.
+	 * @return
+	 */
 	public Point3D getLocation()
 	{
 		return this.location; 
 	}
-/**
- *  Updates the fruit score value.
- * @param value
- */
+	/**
+	 *  Updates the fruit score value.
+	 * @param value
+	 */
 	public void setvalue(double value)
 	{
 		this.value=value;
 	}
-/**
- * Returns the fruit score value.
- * @return
- */
+	/**
+	 * Returns the fruit score value.
+	 * @return
+	 */
 	public double getValue()
 	{
 		return this.value;
@@ -113,8 +113,21 @@ public class Fruit {
 			Collection<edge_data> edges =g.getE(node.getKey());
 			for(edge_data e : edges)
 			{
-				if(pointOn(g.getNode(e.getSrc()).getLocation(),g.getNode(e.getDest()).getLocation(),this.location))
-					this.edge=e;
+				int src =e.getSrc();
+				int dest=e.getDest();
+				if(pointOn(g.getNode(src).getLocation(),g.getNode(dest).getLocation(),this.location))
+				{
+					if(this.type==-1)
+					{
+						if(src>dest)
+							this.edge=e;
+					}
+					else
+					{
+						if(src<dest)
+							this.edge=e;
+					}
+				}
 			}
 		}
 		if (this.edge==null) throw new RuntimeException("ERR, the point is'nt on the graph");
