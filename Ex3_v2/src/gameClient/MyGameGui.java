@@ -232,6 +232,8 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 	private void  playAuto() {
 		game.startGame();
@@ -410,12 +412,12 @@ public class MyGameGui
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
-		System.out.println("123");
+	//	System.out.println("123");
 		KMLt = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				while(game!=null)
+				while(game.isRunning())
 				{
 					long timeToSleep = 100;
 					try {
@@ -424,7 +426,7 @@ public class MyGameGui
 						e.printStackTrace();
 					}
 
-					System.err.println("123123");
+					//System.err.println("123123");
 					k.createRFKML();
 
 				}

@@ -238,5 +238,30 @@ public class MyGame_Automaticly implements MyGame{
 		this. y=y;
 
 	}
+	Thread KMLt;
+	public void MoveThread(game_service game)
+	{
+	//	System.out.println("123");
+		KMLt = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(game!=null)
+				{
+					long timeToSleep = 100;
+					try {
+						Thread.sleep(timeToSleep);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+
+					//System.err.println("123123");
+					game.move();
+
+				}
+			}
+		});
+		KMLt.start();
+	}
 
 }
