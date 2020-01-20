@@ -12,8 +12,7 @@ import java.util.List;
 
 
 import javax.swing.JOptionPane;
-
-
+import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileSystemView;
@@ -196,12 +195,11 @@ public class MyGameGui
 	private void playManual()
 	{
 		game.startGame();
+		 m.MoveThread();
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
 			time = game.timeToEnd() / 1000;
-			if(time<=10)
-				break;
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
@@ -240,10 +238,8 @@ public class MyGameGui
 		
 		k=new KML_Logger(m);
 		k.createENKML();
-
-//		k.createRFKML();
 		KMLthread(game);
-
+		 m.MoveThread();
 		while(game.isRunning())
 		{
 			if(game.timeToEnd()<=15)
@@ -251,7 +247,6 @@ public class MyGameGui
 			m.moveRobot();
 			paint();
 			time = game.timeToEnd() / 1000;
-			
 		}
 		k.save();
 		System.out.println("Game Over :" +game.toString());
@@ -407,8 +402,6 @@ public class MyGameGui
 	}
 
 	////////////////////////////////////////////////////////
-	//KML_Logger kml = new KML_Logger();
-	//
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
@@ -426,7 +419,6 @@ public class MyGameGui
 						e.printStackTrace();
 					}
 
-					//System.err.println("123123");
 					k.createRFKML();
 
 				}
@@ -438,6 +430,9 @@ public class MyGameGui
 	public static void main(String[] args) {
 
 		MyGameGui app = new MyGameGui();
+	
+		
+	
 
 	}
 

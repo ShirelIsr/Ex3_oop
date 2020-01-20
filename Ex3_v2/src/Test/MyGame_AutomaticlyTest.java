@@ -22,14 +22,11 @@ class MyGame_AutomaticlyTest {
 			 m= new MyGame_Automaticly();
 			m.initGame(i);
 			this.game=m.getGame();
-			if(game!=null)
-			{
 			game.startGame();
+			 m.MoveThread();
 			while(game.isRunning())
 			{
 				m.moveRobot();
-				if(game.timeToEnd()<=15)
-					break;
 			}
 			System.out.println("game number :"+i);
 			System.out.println("Game Over :" +game.toString());
@@ -38,4 +35,4 @@ class MyGame_AutomaticlyTest {
 	}
 
 	
-}
+

@@ -106,8 +106,6 @@ public  class MyGame_Manual implements MyGame {
  */
 	@Override
 	public void moveRobot() {
-		List<String> log = game.move();
-		if(log!=null) {
 			try {
 				int dest = setPath();
 				if(dest!=-1) {	
@@ -140,9 +138,7 @@ public  class MyGame_Manual implements MyGame {
 
 			}
 			catch (JSONException e) {e.printStackTrace();}
-		}
-
-
+		
 	}
 /**
  *  Updates the location of user-clicked points,
@@ -224,4 +220,28 @@ public  class MyGame_Manual implements MyGame {
 	public game_service getGame() {
 		return this.game;
 	}
+	Thread MoveT;
+	@Override
+	public void MoveThread()
+	{
+	//	System.out.println("123");
+		MoveT = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(game!=null)
+				{
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					game.move();
+
+				}
+			}
+		});
+		MoveT.start();
+	}
+
 }
