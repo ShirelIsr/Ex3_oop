@@ -402,8 +402,6 @@ public class MyGameGui
 	}
 	
 	////////////////////////////////////////////////////////
-	//KML_Logger kml = new KML_Logger();
-	//
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
@@ -420,7 +418,6 @@ public class MyGameGui
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					//System.err.println("123123");
 					k.createRFKML();
 					
 				}
