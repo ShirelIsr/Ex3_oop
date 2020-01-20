@@ -427,9 +427,8 @@ public class MyGameGui
 	}
 	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
-
 		MyGameGui app = new MyGameGui();
-
+		
 	}
 
 }
