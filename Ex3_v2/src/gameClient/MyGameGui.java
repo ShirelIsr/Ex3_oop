@@ -174,8 +174,8 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-				int id=203793344;
-				System.out.println(Game_Server.login(id)+"shirel id :"+id);
+				//	int id=312354210;
+				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Manual();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -196,7 +196,7 @@ public class MyGameGui
 	private void playManual()
 	{
 		game.startGame();
-		 m.MoveThread();
+		m.MoveThread();
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
@@ -215,8 +215,8 @@ public class MyGameGui
 			if(num>=0 && num<=23)
 			{
 				int id=203793344;
-				System.out.println("ozo");
-				System.out.println(Game_Server.login(id)+"shirel id :"+id);
+				System.out.println("ozo "+id);
+				System.out.println(Game_Server.login(id));
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -234,25 +234,24 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 
 	private void  playAuto() {
 		game.startGame();
 		k=new KML_Logger(m);
 		k.createENKML();
-		 m.MoveThread();
-		 KMLthread(game);
+		KMLthread(game);
+		m.MoveThread();
 		while(game.isRunning())
 		{
 			time = game.timeToEnd() / 1000;
-			if(game.timeToEnd() <= 10) {
-				game.stopGame();
-			}
 			m.moveRobot();
 			paint();
 		}
 		k.save();
+		String kml = k.getKML();
+		game.sendKML(kml);
 		System.out.println("Game Over :" +game.toString());
 	}
 
@@ -409,7 +408,7 @@ public class MyGameGui
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
-	//	System.out.println("123");
+		//	System.out.println("123");
 		KMLt = new Thread(new Runnable() {
 
 			@Override

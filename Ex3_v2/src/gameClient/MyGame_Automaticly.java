@@ -22,13 +22,13 @@ public class MyGame_Automaticly implements MyGame{
 
 	game_service game;
 	ArrayList <Fruit> _fruit ;
-	List <edge_data> targets ;
-	HashMap <Integer,Bots> Robots;
+	List <edge_data> targets =new ArrayList<edge_data>();	
+	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private int botToMove;
 	private double x,y;
 	private int maxSpeed=1;
-	private long sleep=105;
+	private long sleep;
 	int i;
 
 	/**
@@ -89,7 +89,11 @@ public class MyGame_Automaticly implements MyGame{
 			}
 
 		}
-		catch (Exception e) {e.printStackTrace();}
+		catch (Exception e) {	e.printStackTrace();}
+		if(scenario_num<10)
+			sleep =150;
+		else
+			sleep =100;
 	}
 	/**
 	 * Returns a list of the fruit locations, allowing the bots to be strategically placed.
@@ -121,10 +125,8 @@ public class MyGame_Automaticly implements MyGame{
 				f.initFruit(f_iter.next());
 				_fruit.add(f);
 			}
-			if(targets != null) targets.clear();
-			targets=new ArrayList<edge_data>();			
-			targets=setBots();
-			Collection<Bots> robots = Robots.values();
+			targets=setBots();	
+			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
 				if(b.getDest()==-1)
@@ -138,9 +140,9 @@ public class MyGame_Automaticly implements MyGame{
 					}
 					b.setDest(-1);
 					b.setPath(null);
-					if(b.getSpeed()>this.maxSpeed)
+					if(b.getSpeed()>maxSpeed)
 					{
-						this.maxSpeed=b.getSpeed();
+						maxSpeed=b.getSpeed();
 						sleep=sleep-2;
 					}
 				}
@@ -163,19 +165,16 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public int setPath() {
-		edge_data l=null;
 		edge_data remove=null;
 		graph_algorithms gg=new Graph_Algo(_graph);
 		double min=Double.MAX_VALUE;
-		Iterator<edge_data> it =targets.iterator();
 		IBots b=Robots.get(botToMove);
-		while(it.hasNext())
+		for (edge_data l:targets)
 		{
-			l=it.next();
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-				if(temp<min)
+				if(temp<=min)
 				{
 					min=temp;
 					remove=l;
@@ -188,7 +187,7 @@ public class MyGame_Automaticly implements MyGame{
 			else
 			{
 				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
-				if(temp<min)
+				if(temp<=min)
 				{
 					remove=l;
 					min=temp;

@@ -122,7 +122,7 @@ public class Fruit {
 						if(src>dest)
 							this.edge=e;
 					}
-					else
+					else if(this.type==1)
 					{
 						if(src<dest)
 							this.edge=e;
