@@ -215,7 +215,7 @@ public class MyGameGui
 			if(num>=0 && num<=23)
 			{
 				int id=312354210;
-				System.out.println("help");
+				System.out.println("ozo");
 				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Automaticly();
 				m.initGame(num);
@@ -241,11 +241,14 @@ public class MyGameGui
 		game.startGame();
 		k=new KML_Logger(m);
 		k.createENKML();
-		KMLthread(game);
 		 m.MoveThread();
+		 KMLthread(game);
 		while(game.isRunning())
 		{
 			time = game.timeToEnd() / 1000;
+			if(game.timeToEnd() <= 10) {
+				game.stopGame();
+			}
 			m.moveRobot();
 			paint();
 		}
@@ -420,7 +423,7 @@ public class MyGameGui
 						e.printStackTrace();
 					}
 
-					k.createRFKML(m.getFruits(),m.getRobotes());
+					k.createRFKML();
 
 				}
 			}
@@ -429,12 +432,7 @@ public class MyGameGui
 	}
 	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
-
 		MyGameGui app = new MyGameGui();
-	
-		
-	
-
 	}
 
 }

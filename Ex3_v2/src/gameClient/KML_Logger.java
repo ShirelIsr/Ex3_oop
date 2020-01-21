@@ -5,6 +5,12 @@ import java.io.IOException;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
+import org.json.JSONException;
+
 import Server.game_service;
 import dataStructure.graph;
 import dataStructure.edge_data;
@@ -15,6 +21,8 @@ public class KML_Logger {
 	game_service game;
 	MyGame kGame;
 	String KML = "";
+	ArrayList <Fruit> _fruit;
+	ArrayList <Bots> _robots;
 	public KML_Logger() {
 
 	}
@@ -170,82 +178,50 @@ public class KML_Logger {
 	}	
 
 	public void createRFKML() {
-	
 		String now = java.time.LocalDate.now()+"T"+java.time.LocalTime.now();
 		String after ="";
 		LocalTime t1 = LocalTime.now();
 		t1=t1.plusNanos(100*1000000);
 		after = java.time.LocalDate.now()+"T"+t1;
+
+		_fruit=new ArrayList <Fruit>();
+		_fruit.clear();
+		Iterator<String> f_iter = game.getFruits().iterator();
+		while(f_iter.hasNext())
+		{
+			Fruit f=new Fruit(graph);
+			try {
+				f.initFruit(f_iter.next());
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			_fruit.add(f);
+		}
 		
-		String robot = "";
-		if(robots !=null)
+		_robots=new ArrayList <Bots>();
+		_robots.clear();
+		List<String> botsStr = game.getRobots();
+		for (String string : botsStr)
 		{
-		for (Bots kBot: robots) {
-			robot += "	<name>Robot.kml</name> \r\n" + 
-					"					<Style id=\"sn_motorcycling\"> \r\n" + 
-					"						<IconStyle>\r\n" + 
-					"							<color>ff00aa00</color> \r\n" + 
-					"							<Icon>\r\n" + 
-					"								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>\r\n" + 
-					"							</Icon>\r\n" + 
-					"							<hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\r\n" + 
-					"						</IconStyle>\r\n" + 
-					"						<BalloonStyle>\r\n" + 
-					"						</BalloonStyle>\r\n" + 
-					"						<ListStyle>\r\n" + 
-					"						</ListStyle>\r\n" + 
-					"					</Style>\r\n" + 
-					"					<Style id=\"sh_motorcycling\">\r\n" + 
-					"						<IconStyle>\r\n" + 
-					"							<color>ff00aa00</color>\r\n" + 
-					"							<scale>0.9</scale>\r\n" + 
-					"							<Icon>\r\n" + 
-					"								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>\r\n" + 
-					"							</Icon>\r\n" + 
-					"							<hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\r\n" + 
-					"						</IconStyle>\r\n" + 
-					"						<BalloonStyle>\r\n" + 
-					"						</BalloonStyle>\r\n" + 
-					"						<ListStyle>\r\n" + 
-					"						</ListStyle>\r\n" + 
-					"					</Style>\r\n" + 
-					"					<StyleMap id=\"msn_motorcycling\">\r\n" + 
-					"						<Pair>\r\n" + 
-					"							<key>normal</key>\r\n" + 
-					"							<styleUrl>#sn_motorcycling</styleUrl>\r\n" + 
-					"						</Pair>\r\n" + 
-					"						<Pair>\r\n" + 
-					"							<key>highlight</key>\r\n" + 
-					"							<styleUrl>#sh_motorcycling</styleUrl>\r\n" + 
-					"						</Pair>\r\n" + 
-					"					</StyleMap>\r\n\""+ 
-					"		<Placemark>\r\n" + 
-					"		<name>"+kBot.id+"</name>\r\n" + 
-					"		<LookAt>\r\n" + 
-					"			<longitude>35.20057915651626</longitude>\r\n" + 
-					"			<latitude>32.10642421692141</latitude>\r\n" + 
-					"			<altitude>0</altitude>\r\n" + 
-					"			<heading>0.001400841528527689</heading>\r\n" + 
-					"			<tilt>48.82445584719025</tilt>\r\n" + 
-					"			<range>2429.727375786245</range>\r\n" + 
-					"			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>\r\n" + 
-					"		</LookAt>\r\n" +
-					"		<TimeSpan>\r\n" + 
-					"            <begin>"+now+"</begin>\r\n" + 
-					"            <end>"+after+"</end>\r\n" + 
-					"        </TimeSpan>" +
-					"		<styleUrl>#msn_motorcycling</styleUrl>\r\n" + 
-					"		<Point>\r\n" + 
-					"			<gx:drawOrder>1</gx:drawOrder>\r\n" + 
-					"			<coordinates>"+kBot.getLocation().x()+","+kBot.getLocation().y()+",0</coordinates>\r\n" + 
-					"		</Point>\r\n" + 
-					"	</Placemark>";
+			Bots ber = new Bots();
+			try {
+				ber.initBot(string);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			_robots.add(ber);
 		}
-		}
+
+		
+		
+
+		//Collection<Bots> robots = kGame.getRobotes();
+		//ArrayList<Fruit> fruits = kGame.getFruits();
+		
 		String fruit = "" ;
-		if(fruits!=null)
-		{
-		for (Fruit kFruit : fruits) {
+		for (Fruit kFruit : _fruit) {
+			if(kFruit != null) {
+
 			fruit += "	<name>fruit.kml</name>\r\n" + 
 					"					<StyleMap id=\"msn_dollar\">\r\n" + 
 					"						<Pair>\r\n" + 
@@ -306,10 +282,78 @@ public class KML_Logger {
 					"			<coordinates>"+kFruit.getLocation().x()+","+kFruit.getLocation().y()+",0</coordinates>\r\n" + 
 					"		</Point>\r\n" + 
 					"	</Placemark>";
+			}
 		}
+		
+		String robot = "";
+		//Collection<Bots> robots =_robots.values();
+		for (Bots kBot: _robots) {
+			if(kBot != null) {
+			robot += "	<name>Robot.kml</name> \r\n" + 
+					"					<Style id=\"sn_motorcycling\"> \r\n" + 
+					"						<IconStyle>\r\n" + 
+					"							<color>ff00aa00</color> \r\n" + 
+					"							<Icon>\r\n" + 
+					"								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>\r\n" + 
+					"							</Icon>\r\n" + 
+					"							<hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\r\n" + 
+					"						</IconStyle>\r\n" + 
+					"						<BalloonStyle>\r\n" + 
+					"						</BalloonStyle>\r\n" + 
+					"						<ListStyle>\r\n" + 
+					"						</ListStyle>\r\n" + 
+					"					</Style>\r\n" + 
+					"					<Style id=\"sh_motorcycling\">\r\n" + 
+					"						<IconStyle>\r\n" + 
+					"							<color>ff00aa00</color>\r\n" + 
+					"							<scale>0.9</scale>\r\n" + 
+					"							<Icon>\r\n" + 
+					"								<href>http://maps.google.com/mapfiles/kml/shapes/hiker.png</href>\r\n" + 
+					"							</Icon>\r\n" + 
+					"							<hotSpot x=\"0.5\" y=\"0\" xunits=\"fraction\" yunits=\"fraction\"/>\r\n" + 
+					"						</IconStyle>\r\n" + 
+					"						<BalloonStyle>\r\n" + 
+					"						</BalloonStyle>\r\n" + 
+					"						<ListStyle>\r\n" + 
+					"						</ListStyle>\r\n" + 
+					"					</Style>\r\n" + 
+					"					<StyleMap id=\"msn_motorcycling\">\r\n" + 
+					"						<Pair>\r\n" + 
+					"							<key>normal</key>\r\n" + 
+					"							<styleUrl>#sn_motorcycling</styleUrl>\r\n" + 
+					"						</Pair>\r\n" + 
+					"						<Pair>\r\n" + 
+					"							<key>highlight</key>\r\n" + 
+					"							<styleUrl>#sh_motorcycling</styleUrl>\r\n" + 
+					"						</Pair>\r\n" + 
+					"					</StyleMap>\r\n\""+ 
+					"		<Placemark>\r\n" + 
+					"		<name>"+kBot.id+"</name>\r\n" + 
+					"		<LookAt>\r\n" + 
+					"			<longitude>35.20057915651626</longitude>\r\n" + 
+					"			<latitude>32.10642421692141</latitude>\r\n" + 
+					"			<altitude>0</altitude>\r\n" + 
+					"			<heading>0.001400841528527689</heading>\r\n" + 
+					"			<tilt>48.82445584719025</tilt>\r\n" + 
+					"			<range>2429.727375786245</range>\r\n" + 
+					"			<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>\r\n" + 
+					"		</LookAt>\r\n" +
+					"		<TimeSpan>\r\n" + 
+					"            <begin>"+now+"</begin>\r\n" + 
+					"            <end>"+after+"</end>\r\n" + 
+					"        </TimeSpan>" +
+					"		<styleUrl>#msn_motorcycling</styleUrl>\r\n" + 
+					"		<Point>\r\n" + 
+					"			<gx:drawOrder>1</gx:drawOrder>\r\n" + 
+					"			<coordinates>"+kBot.getLocation().x()+","+kBot.getLocation().y()+",0</coordinates>\r\n" + 
+					"		</Point>\r\n" + 
+					"	</Placemark>";
+			}
 		}
+		
 
-		KML += robot+fruit;
+
+		KML += fruit + robot;
 //		save(KML);
 	}
 

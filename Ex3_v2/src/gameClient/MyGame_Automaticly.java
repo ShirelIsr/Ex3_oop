@@ -23,7 +23,7 @@ public class MyGame_Automaticly implements MyGame{
 	game_service game;
 	ArrayList <Fruit> _fruit ;
 	List <edge_data> targets ;
-	HashMap <Integer,Bots> Robots ;
+	HashMap <Integer,Bots> Robots;
 	graph _graph;
 	private int botToMove;
 	private double x,y;
