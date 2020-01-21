@@ -59,4 +59,15 @@ public interface IFruit {
 	 * @return
 	 */
 	public edge_data getEdge();
+	/**
+	 * 
+	 * @param t
+	 */
+	public void setTag(int t);
+	/**
+	 * 
+	 * @return
+	 */
+	public int getTag();
+	
 }
