@@ -174,7 +174,7 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-				int id=312354210;
+				int id=203793344;
 				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Manual();
 				m.initGame(num);
@@ -214,7 +214,7 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-				int id=312354210;
+				int id=203793344;
 				System.out.println("ozo");
 				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Automaticly();
