@@ -164,8 +164,7 @@ public class MyGameGui
 		}
 		StdDraw.setPenColor(Color.black);
 		StdDraw.setFont(new Font("TimesRoman", Font.PLAIN, 50));
-		System.out.println(time);
-		StdDraw.textLeft(this.xMax- 0.0004,this.yMax- 0.0004,"time: " + time);
+		StdDraw.textLeft(this.xMax + 0.00006 , this.yMax + 0.00006 , "time: " + time);
 	}
 
 	public void Play_manual(String scenario_num)
@@ -175,6 +174,8 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
+				int id=312354210;
+				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Manual();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -213,6 +214,9 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
+				int id=312354210;
+				System.out.println("ozo");
+				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -235,16 +239,18 @@ public class MyGameGui
 
 	private void  playAuto() {
 		game.startGame();
-		
 		k=new KML_Logger(m);
 		k.createENKML();
-		KMLthread(game);
 		 m.MoveThread();
+		 KMLthread(game);
 		while(game.isRunning())
 		{
+			time = game.timeToEnd() / 1000;
+			if(game.timeToEnd() <= 10) {
+				game.stopGame();
+			}
 			m.moveRobot();
 			paint();
-			time = game.timeToEnd() / 1000;
 		}
 		k.save();
 		System.out.println("Game Over :" +game.toString());

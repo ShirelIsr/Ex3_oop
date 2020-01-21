@@ -128,6 +128,10 @@ public class Bots implements IBots{
 	{
 		return this.Path;
 	}
+	@Override
+	public int getSpeed() {
+		return this.speed;
+	}
 
 }
 

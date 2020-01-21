@@ -60,6 +60,11 @@ public interface IBots {
 	 */
 	public int getId();
 	/**
+	 * 
+	 * @return
+	 */
+	public int getSpeed();
+	/**
 	 *  Updates the list of vertices to the robot's path.
 	 * @param Path
 	 */

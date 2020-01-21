@@ -23,12 +23,14 @@ public class MyGame_Automaticly implements MyGame{
 	game_service game;
 	ArrayList <Fruit> _fruit ;
 	List <edge_data> targets ;
-	HashMap <Integer,Bots> Robots ;
+	HashMap <Integer,Bots> Robots;
 	graph _graph;
 	private int botToMove;
 	private double x,y;
-	long timeToMov;
+	private int maxSpeed=1;
+	private long sleep=105;
 	int i;
+
 /**
  * Gets the game number and creates the game based on server data, everything is called from the json file.
  */
@@ -85,7 +87,6 @@ public class MyGame_Automaticly implements MyGame{
 				b.initBot(str);
 				Robots.put(b.getId(), b);
 			}
-			this.timeToMov=game.timeToEnd();
 
 		}
 		catch (Exception e) {	e.printStackTrace();}
@@ -137,9 +138,13 @@ public class MyGame_Automaticly implements MyGame{
 					}
 					b.setDest(-1);
 					b.setPath(null);
+					if(b.getSpeed()>this.maxSpeed)
+					{
+						this.maxSpeed=b.getSpeed();
+						sleep--;
 				}
 			}
-				
+			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
 			for (String string : botsStr)
@@ -172,7 +177,7 @@ public class MyGame_Automaticly implements MyGame{
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-				if(temp<=min)
+				if(temp<min)
 				{
 					min=temp;
 					remove=l;
@@ -185,7 +190,7 @@ public class MyGame_Automaticly implements MyGame{
 			else
 			{
 				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
-				if(temp<=min)
+				if(temp<min)
 				{
 					remove=l;
 					min=temp;
@@ -246,7 +251,7 @@ public class MyGame_Automaticly implements MyGame{
 				while(game!=null)
 				{
 					try {
-						Thread.sleep(100);
+						Thread.sleep(sleep);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
