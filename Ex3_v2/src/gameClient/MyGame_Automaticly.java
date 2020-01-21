@@ -22,18 +22,18 @@ public class MyGame_Automaticly implements MyGame{
 
 	game_service game;
 	ArrayList <Fruit> _fruit ;
-	List <edge_data> targets ;
-	HashMap <Integer,Bots> Robots;
+	List <edge_data> targets =new ArrayList<edge_data>();	
+	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private int botToMove;
 	private double x,y;
 	private int maxSpeed=1;
-	private long sleep=105;
+	private long sleep;
 	int i;
 
-/**
- * Gets the game number and creates the game based on server data, everything is called from the json file.
- */
+	/**
+	 * Gets the game number and creates the game based on server data, everything is called from the json file.
+	 */
 	@Override
 	public void initGame(int scenario_num) {
 		game = Game_Server.getServer(scenario_num); // you have [0,23] games
@@ -90,10 +90,14 @@ public class MyGame_Automaticly implements MyGame{
 
 		}
 		catch (Exception e) {	e.printStackTrace();}
+		if(scenario_num<10)
+			sleep =122;
+		else
+			sleep =100;
 	}
-/**
- * Returns a list of the fruit locations, allowing the bots to be strategically placed.
- */
+	/**
+	 * Returns a list of the fruit locations, allowing the bots to be strategically placed.
+	 */
 
 	@Override
 	public List<edge_data> setBots() {
@@ -106,9 +110,9 @@ public class MyGame_Automaticly implements MyGame{
 		}
 		return  Edges;
 	}
-/**
- * Allows the robots to move by the desired algorithm.
- */
+	/**
+	 * Allows the robots to move by the desired algorithm.
+	 */
 	@Override
 	public void moveRobot() {
 		try {
@@ -121,9 +125,7 @@ public class MyGame_Automaticly implements MyGame{
 				f.initFruit(f_iter.next());
 				_fruit.add(f);	 
 			}
-			if(targets != null) targets.clear();
-			targets=new ArrayList<edge_data>();			
-			targets=setBots();
+			targets=setBots();	
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
@@ -138,12 +140,12 @@ public class MyGame_Automaticly implements MyGame{
 					}
 					b.setDest(-1);
 					b.setPath(null);
-					if(b.getSpeed()>this.maxSpeed)
+					if(b.getSpeed()>maxSpeed)
 					{
-						this.maxSpeed=b.getSpeed();
+						maxSpeed=b.getSpeed();
 						sleep=sleep-2;
+					}
 				}
-			}
 			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
@@ -159,25 +161,22 @@ public class MyGame_Automaticly implements MyGame{
 		catch (JSONException e) {e.printStackTrace();}
 
 	}
-/**
- * Applies the shortest path to "fruit", inserting into a field in the desired robot
- */
+	/**
+	 * Applies the shortest path to "fruit", inserting into a field in the desired robot
+	 */
 
 	@Override
 	public int setPath() {
-		edge_data l=null;
 		edge_data remove=null;
 		graph_algorithms gg=new Graph_Algo(_graph);
 		double min=Double.MAX_VALUE;
-		Iterator<edge_data> it =targets.iterator();
 		IBots b=Robots.get(botToMove);
-		while(it.hasNext())
+		for (edge_data l:targets)
 		{
-			l=it.next();
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-				if(temp<min)
+				if(temp<=min)
 				{
 					min=temp;
 					remove=l;
@@ -190,7 +189,7 @@ public class MyGame_Automaticly implements MyGame{
 			else
 			{
 				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
-				if(temp<min)
+				if(temp<=min)
 				{
 					remove=l;
 					min=temp;
@@ -202,23 +201,23 @@ public class MyGame_Automaticly implements MyGame{
 		targets.remove(remove);
 		return 1;
 	}
-/**
- * Returns the graph on which the game is held.
- */
+	/**
+	 * Returns the graph on which the game is held.
+	 */
 	@Override
 	public graph getGraph() {
 		return this._graph;
 	}
-/**
- * Returns the list of "fruits".
- */
+	/**
+	 * Returns the list of "fruits".
+	 */
 	@Override
 	public ArrayList<Fruit> getFruits() {
 		return this._fruit;
 	}
-/**
- *  Returns a collection of bots that play the game.
- */
+	/**
+	 *  Returns a collection of bots that play the game.
+	 */
 	@Override
 	public Collection<Bots> getRobotes() {
 		return Robots.values();
@@ -232,7 +231,7 @@ public class MyGame_Automaticly implements MyGame{
 		return this.game;
 	}
 
-	
+
 	@Override
 	public void setXY(double x, double y) {
 		this.x=x;
@@ -243,7 +242,7 @@ public class MyGame_Automaticly implements MyGame{
 	@Override
 	public void MoveThread()
 	{
-	//	System.out.println("123");
+		//	System.out.println("123");
 		MoveT = new Thread(new Runnable() {
 
 			@Override

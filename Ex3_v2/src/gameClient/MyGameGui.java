@@ -174,8 +174,8 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-				int id=312354210;
-				System.out.println(Game_Server.login(id)+"shirel id :"+id);
+			//	int id=312354210;
+				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Manual();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -214,9 +214,9 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-				int id=312354210;
+	//			int id=312354210;
 				System.out.println("ozo");
-				System.out.println(Game_Server.login(id)+"shirel id :"+id);
+//				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -241,14 +241,11 @@ public class MyGameGui
 		game.startGame();
 		k=new KML_Logger(m);
 		k.createENKML();
-		 m.MoveThread();
 		 KMLthread(game);
+		 m.MoveThread();
 		while(game.isRunning())
 		{
 			time = game.timeToEnd() / 1000;
-			if(game.timeToEnd() <= 10) {
-				game.stopGame();
-			}
 			m.moveRobot();
 			paint();
 		}
