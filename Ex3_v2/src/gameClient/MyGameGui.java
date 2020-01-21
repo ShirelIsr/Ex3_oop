@@ -216,7 +216,8 @@ public class MyGameGui
 			{
 				int id=203793344;
 				System.out.println("ozo "+id);
-				System.out.println(Game_Server.login(id));
+				//System.out.println(Game_Server.login(id));
+
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();

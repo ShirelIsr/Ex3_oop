@@ -61,6 +61,11 @@ import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.TreeSet;
@@ -714,7 +719,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
 		// frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-		frame.setTitle("Standard Draw");
+		frame.setTitle("The Maze of Waze");
 		frame.setJMenuBar(createMenuBar());
 		frame.pack();
 		frame.requestFocusInWindow();
@@ -726,27 +731,27 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu play = new JMenu("Play");
-		JMenu algo = new JMenu("Algo");
+		JMenu info = new JMenu("Info");
 		menuBar.add(file);
 		menuBar.add(play);
-		menuBar.add(algo);
+		menuBar.add(info);
 		JMenuItem menuItem1 = new JMenuItem(" Save...");
 		JMenuItem auto = new JMenuItem("Auto");
 		JMenuItem manual = new JMenuItem("Manual");
-		JMenuItem SP = new JMenuItem("SP");
-		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
+		JMenuItem gCount = new JMenuItem("Game counter");
+		//		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
 		menuItem1.addActionListener(std);
 		auto.addActionListener(std);
 		manual.addActionListener(std);
-		TSP.addActionListener(std);
-		SP.addActionListener(std);
+		gCount.addActionListener(std);
+		//		SP.addActionListener(std);
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
 		play.add(auto);
 		play.add(manual);
-		algo.add(TSP);
-		algo.add(SP);
+		info.add(gCount);
+		//		algo.add(SP);
 		return menuBar;
 	}
 
@@ -1672,30 +1677,30 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			System.out.println("Invalid image file type: " + suffix);
 		}
 	}
-//	KML_Logger kml = new KML_Logger();
-//	//
-//	Thread KMLt;
-//	public void KMLthread(game_service game)
-//	{
-//		KMLt = new Thread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				while(game.isRunning())
-//				{
-//					long timeToSleep = 100;
-//					try {
-//						Thread.sleep(timeToSleep);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					kml.createRFKML();;
-//					
-//				}
-//			}
-//		});
-//		KMLt.start();
-//	}
+	//	KML_Logger kml = new KML_Logger();
+	//	//
+	//	Thread KMLt;
+	//	public void KMLthread(game_service game)
+	//	{
+	//		KMLt = new Thread(new Runnable() {
+	//
+	//			@Override
+	//			public void run() {
+	//				while(game.isRunning())
+	//				{
+	//					long timeToSleep = 100;
+	//					try {
+	//						Thread.sleep(timeToSleep);
+	//					} catch (InterruptedException e) {
+	//						e.printStackTrace();
+	//					}
+	//					kml.createRFKML();;
+	//					
+	//				}
+	//			}
+	//		});
+	//		KMLt.start();
+	//	}
 
 
 	/**
@@ -1739,9 +1744,54 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			jinput.dispose();
 			threadman(input);
 		}
-
+		break;
+		case "Game counter":
+		{
+			int j = gameCounter();
+			JFrame jinput = new JFrame();
+			
+			//String input = 
+					JOptionPane.showMessageDialog(jinput,"The num of Games:" + j, "Game counter", JOptionPane.INFORMATION_MESSAGE);
+			jinput.dispose();
+			//threadauto(input);
+		}
 		break;
 		}
+	}
+
+	public int gameCounter() {
+		String jdbcUrl="jdbc:mysql://db-mysql-ams3-67328-do-user-4468260-0.db.ondigitalocean.com:25060/oop?useUnicode=yes&characterEncoding=UTF-8&useSSL=false";
+		String jdbcUser="student";
+		String jdbcUserPassword="OOP2020student";
+		int counter = 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = 
+					DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcUserPassword);
+			Statement statement = connection.createStatement();
+			String allCustomersQuery = "SELECT * FROM Logs;";
+			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
+
+			while(resultSet.next())
+			{
+				System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
+				int i  = resultSet.getInt("UserID");
+				if(i == 203793344 || i == 312354210)
+					 counter++;
+			}
+			resultSet.close();
+			statement.close();		
+			connection.close();		
+		}
+
+		catch (SQLException sqle) {
+			System.out.println("SQLException: " + sqle.getMessage());
+			System.out.println("Vendor Error: " + sqle.getErrorCode());
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return counter;
 	}
 
 	public static void threadman(String s)
@@ -1768,9 +1818,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			public void run() {
 				if(startRun)
 				{
-				//g.ThreadPaint(game);
-				graph.Play_Automaticly(s);
-				startRun=false;
+					//g.ThreadPaint(game);
+					graph.Play_Automaticly(s);
+					startRun=false;
 				}
 
 				try {
@@ -1860,11 +1910,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		synchronized (mouseLock) {
-//			mouseX = StdDraw.userX(e.getX());
-//			mouseY = StdDraw.userY(e.getY());
-//			isMousePressed = true;
-//		}
+		//		synchronized (mouseLock) {
+		//			mouseX = StdDraw.userX(e.getX());
+		//			mouseY = StdDraw.userY(e.getY());
+		//			isMousePressed = true;
+		//		}
 	}
 
 	/**

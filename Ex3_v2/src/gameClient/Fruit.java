@@ -16,6 +16,7 @@ public class Fruit {
 	Point3D location;
 	edge_data edge ;
 	graph g;
+	int Tag;
 	public final double EPSILON = 0.0000001;
 
 
@@ -26,6 +27,7 @@ public class Fruit {
 		this.location = locaiton;
 		this.value=value;
 		this.edge=null;
+		this.Tag=0;
 	}
 
 
@@ -35,6 +37,7 @@ public class Fruit {
 		this.location=null;
 		this.type=0;
 		this.value=-1;
+		this.Tag=0;
 	}
 	/**
 	 *  Initializes the fruit from the resulting json file data.
@@ -148,7 +151,18 @@ public class Fruit {
 	 * @param c
 	 * @return
 	 */
-
+	public void setTag(int t)
+	{
+		this.Tag=t;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public int getTag()
+	{
+		return this.Tag;
+	}
 	public boolean pointOn(Point3D a , Point3D b , Point3D c) {
 		if (Math.abs((a.distance2D(c) + b.distance2D(c)-a.distance2D(b)))<=EPSILON)
 			return true; // C is on the line.

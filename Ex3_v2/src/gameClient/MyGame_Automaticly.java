@@ -90,10 +90,11 @@ public class MyGame_Automaticly implements MyGame{
 
 		}
 		catch (Exception e) {	e.printStackTrace();}
-		if(scenario_num<10)
-			sleep =150;
+
+		if(scenario_num<9)
+			sleep =122;
 		else
-			sleep =100;
+			sleep =90;
 	}
 	/**
 	 * Returns a list of the fruit locations, allowing the bots to be strategically placed.
@@ -102,11 +103,11 @@ public class MyGame_Automaticly implements MyGame{
 	@Override
 	public List<edge_data> setBots() {
 
-		Iterator <Fruit> it=_fruit.iterator();
 		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
-		while(it.hasNext())
+		for(Fruit f :_fruit)
 		{
-			Edges.add(it.next().getEdge());
+			if(f.getTag()==0)
+				Edges.add(f.getEdge());
 		}
 		return  Edges;
 	}
@@ -125,27 +126,42 @@ public class MyGame_Automaticly implements MyGame{
 				f.initFruit(f_iter.next());
 				_fruit.add(f);
 			}
-			targets=setBots();	
 			Collection<Bots> robots =Robots.values();
 			for (Bots b : robots) 
 			{
+				targets.clear();
+				targets=setBots();
 				if(b.getDest()==-1)
 				{
 					botToMove=b.getId();
 					i+=setPath();
 					Iterator <node_data> it= b.getPath().iterator();
+					node_data src=null;
+					if(it.hasNext())
+					{
+						src=it.next();
+						game.chooseNextEdge(b.getId(),src.getKey());
+
+					}
 					while(it.hasNext())
 					{
-						game.chooseNextEdge(b.getId(), it.next().getKey());
+						node_data dest=it.next();
+						game.chooseNextEdge(b.getId(), dest.getKey());
+						for(Fruit f :_fruit)
+						{
+							if((f.getEdge().getSrc()==src.getKey()) &&(f.getEdge().getDest()==dest.getKey()))
+								f.setTag(100);
+						}
+						src=dest;
 					}
 					b.setDest(-1);
 					b.setPath(null);
-					if(b.getSpeed()>maxSpeed)
-					{
-						maxSpeed=b.getSpeed();
-						sleep=sleep-2;
-					}
 				}
+//				if(b.getSpeed()>this.maxSpeed)
+//				{
+//					this.maxSpeed=b.getSpeed();
+//					sleep--;
+//				}
 			}
 			Robots.clear();
 			List<String> botsStr = game.getRobots();
@@ -165,7 +181,6 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public int setPath() {
-		edge_data remove=null;
 		graph_algorithms gg=new Graph_Algo(_graph);
 		double min=Double.MAX_VALUE;
 		IBots b=Robots.get(botToMove);
@@ -174,10 +189,9 @@ public class MyGame_Automaticly implements MyGame{
 			if(l.getSrc()==b.getSrc())
 			{
 				double temp=l.getWeight();
-				if(temp<=min)
+				if(temp<min)
 				{
 					min=temp;
-					remove=l;
 					ArrayList<node_data> tempPath=new ArrayList<node_data> ();
 					tempPath.add(_graph.getNode(l.getSrc()));
 					tempPath.add(_graph.getNode(l.getDest()));
@@ -187,17 +201,15 @@ public class MyGame_Automaticly implements MyGame{
 			else
 			{
 				double temp=gg.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
-				if(temp<=min)
+				if(temp<min)
 				{
-					remove=l;
 					min=temp;
 					b.setPath(gg.shortestPath(b.getSrc(),l.getSrc()));
 					b.getPath().add(_graph.getNode(l.getDest()));
 				}	
 			}
 		}
-		targets.remove(remove);
-		return 1;
+		return b.getPath().size();
 	}
 	/**
 	 * Returns the graph on which the game is held.
@@ -245,7 +257,7 @@ public class MyGame_Automaticly implements MyGame{
 
 			@Override
 			public void run() {
-				while(game!=null)
+				while((game!=null)&&(game.isRunning()))
 				{
 					try {
 						Thread.sleep(sleep);
