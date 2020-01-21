@@ -420,7 +420,7 @@ public class MyGameGui
 						e.printStackTrace();
 					}
 
-					k.createRFKML();
+					k.createRFKML(m.getFruits(),m.getRobotes());
 
 				}
 			}

@@ -141,7 +141,7 @@ public class MyGame_Automaticly implements MyGame{
 					if(b.getSpeed()>this.maxSpeed)
 					{
 						this.maxSpeed=b.getSpeed();
-						sleep--;
+						sleep=sleep-2;
 				}
 			}
 			}

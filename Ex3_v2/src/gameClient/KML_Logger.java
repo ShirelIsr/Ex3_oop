@@ -15,7 +15,6 @@ public class KML_Logger {
 	game_service game;
 	MyGame kGame;
 	String KML = "";
-
 	public KML_Logger() {
 
 	}
@@ -39,6 +38,7 @@ public class KML_Logger {
 	public graph getGraph() {
 		return this.graph;
 	}
+
 
 	public void createENKML() {
 		Collection<node_data> nodes =graph.getV();
@@ -176,9 +176,10 @@ public class KML_Logger {
 		LocalTime t1 = LocalTime.now();
 		t1=t1.plusNanos(100*1000000);
 		after = java.time.LocalDate.now()+"T"+t1;
-		Collection<Bots> robots = kGame.getRobotes();
-		ArrayList<Fruit> fruits = kGame.getFruits();
+		
 		String robot = "";
+		if(robots !=null)
+		{
 		for (Bots kBot: robots) {
 			robot += "	<name>Robot.kml</name> \r\n" + 
 					"					<Style id=\"sn_motorcycling\"> \r\n" + 
@@ -240,8 +241,10 @@ public class KML_Logger {
 					"		</Point>\r\n" + 
 					"	</Placemark>";
 		}
-
+		}
 		String fruit = "" ;
+		if(fruits!=null)
+		{
 		for (Fruit kFruit : fruits) {
 			fruit += "	<name>fruit.kml</name>\r\n" + 
 					"					<StyleMap id=\"msn_dollar\">\r\n" + 
@@ -303,6 +306,7 @@ public class KML_Logger {
 					"			<coordinates>"+kFruit.getLocation().x()+","+kFruit.getLocation().y()+",0</coordinates>\r\n" + 
 					"		</Point>\r\n" + 
 					"	</Placemark>";
+		}
 		}
 
 		KML += robot+fruit;
