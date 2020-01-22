@@ -188,7 +188,6 @@ public class MyGame_Automaticly implements MyGame{
 	@Override
 	public int setPath() {
 		IBots b=Robots.get(botToMove);
-		if(b.getPath()!=null) return -1;
 		targets=new ArrayList<edge_data>();
 		targets.clear();
 		targets=setBots();
@@ -263,7 +262,8 @@ public class MyGame_Automaticly implements MyGame{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					game.move();
+					if(game!=null)
+						game.move();
 				}
 			}
 		});

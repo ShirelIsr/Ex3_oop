@@ -437,8 +437,6 @@ public class MyGameGui
 
 	}
 
-
-
 	////////////////////////////////////////////////////////
 	Thread KMLt;
 	public void KMLthread(game_service game)
