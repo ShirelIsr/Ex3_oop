@@ -1726,6 +1726,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		case "Results" :graph.BestScore();
 		break;
 		case "Login" :graph.LoginGame();
+		break;
 
 		case "Auto" : 
 		{
@@ -1733,12 +1734,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		}
 		break;
 		case "Manual":
-
-		{
-			
-			
 			threadman();
-		}
 		}
 	}
 
