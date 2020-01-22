@@ -1,20 +1,29 @@
 package gameClient;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.PriorityQueue;
 
 import javax.swing.JOptionPane;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileSystemView;
 
 import org.json.JSONException;
@@ -24,6 +33,7 @@ import Server.Game_Server;
 import Server.game_service;
 import algorithms.Graph_Algo;
 import algorithms.graph_algorithms;
+
 import dataStructure.DGraph;
 import dataStructure.NodeData;
 import dataStructure.edge_data;
@@ -42,6 +52,7 @@ public class MyGameGui
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final Graphics Graphics = null;
 	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
 	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
@@ -174,7 +185,7 @@ public class MyGameGui
 			int num = Integer.parseInt(scenario_num);
 			if(num>=0 && num<=23)
 			{
-			//	int id=312354210;
+				//	int id=312354210;
 				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Manual();
 				m.initGame(num);
@@ -196,7 +207,7 @@ public class MyGameGui
 	private void playManual()
 	{
 		game.startGame();
-		 m.MoveThread();
+		m.MoveThread();
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
@@ -216,8 +227,8 @@ public class MyGameGui
 			{
 				int id=312354210;
 				System.out.println("ozoo");
-			
-				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
+
+				System.out.println(Game_Server.login(id)+"shirel id :"+id);
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -235,15 +246,15 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 
 	private void  playAuto() {
 		game.startGame();
 		k=new KML_Logger(m);
 		k.createENKML();
-		 KMLthread(game);
-		 m.MoveThread();
+		KMLthread(game);
+		m.MoveThread();
 		while(game.isRunning())
 		{
 			time = game.timeToEnd() / 1000;
@@ -327,87 +338,102 @@ public class MyGameGui
 		}
 	}
 
-	public void SP() 
+
+	public void BestScore()
 	{
-		String src=  JOptionPane.showInputDialog("Please input the src ");
-		String dst=  JOptionPane.showInputDialog("Please input the dest");
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		List <node_data> ans=g.shortestPath(Integer.parseInt(src),Integer.parseInt(dst));
-		if (ans ==null)
-		{
-			JOptionPane.showMessageDialog(null,"Err, There is no path between the points :", "shortest path points \"+src+\"-\"+dst", JOptionPane.INFORMATION_MESSAGE);
-			return;
-		}
-		int s=0;
-		for (int d=1;d<ans.size();d++,s++)
-		{
-			Gui_Graph.getEdge(ans.get(s).getKey(),ans.get(d).getKey()).setTag(Double.MIN_EXPONENT);
-		}
-		paint();
+		HashMap <Integer,Double> minScor =new HashMap<Integer,Double>();
+		minScor.put(0, 145.0);
+		minScor.put(1, 450.0);
+		minScor.put(3, 720.0);
+		minScor.put(5, 570.0);
+		minScor.put(9, 510.0);
+		minScor.put(11, 1050.0);
+		minScor.put(13, 310.0);
+		minScor.put(16,235.0);
+		minScor.put(19, 250.0);
+		minScor.put(20, 200.0);
+		minScor.put(23, 1000.0);
+		HashMap <Integer,Integer> minMove =new HashMap<Integer,Integer>();
+		minMove.put(0, 290);
+		minMove.put(1, 580);
+		minMove.put(3, 580);
+		minMove.put(5, 580);
+		minMove.put(9, 500);
+		minMove.put(11, 580);
+		minMove.put(13, 580);
+		minMove.put(16,290);
+		minMove.put(19, 580);
+		minMove.put(20, 290);
+		minMove.put(23, 1140);
+		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
+		int id =312354210;
+		int count =0;
 
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = 
+					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
+			Statement statement = connection.createStatement();
+			String allCustomersQuery = "SELECT * FROM Logs;";
+			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
 
-	}
-
-	public void SPD() 
-	{
-		String src=  JOptionPane.showInputDialog("Please input a starting point");
-		String dst=  JOptionPane.showInputDialog("Please input a ending point");
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		double ans =g.shortestPathDist(Integer.parseInt(src),Integer.parseInt(dst));
-		if(ans !=Double.MAX_VALUE)
-		{
-			JOptionPane.showMessageDialog(null,"The shortest path dist is:\n "+ans,"shortest path", JOptionPane.INFORMATION_MESSAGE);
-		}
-		else 
-		{
-			JOptionPane.showMessageDialog(null,"The shortest path dist is:\n "+Double.POSITIVE_INFINITY, "shortest path:", JOptionPane.INFORMATION_MESSAGE);	
-		}
-	}
-
-	public void TSP() 
-	{
-		List <Integer> targets =new ArrayList<Integer>();
-		int repeat;
-		String input="";
-		do {
-			input=JOptionPane.showInputDialog("Please input the points \n ");
-			try {
-				targets.add(Integer.parseInt(input));
-			}
-			catch(Exception ex)
+			while(resultSet.next())
 			{
-				JOptionPane.showMessageDialog(null,"","ERR", JOptionPane.INFORMATION_MESSAGE);
-				ex.printStackTrace();
-				return;
+				if(resultSet.getInt("UserID")==id)
+				{
+					int levelID=resultSet.getInt("levelID");
+					if(!minMove.containsKey(levelID))
+						minMove.put(levelID,Integer.MAX_VALUE);
+					if(!minScor.containsKey(levelID))
+						minScor.put(levelID, 0.0);
+					if(IDScor.get(levelID)==null)
+						IDScor.put(levelID,0.0);
+					Double scorID=resultSet.getDouble("score");
+					if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
+						if(IDScor.get(levelID)>scorID)
+							IDScor.put(levelID,scorID);
+				}
 			}
-			repeat = JOptionPane.showConfirmDialog(null, "Press Yes to repeat, No to quit ", "please confirmm", JOptionPane.YES_NO_OPTION);
-		}while(repeat == JOptionPane.YES_OPTION);
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		List <node_data> ans =g.TSP(targets);
-		if (ans ==null)
-		{
-			JOptionPane.showMessageDialog(null,"Err, There is no path between the points ", "shortest path", JOptionPane.INFORMATION_MESSAGE);
-			return;
+			resultSet.close();
+			statement.close();		
+			connection.close();	
+			count++;
 		}
-		int src=0;
-		String pathAns=""+ans.get(src).getKey();
-		for (int dst=1;dst<ans.size();dst++,src++)
-		{
-			Gui_Graph.getEdge(ans.get(src).getKey(),ans.get(dst).getKey()).setTag(Double.MIN_EXPONENT);
-			pathAns+="->"+ans.get(dst).getKey();
+		catch (SQLException sqle) {
+			System.out.println("SQLException: " + sqle.getMessage());
+			System.out.println("Vendor Error: " + sqle.getErrorCode());
 		}
-		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
-		paint();
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		Collection<Integer> s=IDScor.keySet();
+
+		JFrame jinput = new JFrame();
+		jinput.setSize(500,500);
+		jinput.setTitle("BEST SCORE!");
+		jinput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jinput.setVisible(true); 
+		Graphics g = jinput.getGraphics();
+		g.setColor(Color.BLACK);
+		g.fillOval(60,60,12,12);
+	//	g.setFont("Times new Roman.");
+		g.drawString("The number of games you playd"+count,100,100);
+		int j=2;
+		for(Integer i:s)
+		{
+			g.drawString("The level "+i+"   your score "+IDScor.get(i),100-j,100-j);
+		}
+		g.dispose();
+
 	}
+
+
 
 	////////////////////////////////////////////////////////
 	Thread KMLt;
 	public void KMLthread(game_service game)
 	{
-	//	System.out.println("123");
+		//	System.out.println("123");
 		KMLt = new Thread(new Runnable() {
 
 			@Override

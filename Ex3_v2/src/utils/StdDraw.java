@@ -726,27 +726,25 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu play = new JMenu("Play");
-		JMenu algo = new JMenu("Algo");
+		JMenu Info = new JMenu("Info");
 		menuBar.add(file);
 		menuBar.add(play);
-		menuBar.add(algo);
+		menuBar.add(Info);
 		JMenuItem menuItem1 = new JMenuItem(" Save...");
 		JMenuItem auto = new JMenuItem("Auto");
 		JMenuItem manual = new JMenuItem("Manual");
-		JMenuItem SP = new JMenuItem("SP");
-		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
+		JMenuItem Results = new JMenuItem("Results");
 		menuItem1.addActionListener(std);
 		auto.addActionListener(std);
 		manual.addActionListener(std);
-		TSP.addActionListener(std);
-		SP.addActionListener(std);
+		Results.addActionListener(std);
+	
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
 		play.add(auto);
 		play.add(manual);
-		algo.add(TSP);
-		algo.add(SP);
+		Info.add(Results);
 		return menuBar;
 	}
 
@@ -1717,12 +1715,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Save to file" :graph.save();
 		break;
-		case "find Shortest path" : graph.SP();
+		case "Results" :graph.BestScore();
 		break;
-		case "find Shortest path distance" : graph.SPD();
-		break;
-		case "TSP enter all the nodes" : graph.TSP();
-		break;
+
 		case "Auto" : 
 		{
 			JFrame jinput = new JFrame();

@@ -132,25 +132,24 @@ public class MyGame_Automaticly implements MyGame{
 					if(setPath()>0)
 					{
 						Iterator <node_data> it= b.getPath().iterator();
-						node_data src=null;
+						int src=0;
 						if(it.hasNext())
 						{
-							src=it.next();
-							game.chooseNextEdge(b.getId(),src.getKey());
+							src=it.next().getKey();
+							game.chooseNextEdge(b.getId(),src);
 
 						}
 						while(it.hasNext())
 						{
-							node_data dest=it.next();
-							game.chooseNextEdge(b.getId(), dest.getKey());
+							int dest=it.next().getKey();
+							game.chooseNextEdge(b.getId(), dest);
 							for(Fruit f :_fruit)
 							{
-								if((f.getEdge().getSrc()==src.getKey()) &&(f.getEdge().getDest()==dest.getKey()))
+								if((f.getEdge().getSrc()==src) &&(f.getEdge().getDest()==dest))
 									f.setTag(100);
 							}
 							src=dest;
 						}
-						b.setDest(-1);
 						b.setPath(null);
 					}
 				}
@@ -178,7 +177,6 @@ public class MyGame_Automaticly implements MyGame{
 				Robots.put(ber.getId(), ber);
 			}
 
-
 		}
 		catch (JSONException e) {e.printStackTrace();}
 
@@ -192,9 +190,9 @@ public class MyGame_Automaticly implements MyGame{
 		IBots b=Robots.get(botToMove);
 		if(b.getPath()!=null) return -1;
 		targets=new ArrayList<edge_data>();
-		List<node_data> tmpP=new ArrayList<node_data>();
 		targets.clear();
 		targets=setBots();
+		edge_data tmpE=null;
 		double min=Double.MAX_VALUE;
 		for (edge_data l:targets)
 		{
@@ -202,12 +200,13 @@ public class MyGame_Automaticly implements MyGame{
 			if(temp<min)
 			{
 				min=temp;
-				tmpP=new ArrayList<node_data>();
-				tmpP.clear();
-				tmpP=algo_graph.shortestPath(b.getSrc(),l.getSrc());
-				tmpP.add(_graph.getNode(l.getDest()));
+				tmpE=l;
 			}	
 		}
+		List<node_data> tmpP=new ArrayList<node_data>();
+		tmpP.clear();
+		tmpP=algo_graph.shortestPath(b.getSrc(),tmpE.getSrc());
+		tmpP.add(_graph.getNode(tmpE.getDest()));
 		b.setPath(tmpP);
 		return tmpP.size();
 	}
