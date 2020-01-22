@@ -35,7 +35,7 @@ public interface IFruit {
 	 *  Returns the location of the fruit.
 	 * @return
 	 */
-	public Point3D getlocaiton();
+	public Point3D getLocation();
 	
 	/**
 	 *  Updates the fruit score value.

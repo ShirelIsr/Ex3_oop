@@ -10,7 +10,7 @@ import dataStructure.graph;
 import dataStructure.node_data;
 import utils.Point3D;
 
-public class Fruit {
+public class Fruit implements IFruit{
 	int type;
 	double value;
 	Point3D location;
@@ -168,5 +168,7 @@ public class Fruit {
 			return true; // C is on the line.
 		return false; 
 	}
+
+
 
 }

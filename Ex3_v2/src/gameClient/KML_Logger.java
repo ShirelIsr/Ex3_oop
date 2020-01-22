@@ -356,12 +356,16 @@ public class KML_Logger {
 		KML += fruit + robot;
 //		save(KML);
 	}
+	
+	public String getKML() {
+		return this.KML;
+	}
 
 	public void save() {
 		try {
 			KML+="</Document>\r\n" + 
 					"</kml>";
-			
+			//game.sendKML(KML);
 			FileWriter fw = new FileWriter("23.kml");
 			fw.write(KML);
 			fw.close();

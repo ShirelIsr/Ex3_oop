@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -46,14 +47,12 @@ import utils.Point3D;
 import utils.StdDraw;
 
 
-public class MyGameGui  
+public class MyGameGui extends JPanel
 {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final Graphics Graphics = null;
-	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
 	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
 	private double xMin=Double.MIN_VALUE;
@@ -178,15 +177,30 @@ public class MyGameGui
 		StdDraw.textLeft(this.xMax + 0.00006 , this.yMax + 0.00006 , "time: " + time);
 	}
 
-	public void Play_manual(String scenario_num)
+	public void Play_manual()
 	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
+		JFrame jinput = new JFrame();
+		try {
+			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
+			if(repeat == JOptionPane.YES_OPTION);
+			{
+				String id=JOptionPane.showInputDialog(jinput,"To login enter your ID");
+				if(id.length()<=9)
+				{
+					int ID=Integer.parseInt(id);
+					if(Game_Server.login(ID))
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is Succeeded");
+					else
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is faild");
+
+				}
+			}
+
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
 			{
-				//	int id=312354210;
-				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
+
 				m=new MyGame_Manual();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -195,15 +209,17 @@ public class MyGameGui
 			}
 			else
 			{
-				JFrame jinput = new JFrame();
 				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected");
 				jinput.dispose();
 			}
 		}
+
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+
 	private void playManual()
 	{
 		game.startGame();
@@ -211,24 +227,34 @@ public class MyGameGui
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
-			time = game.timeToEnd() / 1000;
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
 	}
 
 
-	public  void Play_Automaticly(String scenario_num)
+	public  void Play_Automaticly()
 	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
-			if(num>=0 && num<=23)
+		JFrame jinput = new JFrame();
+		try{
+			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
+			if(repeat==JOptionPane.YES_OPTION)
 			{
-				int id=312354210;
-				System.out.println("ozoo");
+				String id=JOptionPane.showInputDialog(jinput,"To login enter your ID");
+				if(id.length()<=9)
+				{
+					int ID=Integer.parseInt(id);
+					if(Game_Server.login(ID))
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is Succeeded");
+					else
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is faild");
 
-				System.out.println(Game_Server.login(id)+"shirel id :"+id);
+				}
+			}
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			int num = Integer.parseInt(input);
+			if(num>=0 && num<=23)
+			{	
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -237,7 +263,6 @@ public class MyGameGui
 			}
 			else
 			{
-				JFrame jinput = new JFrame();
 				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
 				jinput.dispose();
 			}
@@ -246,7 +271,6 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 	}
-
 
 
 	private void  playAuto() {
@@ -262,6 +286,8 @@ public class MyGameGui
 			paint();
 		}
 		k.save();
+		String kml = k.getKML();
+		game.sendKML(kml);
 		System.out.println("Game Over :" +game.toString());
 	}
 
@@ -324,24 +350,18 @@ public class MyGameGui
 		this.yMax=y[s.size()-1];
 	}
 
-	public void isConnect() {
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		boolean ans = g.isConnected();
-		if(ans)
-		{
-			JOptionPane.showMessageDialog(null,"The graph is connected", "isConnected", JOptionPane.QUESTION_MESSAGE);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "The graph is not connected", "isConnected", JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
-
-
 	public void BestScore()
 
 	{
+
+		JFrame insert = new JFrame();
+		String input = JOptionPane.showInputDialog(insert,"Insert yours ID");
+		insert.dispose();
+		//threadauto(input);
+		int id = Integer.parseInt(input);
+
+
+
 		HashMap <Integer,Double[]> minScor =new HashMap<Integer,Double[]>();
 		minScor.put(0,new Double[]{147.0,290.0});
 		minScor.put(1, new Double[]{450.0,580.0});
@@ -354,10 +374,8 @@ public class MyGameGui
 		minScor.put(20, new Double[]{200.0,290.0});
 		minScor.put(23, new Double[]{1000.0,1140.0});
 
-
 		HashMap <Integer,Double[]> IDScor =new HashMap<Integer,Double[]>();
 		HashMap<Integer, ArrayList<Integer>> users=new HashMap<Integer,ArrayList<Integer>>();
-		int id =312354210;
 		int count =0;
 		int maxLevel=0;
 		try {
@@ -426,14 +444,21 @@ public class MyGameGui
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		System.out.println("you played "+count);
-		for(int i=0;i<=23;i++)
-		{
-			if(IDScor.containsKey(i))
-				System.out.println("in level "+i+"your best score is"+IDScor.get(i)[0]+"your moves "+IDScor.get(i)[1]+ "+the place is "+users.get(i).size());
-		}
-		System.out.println("your max level is "+maxLevel);
+		//System.out.println("you played "+count);
 
+		JFrame jinput = new JFrame();
+		//		jinput.setSize(500,500);
+		//		jinput.setTitle("Game results!");
+		String res = "";
+		res += "\nThe number of games you played: "+count;
+		for(int i =0; i<= 23; i++)
+		{
+			if(IDScor.containsKey(i)) {
+				res += "\nlevel "+i+" score "+IDScor.get(i)[0]+" moves "+IDScor.get(i)[1]+" place "+users.get(i).size();
+			}
+		}
+		JOptionPane.showMessageDialog(jinput,"\nyour max level is "+maxLevel+res);
+		//jinput.setVisible(true);
 
 	}
 
@@ -462,6 +487,7 @@ public class MyGameGui
 		});
 		KMLt.start();
 	}
+
 	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 		MyGameGui app = new MyGameGui();

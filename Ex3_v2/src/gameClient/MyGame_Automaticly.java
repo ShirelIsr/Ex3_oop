@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.PriorityQueue;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,12 +95,14 @@ public class MyGame_Automaticly implements MyGame{
 
 		}
 		catch (Exception e) {	e.printStackTrace();}
+
 		if(scenario_num<=11)
-			sleep =122;
+			sleep =120;
 		else if(scenario_num<=20)
 			sleep =105;
 		else
-			sleep=55;
+			sleep=52;
+
 	}
 	/**
 	 * Returns a list of the fruit locations, allowing the bots to be strategically placed.
@@ -107,13 +110,13 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public List<edge_data> setBots() {
+		_fruit.sort(new scor_cmp());
 		ArrayList <edge_data> Edges=new ArrayList<edge_data>();
 		Edges.clear();
 		for(Fruit f :_fruit)
 		{
-			if(f.getTag()==0)
+			if(f.getTag()!=100)
 				Edges.add(f.getEdge());
-
 		}
 		return  Edges;
 	}
@@ -176,7 +179,6 @@ public class MyGame_Automaticly implements MyGame{
 				ber.initBot(string);
 				Robots.put(ber.getId(), ber);
 			}
-
 		}
 		catch (JSONException e) {e.printStackTrace();}
 
@@ -187,20 +189,21 @@ public class MyGame_Automaticly implements MyGame{
 
 	@Override
 	public int setPath() {
-		IBots b=Robots.get(botToMove);
-		targets=new ArrayList<edge_data>();
-		targets.clear();
-		targets=setBots();
+		_fruit.sort(new scor_cmp());
+		Bots b=this.Robots.get(botToMove);
 		edge_data tmpE=null;
 		double min=Double.MAX_VALUE;
-		for (edge_data l:targets)
+		for (IFruit l:_fruit)
 		{
-			double temp=algo_graph.shortestPathDist(b.getSrc(),l.getSrc())+l.getWeight();
-			if(temp<min)
+			if(l.getTag()!=100)
 			{
-				min=temp;
-				tmpE=l;
-			}	
+				double temp=algo_graph.shortestPathDist(b.getSrc(),l.getEdge().getSrc())+l.getEdge().getWeight();
+				if(temp<min)
+				{
+					min=temp;
+					tmpE=l.getEdge();
+				}	
+			}
 		}
 		List<node_data> tmpP=new ArrayList<node_data>();
 		tmpP.clear();

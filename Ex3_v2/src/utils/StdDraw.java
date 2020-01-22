@@ -61,6 +61,11 @@ import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.LinkedList;
 import java.util.TreeSet;
@@ -714,7 +719,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);            // closes all windows
 		// frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);      // closes only current window
-		frame.setTitle("Standard Draw");
+		frame.setTitle("The Maze of Waze");
 		frame.setJMenuBar(createMenuBar());
 		frame.pack();
 		frame.requestFocusInWindow();
@@ -738,7 +743,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		auto.addActionListener(std);
 		manual.addActionListener(std);
 		Results.addActionListener(std);
-	
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
@@ -1670,30 +1674,30 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			System.out.println("Invalid image file type: " + suffix);
 		}
 	}
-//	KML_Logger kml = new KML_Logger();
-//	//
-//	Thread KMLt;
-//	public void KMLthread(game_service game)
-//	{
-//		KMLt = new Thread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-//				while(game.isRunning())
-//				{
-//					long timeToSleep = 100;
-//					try {
-//						Thread.sleep(timeToSleep);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//					kml.createRFKML();;
-//					
-//				}
-//			}
-//		});
-//		KMLt.start();
-//	}
+	//	KML_Logger kml = new KML_Logger();
+	//	//
+	//	Thread KMLt;
+	//	public void KMLthread(game_service game)
+	//	{
+	//		KMLt = new Thread(new Runnable() {
+	//
+	//			@Override
+	//			public void run() {
+	//				while(game.isRunning())
+	//				{
+	//					long timeToSleep = 100;
+	//					try {
+	//						Thread.sleep(timeToSleep);
+	//					} catch (InterruptedException e) {
+	//						e.printStackTrace();
+	//					}
+	//					kml.createRFKML();;
+	//					
+	//				}
+	//			}
+	//		});
+	//		KMLt.start();
+	//	}
 
 
 	/**
@@ -1720,26 +1724,22 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 		case "Auto" : 
 		{
-			JFrame jinput = new JFrame();
-			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
-			jinput.dispose();
-			threadauto(input);
+			threadauto();
 		}
 		break;
 		case "Manual":
 
 		{
-			JFrame jinput = new JFrame();
-			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
-			jinput.dispose();
-			threadman(input);
+			
+			
+			threadman();
 		}
-
-		break;
 		}
 	}
 
-	public static void threadman(String s)
+
+
+	public static void threadman()
 	{
 		help = new Thread(new Runnable() {
 
@@ -1747,7 +1747,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			public void run() {
 
 				//g.ThreadPaint(game);
-				graph.Play_manual(s);
+				graph.Play_manual();
 				help.interrupt();
 			}
 		});
@@ -1755,7 +1755,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	}
 	static boolean startRun = true;
 	static Thread help2;
-	public static void threadauto(String s)
+	public static void threadauto()
 	{
 		help2 = new Thread(new Runnable() {
 
@@ -1763,9 +1763,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			public void run() {
 				if(startRun)
 				{
-				//g.ThreadPaint(game);
-				graph.Play_Automaticly(s);
-				startRun=false;
+					//g.ThreadPaint(game);
+					graph.Play_Automaticly();
+					startRun=false;
 				}
 
 				try {
@@ -1855,11 +1855,11 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
-//		synchronized (mouseLock) {
-//			mouseX = StdDraw.userX(e.getX());
-//			mouseY = StdDraw.userY(e.getY());
-//			isMousePressed = true;
-//		}
+		//		synchronized (mouseLock) {
+		//			mouseX = StdDraw.userX(e.getX());
+		//			mouseY = StdDraw.userY(e.getY());
+		//			isMousePressed = true;
+		//		}
 	}
 
 	/**
