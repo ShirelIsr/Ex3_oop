@@ -731,29 +731,24 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		JMenuBar menuBar = new JMenuBar();
 		JMenu file = new JMenu("File");
 		JMenu play = new JMenu("Play");
-		JMenu info = new JMenu("Info");
+		JMenu Info = new JMenu("Info");
 		menuBar.add(file);
 		menuBar.add(play);
-		menuBar.add(info);
+		menuBar.add(Info);
 		JMenuItem menuItem1 = new JMenuItem(" Save...");
 		JMenuItem auto = new JMenuItem("Auto");
 		JMenuItem manual = new JMenuItem("Manual");
-		JMenuItem gCount = new JMenuItem("Game counter");
-		JMenuItem test = new JMenuItem("text");
-		//		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
+		JMenuItem Results = new JMenuItem("Results");
 		menuItem1.addActionListener(std);
 		auto.addActionListener(std);
 		manual.addActionListener(std);
-		gCount.addActionListener(std);
-		test.addActionListener(std);
+		Results.addActionListener(std);
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
 		play.add(auto);
 		play.add(manual);
-		info.add(gCount);
-		info.add(test);
-		//		algo.add(SP);
+		Info.add(Results);
 		return menuBar;
 	}
 
@@ -1724,6 +1719,9 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Save to file" :graph.save();
 		break;
+		case "Results" :graph.BestScore();
+		break;
+
 		case "Auto" : 
 		{
 			JFrame jinput = new JFrame();
@@ -1740,17 +1738,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			jinput.dispose();
 			threadman(input);
 		}
-		break;
-		case "Game counter":
-		{
-			graph.gameCounter();
-		}
-		break;
-		case "text":
-		{
-			graph.tTest();
-		}
-		break;
 		}
 	}
 

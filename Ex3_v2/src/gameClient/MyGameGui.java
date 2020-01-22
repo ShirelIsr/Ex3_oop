@@ -1,7 +1,10 @@
 package gameClient;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,12 +17,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.PriorityQueue;
 
 import javax.swing.JOptionPane;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileSystemView;
 
 import org.json.JSONException;
@@ -29,6 +33,7 @@ import Server.Game_Server;
 import Server.game_service;
 import algorithms.Graph_Algo;
 import algorithms.graph_algorithms;
+
 import dataStructure.DGraph;
 import dataStructure.NodeData;
 import dataStructure.edge_data;
@@ -47,6 +52,7 @@ public class MyGameGui
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static final Graphics Graphics = null;
 	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
 	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
@@ -320,16 +326,72 @@ public class MyGameGui
 	}
 
 	
-	public void gameCounter() {
-		JFrame jinput = new JFrame();
-		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
-		int userID=Integer.parseInt(input);
-		jinput.dispose();
-		int counter = 0;
-		int levId = -1;
-		int moves = 0;
-		int grade = 0;
-		int id = 0;
+//	public void gameCounter() {
+//		JFrame jinput = new JFrame();
+//		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
+//		int userID=Integer.parseInt(input);
+//		jinput.dispose();
+//		int counter = 0;
+//		int levId = -1;
+//		int moves = 0;
+//		int grade = 0;
+//		int id = 0;
+//		try {
+//			Class.forName("com.mysql.jdbc.Driver");
+//			Connection connection = 
+//					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
+//			Statement statement = connection.createStatement();
+//			String allCustomersQuery = "SELECT * FROM Logs;";
+//			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
+//
+//			while(resultSet.next())
+//			{
+//				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
+//				id  = resultSet.getInt("UserID");
+//				if(id == userID)
+//				{
+//					levId = resultSet.getInt("levelID");
+//					moves = resultSet.getInt("moves");
+//					//grade = resultSet.getInt("grade");
+//					System.out.println("levId= "+levId +"moves "+moves);
+//					counter++;
+//				}
+//			}
+//			resultSet.close();
+//			statement.close();		
+//			connection.close();		
+//		}
+
+	public void BestScore()
+	{
+		HashMap <Integer,Double> minScor =new HashMap<Integer,Double>();
+		minScor.put(0, 145.0);
+		minScor.put(1, 450.0);
+		minScor.put(3, 720.0);
+		minScor.put(5, 570.0);
+		minScor.put(9, 510.0);
+		minScor.put(11, 1050.0);
+		minScor.put(13, 310.0);
+		minScor.put(16,235.0);
+		minScor.put(19, 250.0);
+		minScor.put(20, 200.0);
+		minScor.put(23, 1000.0);
+		HashMap <Integer,Integer> minMove =new HashMap<Integer,Integer>();
+		minMove.put(0, 290);
+		minMove.put(1, 580);
+		minMove.put(3, 580);
+		minMove.put(5, 580);
+		minMove.put(9, 500);
+		minMove.put(11, 580);
+		minMove.put(13, 580);
+		minMove.put(16,290);
+		minMove.put(19, 580);
+		minMove.put(20, 290);
+		minMove.put(23, 1140);
+		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
+		int id =312354210;
+		int count =0;
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = 
@@ -340,22 +402,26 @@ public class MyGameGui
 
 			while(resultSet.next())
 			{
-				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
-				id  = resultSet.getInt("UserID");
-				if(id == userID)
+				if(resultSet.getInt("UserID")==id)
 				{
-					levId = resultSet.getInt("levelID");
-					moves = resultSet.getInt("moves");
-					//grade = resultSet.getInt("grade");
-					System.out.println("levId= "+levId +"moves "+moves);
-					counter++;
+					int levelID=resultSet.getInt("levelID");
+					if(!minMove.containsKey(levelID))
+						minMove.put(levelID,Integer.MAX_VALUE);
+					if(!minScor.containsKey(levelID))
+						minScor.put(levelID, 0.0);
+					if(IDScor.get(levelID)==null)
+						IDScor.put(levelID,0.0);
+					Double scorID=resultSet.getDouble("score");
+					if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
+						if(IDScor.get(levelID)>scorID)
+							IDScor.put(levelID,scorID);
 				}
 			}
 			resultSet.close();
 			statement.close();		
-			connection.close();		
+			connection.close();	
+			count++;
 		}
-
 		catch (SQLException sqle) {
 			System.out.println("SQLException: " + sqle.getMessage());
 			System.out.println("Vendor Error: " + sqle.getErrorCode());
@@ -363,15 +429,29 @@ public class MyGameGui
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		JFrame jinput1 = new JFrame();
-		JOptionPane.showMessageDialog(jinput1,"id:"+userID+"\nThe num of Games:"+counter+"\nlevel Id:"+levId+"\nmoves:"+moves+"\ngrade:"+grade,"Results", JOptionPane.INFORMATION_MESSAGE);
-	}
-	
-	public void tTest() {
-		StdDraw.textLeft(200, 600, "text text");
-		System.out.println("123");
-	}
+		Collection<Integer> s=IDScor.keySet();
 
+		JFrame jinput = new JFrame();
+		jinput.setSize(500,500);
+		jinput.setTitle("BEST SCORE!");
+		String res = "";
+		//jinput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//jinput.setVisible(true);
+		//Graphics g = jinput.getGraphics();
+		//g.setColor(Color.BLACK);
+		//g.fillOval(60,60,12,12);
+		//g.setFont("Times new Roman.");
+		res += "The number of games you playd: "+count;
+		
+		//int j=2;
+		for(Integer i:s)
+		{
+			res += "\nlevel "+i+" score "+IDScor.get(i);
+		}
+		JOptionPane.showMessageDialog(jinput,res);
+		//g.dispose();
+
+	}
 	////////////////////////////////////////////////////////
 	Thread KMLt;
 	public void KMLthread(game_service game)
