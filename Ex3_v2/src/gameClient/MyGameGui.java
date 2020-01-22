@@ -340,42 +340,26 @@ public class MyGameGui
 
 
 	public void BestScore()
+
 	{
-		HashMap <Integer,Double> minScor =new HashMap<Integer,Double>();
-		minScor.put(0, 145.0);
-		minScor.put(1, 450.0);
-		minScor.put(3, 720.0);
-		minScor.put(5, 570.0);
-		minScor.put(9, 510.0);
-		minScor.put(11, 1050.0);
-		minScor.put(13, 310.0);
-		minScor.put(16,235.0);
-		minScor.put(19, 250.0);
-		minScor.put(20, 200.0);
-		minScor.put(23, 1000.0);
-		HashMap <Integer,Integer> minMove =new HashMap<Integer,Integer>();
-		minMove.put(0, 290);
-		minMove.put(1, 580);
-		minMove.put(3, 580);
-		minMove.put(5, 580);
-		minMove.put(9, 500);
-		minMove.put(11, 580);
-		minMove.put(13, 580);
-		minMove.put(16,290);
-		minMove.put(19, 580);
-		minMove.put(20, 290);
-		minMove.put(23, 1140);
-		for(int i=0;i<=23;i++)
-		{
-			if(!minScor.containsKey(i))
-				minScor.put(i,0.0);
-			if(!minMove.containsKey(i))
-				minMove.put(i,Integer.MAX_VALUE);
-		}
-		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
+		HashMap <Integer,Double[]> minScor =new HashMap<Integer,Double[]>();
+		minScor.put(0,new Double[]{147.0,290.0});
+		minScor.put(1, new Double[]{450.0,580.0});
+		minScor.put(3, new Double[]{720.0,580.0});
+		minScor.put(5, new Double[]{570.0,500.0});
+		minScor.put(9,new Double[]{510.0,580.0});
+		minScor.put(11, new Double[]{1050.0,580.0});
+		minScor.put(16,new Double[]{235.0,290.0});
+		minScor.put(19, new Double[]{250.0,580.0});
+		minScor.put(20, new Double[]{200.0,290.0});
+		minScor.put(23, new Double[]{1000.0,1140.0});
+
+
+		HashMap <Integer,Double[]> IDScor =new HashMap<Integer,Double[]>();
 		HashMap<Integer, ArrayList<Integer>> users=new HashMap<Integer,ArrayList<Integer>>();
-		int id =203793344;
+		int id =312354210;
 		int count =0;
+		int maxLevel=0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = 
@@ -387,16 +371,27 @@ public class MyGameGui
 			while(resultSet.next())
 			{
 				if(resultSet.getInt("UserID")==id)
-				{
+				{ 
 					int levelID=resultSet.getInt("levelID");
-					Double scorID=resultSet.getDouble("score");
-					if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
-						if(IDScor.get(levelID)==null)
+					double score=resultSet.getDouble("score");
+					double move=(double)resultSet.getInt("moves");
+					if(minScor.containsKey(levelID))
+					{
+						if((score >= minScor.get(levelID)[0]) && (move<= minScor.get(levelID)[1]))
 						{
-							IDScor.put(levelID,scorID);
+							if(IDScor.get(levelID)==null)
+							{
+								IDScor.put(levelID,new Double[] {score,move});
+							}
+							else if(IDScor.get(levelID)[0]<=score)
+							{
+								IDScor.get(levelID)[0]=score;
+								IDScor.get(levelID)[1]=move;
+							}
+							if(maxLevel<levelID)
+								maxLevel=levelID;
 						}
-						else if(IDScor.get(levelID)>=scorID)
-							IDScor.put(levelID,scorID);
+					}
 					count++;
 				}
 			}
@@ -404,8 +399,8 @@ public class MyGameGui
 
 			while(resultSet.next())
 			{
-				int uID=resultSet.getInt("UserID");
-				if(uID!=id)
+				int UserID=resultSet.getInt("UserID");
+				if(UserID!=id)
 				{
 					int levelID=resultSet.getInt("levelID");
 					Double scorID=resultSet.getDouble("score");
@@ -413,10 +408,9 @@ public class MyGameGui
 						users.put(levelID, new ArrayList<Integer>());
 					if(IDScor.containsKey(levelID))
 					{
-						if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
-						if(!users.get(levelID).contains(uID) && (IDScor.get(levelID)>scorID))
-							users.get(levelID).add(uID);
-
+						if(scorID>=minScor.get(levelID)[0] &&((double)resultSet.getInt("moves")<=minScor.get(levelID)[1]))
+							if(!users.get(levelID).contains(UserID) && (IDScor.get(levelID)[0]<scorID))
+								users.get(levelID).add(UserID);
 					}
 				}
 			}
@@ -433,11 +427,12 @@ public class MyGameGui
 			e.printStackTrace();
 		}
 		System.out.println("you played "+count);
-		Collection<Integer> s=IDScor.keySet();
-		for(Integer i:s)
+		for(int i=0;i<=23;i++)
 		{
-			System.out.println("in level "+i+"your best score is"+IDScor.get(i)+ "the place is "+users.get(i).size());
+			if(IDScor.containsKey(i))
+				System.out.println("in level "+i+"your best score is"+IDScor.get(i)[0]+"your moves "+IDScor.get(i)[1]+ "+the place is "+users.get(i).size());
 		}
+		System.out.println("your max level is "+maxLevel);
 
 
 	}
