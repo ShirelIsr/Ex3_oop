@@ -373,6 +373,7 @@ public class MyGameGui
 				minMove.put(i,Integer.MAX_VALUE);
 		}
 		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
+		HashMap<Integer, ArrayList<Integer>> users=new HashMap<Integer,ArrayList<Integer>>();
 		int id =203793344;
 		int count =0;
 		try {
@@ -396,14 +397,11 @@ public class MyGameGui
 						}
 						else if(IDScor.get(levelID)>=scorID)
 							IDScor.put(levelID,scorID);
-
-
-
 					count++;
 				}
 			}
 			resultSet = statement.executeQuery(allCustomersQuery);
-			HashMap <Integer,Integer> users=new HashMap<Integer,Integer>();
+
 			while(resultSet.next())
 			{
 				int uID=resultSet.getInt("UserID");
@@ -411,10 +409,15 @@ public class MyGameGui
 				{
 					int levelID=resultSet.getInt("levelID");
 					Double scorID=resultSet.getDouble("score");
+					if(!users.containsKey(levelID))
+						users.put(levelID, new ArrayList<Integer>());
 					if(IDScor.containsKey(levelID))
-						if(IDScor.get(levelID)>scorID)
-							if(scorID>minScor.get(levelID) &&(resultSet.getInt("moves")<minMove.get(levelID)))
-								users.put(uID, levelID);
+					{
+						if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
+						if(!users.get(levelID).contains(uID) && (IDScor.get(levelID)>scorID))
+							users.get(levelID).add(uID);
+
+					}
 				}
 			}
 			resultSet.close();
@@ -433,7 +436,7 @@ public class MyGameGui
 		Collection<Integer> s=IDScor.keySet();
 		for(Integer i:s)
 		{
-			System.out.println("in level "+i+"your best score is"+IDScor.get(i) );
+			System.out.println("in level "+i+"your best score is"+IDScor.get(i)+ "the place is "+users.get(i).size());
 		}
 
 
