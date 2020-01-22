@@ -325,42 +325,42 @@ public class MyGameGui
 		this.yMax=y[s.size()-1];
 	}
 
-	
-//	public void gameCounter() {
-//		JFrame jinput = new JFrame();
-//		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
-//		int userID=Integer.parseInt(input);
-//		jinput.dispose();
-//		int counter = 0;
-//		int levId = -1;
-//		int moves = 0;
-//		int grade = 0;
-//		int id = 0;
-//		try {
-//			Class.forName("com.mysql.jdbc.Driver");
-//			Connection connection = 
-//					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
-//			Statement statement = connection.createStatement();
-//			String allCustomersQuery = "SELECT * FROM Logs;";
-//			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
-//
-//			while(resultSet.next())
-//			{
-//				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
-//				id  = resultSet.getInt("UserID");
-//				if(id == userID)
-//				{
-//					levId = resultSet.getInt("levelID");
-//					moves = resultSet.getInt("moves");
-//					//grade = resultSet.getInt("grade");
-//					System.out.println("levId= "+levId +"moves "+moves);
-//					counter++;
-//				}
-//			}
-//			resultSet.close();
-//			statement.close();		
-//			connection.close();		
-//		}
+
+	//	public void gameCounter() {
+	//		JFrame jinput = new JFrame();
+	//		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
+	//		int userID=Integer.parseInt(input);
+	//		jinput.dispose();
+	//		int counter = 0;
+	//		int levId = -1;
+	//		int moves = 0;
+	//		int grade = 0;
+	//		int id = 0;
+	//		try {
+	//			Class.forName("com.mysql.jdbc.Driver");
+	//			Connection connection = 
+	//					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
+	//			Statement statement = connection.createStatement();
+	//			String allCustomersQuery = "SELECT * FROM Logs;";
+	//			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
+	//
+	//			while(resultSet.next())
+	//			{
+	//				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
+	//				id  = resultSet.getInt("UserID");
+	//				if(id == userID)
+	//				{
+	//					levId = resultSet.getInt("levelID");
+	//					moves = resultSet.getInt("moves");
+	//					//grade = resultSet.getInt("grade");
+	//					System.out.println("levId= "+levId +"moves "+moves);
+	//					counter++;
+	//				}
+	//			}
+	//			resultSet.close();
+	//			statement.close();		
+	//			connection.close();		
+	//		}
 
 	public void BestScore()
 	{
@@ -388,10 +388,20 @@ public class MyGameGui
 		minMove.put(19, 580);
 		minMove.put(20, 290);
 		minMove.put(23, 1140);
+		for(int i=0;i<=23;i++)
+		{
+			if(!minScor.containsKey(i))
+				minScor.put(i,0.0);
+			if(!minMove.containsKey(i))
+				minMove.put(i,Integer.MAX_VALUE);
+		}
 		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
-		int id =312354210;
+		JFrame insert = new JFrame();
+		String input = JOptionPane.showInputDialog(insert,"Insert yours ID");
+		insert.dispose();
+		//threadauto(input);
+		int id = Integer.parseInt(input);
 		int count =0;
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = 
@@ -405,22 +415,39 @@ public class MyGameGui
 				if(resultSet.getInt("UserID")==id)
 				{
 					int levelID=resultSet.getInt("levelID");
-					if(!minMove.containsKey(levelID))
-						minMove.put(levelID,Integer.MAX_VALUE);
-					if(!minScor.containsKey(levelID))
-						minScor.put(levelID, 0.0);
-					if(IDScor.get(levelID)==null)
-						IDScor.put(levelID,0.0);
 					Double scorID=resultSet.getDouble("score");
 					if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
-						if(IDScor.get(levelID)>scorID)
+						if(IDScor.get(levelID)==null)
+						{
 							IDScor.put(levelID,scorID);
+						}
+						else if(IDScor.get(levelID)>=scorID)
+							IDScor.put(levelID,scorID);
+
+
+
+					count++;
+				}
+			}
+			resultSet = statement.executeQuery(allCustomersQuery);
+			HashMap <Integer,Integer> users=new HashMap<Integer,Integer>();
+			while(resultSet.next())
+			{
+				int uID=resultSet.getInt("UserID");
+				if(uID!=id)
+				{
+					int levelID=resultSet.getInt("levelID");
+					Double scorID=resultSet.getDouble("score");
+					if(IDScor.containsKey(levelID))
+						if(IDScor.get(levelID)>scorID)
+							if(scorID>minScor.get(levelID) &&(resultSet.getInt("moves")<minMove.get(levelID)))
+								users.put(uID, levelID);
 				}
 			}
 			resultSet.close();
 			statement.close();		
 			connection.close();	
-			count++;
+
 		}
 		catch (SQLException sqle) {
 			System.out.println("SQLException: " + sqle.getMessage());
@@ -429,24 +456,19 @@ public class MyGameGui
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		Collection<Integer> s=IDScor.keySet();
-
+		System.out.println("you played "+count);
 		JFrame jinput = new JFrame();
 		jinput.setSize(500,500);
 		jinput.setTitle("BEST SCORE!");
 		String res = "";
-		//jinput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//jinput.setVisible(true);
-		//Graphics g = jinput.getGraphics();
-		//g.setColor(Color.BLACK);
-		//g.fillOval(60,60,12,12);
-		//g.setFont("Times new Roman.");
 		res += "The number of games you playd: "+count;
-		
+
 		//int j=2;
-		for(Integer i:s)
+		for(int i =0; i<= 23; i++)
 		{
-			res += "\nlevel "+i+" score "+IDScor.get(i);
+			if(IDScor.containsKey(i)) {
+				res += "\nlevel "+i+" score "+IDScor.get(i);
+			}
 		}
 		JOptionPane.showMessageDialog(jinput,res);
 		//g.dispose();
