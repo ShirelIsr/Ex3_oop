@@ -182,20 +182,6 @@ public class MyGameGui extends JPanel
 		JFrame jinput = new JFrame();
 		try {
 			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
-			if(repeat == JOptionPane.YES_OPTION);
-			{
-				String id=JOptionPane.showInputDialog(jinput,"To login enter your ID");
-				if(id.length()<=9)
-				{
-					int ID=Integer.parseInt(id);
-					if(Game_Server.login(ID))
-						JOptionPane.showConfirmDialog(jinput,"Loggin to server is Succeeded");
-					else
-						JOptionPane.showConfirmDialog(jinput,"Loggin to server is faild");
-
-				}
-			}
-
 			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
 			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
@@ -232,8 +218,7 @@ public class MyGameGui extends JPanel
 		System.out.println("Game Over: "+results);
 	}
 
-
-	public  void Play_Automaticly()
+	public void LoginGame()
 	{
 		JFrame jinput = new JFrame();
 		try{
@@ -251,6 +236,18 @@ public class MyGameGui extends JPanel
 
 				}
 			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+
+	public  void Play_Automaticly()
+	{
+		JFrame jinput = new JFrame();
+		try{
+			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
 			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
 			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
