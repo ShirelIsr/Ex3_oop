@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Cp1255" standalone="no"?>
+<jardesc>
+    <jar path="Ex3_v2/Ex4.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/Ex3_v2/Test.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" mainClassHandleIdentifier="=Ex3_v2/src&lt;gameClient{MyGameGui.java[MyGameGui" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+        <javaElement handleIdentifier="=Ex3_v2"/>
+    </selectedElements>
+</jardesc>
