@@ -739,18 +739,20 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		JMenuItem auto = new JMenuItem("Auto");
 		JMenuItem manual = new JMenuItem("Manual");
 		JMenuItem gCount = new JMenuItem("Game counter");
+		JMenuItem test = new JMenuItem("text");
 		//		JMenuItem TSP = new JMenuItem("TSP enter all the nodes");
 		menuItem1.addActionListener(std);
 		auto.addActionListener(std);
 		manual.addActionListener(std);
 		gCount.addActionListener(std);
-		//		SP.addActionListener(std);
+		test.addActionListener(std);
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
 		play.add(auto);
 		play.add(manual);
 		info.add(gCount);
+		info.add(test);
 		//		algo.add(SP);
 		return menuBar;
 	}
@@ -1722,12 +1724,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Save to file" :graph.save();
 		break;
-		case "find Shortest path" : graph.SP();
-		break;
-		case "find Shortest path distance" : graph.SPD();
-		break;
-		case "TSP enter all the nodes" : graph.TSP();
-		break;
 		case "Auto" : 
 		{
 			JFrame jinput = new JFrame();
@@ -1747,52 +1743,18 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Game counter":
 		{
-			int j = gameCounter();
-			JFrame jinput = new JFrame();
-			
-			//String input = 
-					JOptionPane.showMessageDialog(jinput,"The num of Games:" + j, "Game counter", JOptionPane.INFORMATION_MESSAGE);
-			jinput.dispose();
-			//threadauto(input);
+			graph.gameCounter();
+		}
+		break;
+		case "text":
+		{
+			graph.tTest();
 		}
 		break;
 		}
 	}
 
-	public int gameCounter() {
-		String jdbcUrl="jdbc:mysql://db-mysql-ams3-67328-do-user-4468260-0.db.ondigitalocean.com:25060/oop?useUnicode=yes&characterEncoding=UTF-8&useSSL=false";
-		String jdbcUser="student";
-		String jdbcUserPassword="OOP2020student";
-		int counter = 0;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection connection = 
-					DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcUserPassword);
-			Statement statement = connection.createStatement();
-			String allCustomersQuery = "SELECT * FROM Logs;";
-			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
 
-			while(resultSet.next())
-			{
-				System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
-				int i  = resultSet.getInt("UserID");
-				if(i == 203793344 || i == 312354210)
-					 counter++;
-			}
-			resultSet.close();
-			statement.close();		
-			connection.close();		
-		}
-
-		catch (SQLException sqle) {
-			System.out.println("SQLException: " + sqle.getMessage());
-			System.out.println("Vendor Error: " + sqle.getErrorCode());
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		return counter;
-	}
 
 	public static void threadman(String s)
 	{

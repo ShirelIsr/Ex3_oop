@@ -3,6 +3,11 @@ package gameClient;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -216,8 +221,7 @@ public class MyGameGui
 			{
 				int id=203793344;
 				System.out.println("ozo "+id);
-				//System.out.println(Game_Server.login(id));
-
+				System.out.println(Game_Server.login(id));		
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -315,94 +319,57 @@ public class MyGameGui
 		this.yMax=y[s.size()-1];
 	}
 
-	public void isConnect() {
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		boolean ans = g.isConnected();
-		if(ans)
-		{
-			JOptionPane.showMessageDialog(null,"The graph is connected", "isConnected", JOptionPane.QUESTION_MESSAGE);
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "The graph is not connected", "isConnected", JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
+	
+	public void gameCounter() {
+		JFrame jinput = new JFrame();
+		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
+		int userID=Integer.parseInt(input);
+		jinput.dispose();
+		int counter = 0;
+		int levId = -1;
+		int moves = 0;
+		int grade = 0;
+		int id = 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection connection = 
+					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
+			Statement statement = connection.createStatement();
+			String allCustomersQuery = "SELECT * FROM Logs;";
+			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
 
-	public void SP() 
-	{
-		String src=  JOptionPane.showInputDialog("Please input the src ");
-		String dst=  JOptionPane.showInputDialog("Please input the dest");
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		List <node_data> ans=g.shortestPath(Integer.parseInt(src),Integer.parseInt(dst));
-		if (ans ==null)
-		{
-			JOptionPane.showMessageDialog(null,"Err, There is no path between the points :", "shortest path points \"+src+\"-\"+dst", JOptionPane.INFORMATION_MESSAGE);
-			return;
-		}
-		int s=0;
-		for (int d=1;d<ans.size();d++,s++)
-		{
-			Gui_Graph.getEdge(ans.get(s).getKey(),ans.get(d).getKey()).setTag(Double.MIN_EXPONENT);
-		}
-		paint();
-
-
-	}
-
-	public void SPD() 
-	{
-		String src=  JOptionPane.showInputDialog("Please input a starting point");
-		String dst=  JOptionPane.showInputDialog("Please input a ending point");
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		double ans =g.shortestPathDist(Integer.parseInt(src),Integer.parseInt(dst));
-		if(ans !=Double.MAX_VALUE)
-		{
-			JOptionPane.showMessageDialog(null,"The shortest path dist is:\n "+ans,"shortest path", JOptionPane.INFORMATION_MESSAGE);
-		}
-		else 
-		{
-			JOptionPane.showMessageDialog(null,"The shortest path dist is:\n "+Double.POSITIVE_INFINITY, "shortest path:", JOptionPane.INFORMATION_MESSAGE);	
-		}
-	}
-
-	public void TSP() 
-	{
-		List <Integer> targets =new ArrayList<Integer>();
-		int repeat;
-		String input="";
-		do {
-			input=JOptionPane.showInputDialog("Please input the points \n ");
-			try {
-				targets.add(Integer.parseInt(input));
-			}
-			catch(Exception ex)
+			while(resultSet.next())
 			{
-				JOptionPane.showMessageDialog(null,"","ERR", JOptionPane.INFORMATION_MESSAGE);
-				ex.printStackTrace();
-				return;
+				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
+				id  = resultSet.getInt("UserID");
+				if(id == userID)
+				{
+					levId = resultSet.getInt("levelID");
+					moves = resultSet.getInt("moves");
+					//grade = resultSet.getInt("grade");
+					System.out.println("levId= "+levId +"moves "+moves);
+					counter++;
+				}
 			}
-			repeat = JOptionPane.showConfirmDialog(null, "Press Yes to repeat, No to quit ", "please confirmm", JOptionPane.YES_NO_OPTION);
-		}while(repeat == JOptionPane.YES_OPTION);
-		graph_algorithms g = new Graph_Algo();
-		g.init(Gui_Graph);
-		List <node_data> ans =g.TSP(targets);
-		if (ans ==null)
-		{
-			JOptionPane.showMessageDialog(null,"Err, There is no path between the points ", "shortest path", JOptionPane.INFORMATION_MESSAGE);
-			return;
+			resultSet.close();
+			statement.close();		
+			connection.close();		
 		}
-		int src=0;
-		String pathAns=""+ans.get(src).getKey();
-		for (int dst=1;dst<ans.size();dst++,src++)
-		{
-			Gui_Graph.getEdge(ans.get(src).getKey(),ans.get(dst).getKey()).setTag(Double.MIN_EXPONENT);
-			pathAns+="->"+ans.get(dst).getKey();
+
+		catch (SQLException sqle) {
+			System.out.println("SQLException: " + sqle.getMessage());
+			System.out.println("Vendor Error: " + sqle.getErrorCode());
 		}
-		JOptionPane.showMessageDialog(null,pathAns,"the path is:", JOptionPane.INFORMATION_MESSAGE);
-		paint();
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		JFrame jinput1 = new JFrame();
+		JOptionPane.showMessageDialog(jinput1,"id:"+userID+"\nThe num of Games:"+counter+"\nlevel Id:"+levId+"\nmoves:"+moves+"\ngrade:"+grade,"Results", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	public void tTest() {
+		StdDraw.textLeft(200, 600, "text text");
+		System.out.println("123");
 	}
 
 	////////////////////////////////////////////////////////
