@@ -53,8 +53,6 @@ public class MyGameGui extends JPanel
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static final Graphics Graphics = null;
-	private final double EPSILON = 0.0001;
 	//	private final double EPSILON2 = 0.01;
 	//	private static DecimalFormat df2 = new DecimalFormat("#.###");
 	private double xMin=Double.MIN_VALUE;
@@ -179,15 +177,30 @@ public class MyGameGui extends JPanel
 		StdDraw.textLeft(this.xMax + 0.00006 , this.yMax + 0.00006 , "time: " + time);
 	}
 
-	public void Play_manual(String scenario_num)
+	public void Play_manual()
 	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
+		JFrame jinput = new JFrame();
+		try {
+			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
+			if(repeat == JOptionPane.YES_OPTION);
+			{
+				String id=JOptionPane.showInputDialog(jinput,"To login enter your ID");
+				if(id.length()<=9)
+				{
+					int ID=Integer.parseInt(id);
+					if(Game_Server.login(ID))
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is Succeeded");
+					else
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is faild");
+
+				}
+			}
+
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
 			{
-				//	int id=312354210;
-				//System.out.println(Game_Server.login(id)+"shirel id :"+id);
+
 				m=new MyGame_Manual();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -196,15 +209,17 @@ public class MyGameGui extends JPanel
 			}
 			else
 			{
-				JFrame jinput = new JFrame();
 				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected");
 				jinput.dispose();
 			}
 		}
+
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
+
 	private void playManual()
 	{
 		game.startGame();
@@ -212,23 +227,34 @@ public class MyGameGui extends JPanel
 		while(game.isRunning()) {
 			m.moveRobot();
 			paint();
-			time = game.timeToEnd() / 1000;
 		}
 		String results = game.toString();
 		System.out.println("Game Over: "+results);
 	}
 
 
-	public  void Play_Automaticly(String scenario_num)
+	public  void Play_Automaticly()
 	{
-		try
-		{
-			int num = Integer.parseInt(scenario_num);
-			if(num>=0 && num<=23)
+		JFrame jinput = new JFrame();
+		try{
+			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
+			if(repeat==JOptionPane.YES_OPTION)
 			{
-				int id=203793344;
-				System.out.println("ozo "+id);
-				System.out.println(Game_Server.login(id));		
+				String id=JOptionPane.showInputDialog(jinput,"To login enter your ID");
+				if(id.length()<=9)
+				{
+					int ID=Integer.parseInt(id);
+					if(Game_Server.login(ID))
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is Succeeded");
+					else
+						JOptionPane.showConfirmDialog(jinput,"Loggin to server is faild");
+
+				}
+			}
+			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
+			int num = Integer.parseInt(input);
+			if(num>=0 && num<=23)
+			{	
 				m=new MyGame_Automaticly();
 				m.initGame(num);
 				this.game=m.getGame();
@@ -237,7 +263,6 @@ public class MyGameGui extends JPanel
 			}
 			else
 			{
-				JFrame jinput = new JFrame();
 				JOptionPane.showMessageDialog(jinput,"Err,The input is not expected ");
 				jinput.dispose();
 			}
@@ -246,7 +271,6 @@ public class MyGameGui extends JPanel
 			e.printStackTrace();
 		}
 	}
-
 
 
 	private void  playAuto() {
@@ -325,43 +349,6 @@ public class MyGameGui extends JPanel
 		this.yMin=y[0];
 		this.yMax=y[s.size()-1];
 	}
-
-
-	//	public void gameCounter() {
-	//		JFrame jinput = new JFrame();
-	//		String input = JOptionPane.showInputDialog(jinput,"Insert yours ID:");
-	//		int userID=Integer.parseInt(input);
-	//		jinput.dispose();
-	//		int counter = 0;
-	//		int levId = -1;
-	//		int moves = 0;
-	//		int grade = 0;
-	//		int id = 0;
-	//		try {
-	//			Class.forName("com.mysql.jdbc.Driver");
-	//			Connection connection = 
-	//					DriverManager.getConnection(SimpleDB.jdbcUrl, SimpleDB.jdbcUser, SimpleDB.jdbcUserPassword);
-	//			Statement statement = connection.createStatement();
-	//			String allCustomersQuery = "SELECT * FROM Logs;";
-	//			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
-	//
-	//			while(resultSet.next())
-	//			{
-	//				//System.out.println("Id: " + resultSet.getInt("UserID")+","+resultSet.getInt("levelID")+","+resultSet.getInt("moves")+","+resultSet.getDate("time"));
-	//				id  = resultSet.getInt("UserID");
-	//				if(id == userID)
-	//				{
-	//					levId = resultSet.getInt("levelID");
-	//					moves = resultSet.getInt("moves");
-	//					//grade = resultSet.getInt("grade");
-	//					System.out.println("levId= "+levId +"moves "+moves);
-	//					counter++;
-	//				}
-	//			}
-	//			resultSet.close();
-	//			statement.close();		
-	//			connection.close();		
-	//		}
 
 	public void BestScore()
 
@@ -460,8 +447,8 @@ public class MyGameGui extends JPanel
 		//System.out.println("you played "+count);
 
 		JFrame jinput = new JFrame();
-//		jinput.setSize(500,500);
-//		jinput.setTitle("Game results!");
+		//		jinput.setSize(500,500);
+		//		jinput.setTitle("Game results!");
 		String res = "";
 		res += "\nThe number of games you played: "+count;
 		for(int i =0; i<= 23; i++)
@@ -474,6 +461,7 @@ public class MyGameGui extends JPanel
 		//jinput.setVisible(true);
 
 	}
+
 	////////////////////////////////////////////////////////
 	Thread KMLt;
 	public void KMLthread(game_service game)
@@ -499,7 +487,7 @@ public class MyGameGui extends JPanel
 		});
 		KMLt.start();
 	}
-	
+
 	////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 		MyGameGui app = new MyGameGui();

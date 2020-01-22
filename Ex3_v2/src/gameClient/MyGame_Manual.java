@@ -1,6 +1,7 @@
 package gameClient;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,6 +15,7 @@ import Server.game_service;
 import dataStructure.DGraph;
 import dataStructure.edge_data;
 import dataStructure.graph;
+import dataStructure.node_data;
 import utils.Point3D;
 
 public  class MyGame_Manual implements MyGame {
@@ -24,6 +26,11 @@ public  class MyGame_Manual implements MyGame {
 	HashMap <Integer,Bots> Robots ;
 	graph _graph;
 	private double x,y;
+	private double xMin=Double.MIN_VALUE;
+	private double xMax=Double.MAX_VALUE;;
+	private double yMin=Double.MIN_VALUE;
+	private double yMax=Double.MAX_VALUE;
+	private final double EPSILON = 0.000000001;
 /**
  * Gets the game number and creates the game based on server data, everything is called from the json file.
  */
@@ -80,6 +87,7 @@ public  class MyGame_Manual implements MyGame {
 				b.initBot(str);
 				Robots.put(b.getId(), b);
 			}
+			set();
 
 		}
 		catch (Exception e) {
@@ -114,7 +122,6 @@ public  class MyGame_Manual implements MyGame {
 					{
 						System.out.println("you choose to move robot :"+rb.getId()+"move to "+dest);
 						game.chooseNextEdge(rb.getId(), dest);
-						game.move();
 					}
 				}
 				_fruit.clear();
@@ -130,9 +137,7 @@ public  class MyGame_Manual implements MyGame {
 				List<String> botsStr = game.getRobots();
 				for (String string : botsStr) {
 					Bots ber = new Bots();
-					//System.out.println(string);
 					ber.initBot(string);
-					//	System.out.println(string);
 					Robots.put(ber.getId(), ber);
 				}
 
@@ -153,35 +158,33 @@ public  class MyGame_Manual implements MyGame {
 			{
 				Point3D p=b.getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
-				if(dist<=0.0005)
+				if(dist<=(xMax-xMin)*0.06)
 				{
-					System.out.println(b.getId());
-					//System.out.println(x+""+y);
-					x=y=0;
 					flag=true;
-
 					botToMove= b.getId();
+					x=y=0;
+					System.out.println(botToMove);
 					return -1;
 				}
 			}
+			x=y=0;
 			return -1;
-		} else {
+		}
+		else {
 			int b=Robots.get(botToMove).getSrc();
-			//	System.out.println(b);
 			Collection<edge_data> edges =_graph.getE(b);
 			for (edge_data n : edges) 
 			{
 				Point3D p=_graph.getNode(n.getDest()).getLocation();
 				double dist=p.distance2D(new Point3D(x,y));
-				x=y=0;
-				if(dist<=0.0007)
+				if(dist<=(xMax-xMin)*0.07)
 				{
-					//x=y=0;
+					System.out.println(n.getDest());
 					flag=false;
-					System.out.println(x+""+y);
 					return n.getDest();
 				}
 			}
+			x=y=0;
 		}
 		return -1;
 
@@ -220,6 +223,27 @@ public  class MyGame_Manual implements MyGame {
 	public game_service getGame() {
 		return this.game;
 	}
+	
+
+	private void set()
+	{
+		Collection<node_data> s = this._graph.getV();
+		double x[]=new double[s.size()];
+		double y[]=new double[s.size()];
+		int i=0;
+		for (node_data node : s) 
+		{
+			x[i]=node.getLocation().x();
+			y[i]=node.getLocation().y();
+			i++;
+		}
+		Arrays.sort(x);
+		Arrays.sort(y);
+		this.xMin=x[0];
+		this.xMax=x[s.size()-1];
+		this.yMin=y[0];
+		this.yMax=y[s.size()-1];
+	}
 	Thread MoveT;
 	@Override
 	public void MoveThread()
@@ -232,7 +256,7 @@ public  class MyGame_Manual implements MyGame {
 				while(game!=null)
 				{
 					try {
-						Thread.sleep(100);
+						Thread.sleep(60);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

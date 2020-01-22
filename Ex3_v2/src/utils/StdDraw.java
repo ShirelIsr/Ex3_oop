@@ -1724,26 +1724,22 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 
 		case "Auto" : 
 		{
-			JFrame jinput = new JFrame();
-			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
-			jinput.dispose();
-			threadauto(input);
+			threadauto();
 		}
 		break;
 		case "Manual":
 
 		{
-			JFrame jinput = new JFrame();
-			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
-			jinput.dispose();
-			threadman(input);
+			
+			
+			threadman();
 		}
 		}
 	}
 
 
 
-	public static void threadman(String s)
+	public static void threadman()
 	{
 		help = new Thread(new Runnable() {
 
@@ -1751,7 +1747,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			public void run() {
 
 				//g.ThreadPaint(game);
-				graph.Play_manual(s);
+				graph.Play_manual();
 				help.interrupt();
 			}
 		});
@@ -1759,7 +1755,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	}
 	static boolean startRun = true;
 	static Thread help2;
-	public static void threadauto(String s)
+	public static void threadauto()
 	{
 		help2 = new Thread(new Runnable() {
 
@@ -1768,7 +1764,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 				if(startRun)
 				{
 					//g.ThreadPaint(game);
-					graph.Play_Automaticly(s);
+					graph.Play_Automaticly();
 					startRun=false;
 				}
 
