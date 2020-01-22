@@ -365,10 +365,16 @@ public class MyGameGui
 		minMove.put(19, 580);
 		minMove.put(20, 290);
 		minMove.put(23, 1140);
+		for(int i=0;i<=23;i++)
+		{
+			if(!minScor.containsKey(i))
+				minScor.put(i,0.0);
+			if(!minMove.containsKey(i))
+				minMove.put(i,Integer.MAX_VALUE);
+		}
 		HashMap <Integer,Double> IDScor =new HashMap<Integer,Double>();
-		int id =312354210;
+		int id =203793344;
 		int count =0;
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = 
@@ -382,22 +388,39 @@ public class MyGameGui
 				if(resultSet.getInt("UserID")==id)
 				{
 					int levelID=resultSet.getInt("levelID");
-					if(!minMove.containsKey(levelID))
-						minMove.put(levelID,Integer.MAX_VALUE);
-					if(!minScor.containsKey(levelID))
-						minScor.put(levelID, 0.0);
-					if(IDScor.get(levelID)==null)
-						IDScor.put(levelID,0.0);
 					Double scorID=resultSet.getDouble("score");
 					if(scorID>=minScor.get(levelID) &&(resultSet.getInt("moves")<=minMove.get(levelID)))
-						if(IDScor.get(levelID)>scorID)
+						if(IDScor.get(levelID)==null)
+						{
 							IDScor.put(levelID,scorID);
+						}
+						else if(IDScor.get(levelID)>=scorID)
+							IDScor.put(levelID,scorID);
+
+
+
+					count++;
+				}
+			}
+			resultSet = statement.executeQuery(allCustomersQuery);
+			HashMap <Integer,Integer> users=new HashMap<Integer,Integer>();
+			while(resultSet.next())
+			{
+				int uID=resultSet.getInt("UserID");
+				if(uID!=id)
+				{
+					int levelID=resultSet.getInt("levelID");
+					Double scorID=resultSet.getDouble("score");
+					if(IDScor.containsKey(levelID))
+						if(IDScor.get(levelID)>scorID)
+							if(scorID>minScor.get(levelID) &&(resultSet.getInt("moves")<minMove.get(levelID)))
+								users.put(uID, levelID);
 				}
 			}
 			resultSet.close();
 			statement.close();		
 			connection.close();	
-			count++;
+
 		}
 		catch (SQLException sqle) {
 			System.out.println("SQLException: " + sqle.getMessage());
@@ -406,24 +429,13 @@ public class MyGameGui
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		System.out.println("you played "+count);
 		Collection<Integer> s=IDScor.keySet();
-
-		JFrame jinput = new JFrame();
-		jinput.setSize(500,500);
-		jinput.setTitle("BEST SCORE!");
-		jinput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jinput.setVisible(true); 
-		Graphics g = jinput.getGraphics();
-		g.setColor(Color.BLACK);
-		g.fillOval(60,60,12,12);
-	//	g.setFont("Times new Roman.");
-		g.drawString("The number of games you playd"+count,100,100);
-		int j=2;
 		for(Integer i:s)
 		{
-			g.drawString("The level "+i+"   your score "+IDScor.get(i),100-j,100-j);
+			System.out.println("in level "+i+"your best score is"+IDScor.get(i) );
 		}
-		g.dispose();
+
 
 	}
 
