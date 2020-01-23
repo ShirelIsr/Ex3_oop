@@ -376,6 +376,7 @@ public class MyGameGui extends JPanel
 
 		HashMap <Integer,Double[]> IDScor =new HashMap<Integer,Double[]>();
 		HashMap<Integer, ArrayList<Integer>> users=new HashMap<Integer,ArrayList<Integer>>();
+		users.clear();
 		int count =0;
 		int maxLevel=0;
 		try {
@@ -454,7 +455,7 @@ public class MyGameGui extends JPanel
 		for(int i =0; i<= 23; i++)
 		{
 			if(IDScor.containsKey(i)) {
-				res += "\nlevel "+i+" score "+IDScor.get(i)[0]+" moves "+IDScor.get(i)[1]+" place "+users.get(i).size()+1;
+				res += "\nlevel "+i+" score "+IDScor.get(i)[0]+" moves "+IDScor.get(i)[1]+" place "+users.get(i).size();
 			}
 		}
 		JOptionPane.showMessageDialog(jinput,"\nyour max level is "+maxLevel+res);
