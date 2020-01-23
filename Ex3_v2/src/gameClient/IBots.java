@@ -6,7 +6,13 @@ import org.json.JSONException;
 
 import dataStructure.node_data;
 import utils.Point3D;
-
+/**
+ * The interface represents the robots in the game,
+The robots are the players in the game and their goal is to collect as much fruit as possible.
+Each robot is represented by its unique identity number, location, speed, and the number of points gained.
+ * @author shire
+ *
+ */
 public interface IBots {
 	/**
 	 *  Initializes and realizes a robot from a json file.

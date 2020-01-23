@@ -9,7 +9,15 @@ import org.json.JSONObject;
 import dataStructure.graph;
 import dataStructure.node_data;
 import utils.Point3D;
-
+/**
+ * this class is  implements IBots interface
+ *the interface represents the robots in the game,
+The robots are the players in the game and their goal is to collect as much fruit as possible.
+Each robot is represented by its unique identity number,
+ location, speed, and the number of points gained.
+ * @author shire
+ *
+ */
 public class Bots implements IBots{
 	int src ,dest ,id,speed;
 	Point3D location ;

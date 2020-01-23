@@ -17,7 +17,15 @@ import dataStructure.edge_data;
 import dataStructure.graph;
 import dataStructure.node_data;
 import utils.Point3D;
-
+/**
+ *  * this class is implements MyGame interface
+ * This interface represents a simple game interface, where each game is represented by, 
+ * the type of game taken from the game server and the graph (game board), 
+ * in each game there are robots (represent players), and fruits where the main game purpose is the fruit collection.
+ * There is manual game realization in this class.
+ * @author shire
+ *
+ */
 public  class MyGame_Manual implements MyGame {
 	game_service game;
 	private boolean flag=false;
@@ -223,7 +231,9 @@ public  class MyGame_Manual implements MyGame {
 	public game_service getGame() {
 		return this.game;
 	}
-	
+	/**
+	 * to set the min and max of the graph value.
+	 */
 
 	private void set()
 	{
@@ -245,6 +255,9 @@ public  class MyGame_Manual implements MyGame {
 		this.yMax=y[s.size()-1];
 	}
 	Thread MoveT;
+	/**
+	 * this thread is using reduce the cost of moving the robot.
+	 */
 	@Override
 	public void MoveThread()
 	{
