@@ -739,15 +739,19 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		JMenuItem auto = new JMenuItem("Auto");
 		JMenuItem manual = new JMenuItem("Manual");
 		JMenuItem Results = new JMenuItem("Results");
+		JMenuItem Login = new JMenuItem("Login");
 		menuItem1.addActionListener(std);
 		auto.addActionListener(std);
 		manual.addActionListener(std);
 		Results.addActionListener(std);
+		Login.addActionListener(std);
+	
 		menuItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
 				Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		file.add(menuItem1);
 		play.add(auto);
 		play.add(manual);
+		play.add(Login);
 		Info.add(Results);
 		return menuBar;
 	}
@@ -1721,6 +1725,8 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Results" :graph.BestScore();
 		break;
+		case "Login" :graph.LoginGame();
+		break;
 
 		case "Auto" : 
 		{
@@ -1728,12 +1734,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		}
 		break;
 		case "Manual":
-
-		{
-			
-			
 			threadman();
-		}
 		}
 	}
 
