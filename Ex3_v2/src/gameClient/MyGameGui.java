@@ -179,9 +179,8 @@ public class MyGameGui extends JPanel
 
 	public void Play_manual()
 	{
-		JFrame jinput = new JFrame();
+		JFrame jinput = new JFrame("Play manual");
 		try {
-//			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
 			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
 			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
@@ -215,6 +214,8 @@ public class MyGameGui extends JPanel
 			paint();
 		}
 		String results = game.toString();
+		JFrame jinput = new JFrame("Game Over");
+		JOptionPane.showMessageDialog(jinput,results);
 		System.out.println("Game Over: "+results);
 	}
 
@@ -245,9 +246,9 @@ public class MyGameGui extends JPanel
 
 	public  void Play_Automaticly()
 	{
-		JFrame jinput = new JFrame();
+		JFrame jinput = new JFrame("Play Automaticly");
 		try{
-//			int repeat = JOptionPane.showConfirmDialog(null, "To login to server press yes / no  ", "server", JOptionPane.YES_NO_OPTION);
+
 			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
 			int num = Integer.parseInt(input);
 			if(num>=0 && num<=23)
@@ -285,7 +286,10 @@ public class MyGameGui extends JPanel
 		k.save();
 		String kml = k.getKML();
 		game.sendKML(kml);
-		System.out.println("Game Over :" +game.toString());
+		String results = game.toString();
+		JFrame jinput = new JFrame("Game Over");
+		JOptionPane.showMessageDialog(jinput,results);
+		System.out.println("Game Over: "+results);
 	}
 
 	public void save() 
@@ -351,12 +355,11 @@ public class MyGameGui extends JPanel
 
 	{
 
-		JFrame insert = new JFrame();
+		JFrame insert = new JFrame("Results");
 		String input = JOptionPane.showInputDialog(insert,"Insert yours ID");
 		insert.dispose();
-		//threadauto(input);
-		int id = Integer.parseInt(input);
 
+		int id = Integer.parseInt(input);
 
 
 		HashMap <Integer,Double[]> minScor =new HashMap<Integer,Double[]>();
@@ -445,7 +448,7 @@ public class MyGameGui extends JPanel
 
 		JFrame jinput = new JFrame();
 		//		jinput.setSize(500,500);
-		//		jinput.setTitle("Game results!");
+			jinput.setTitle("Game results!");
 		String res = "";
 		res += "\nThe number of games you played: "+count;
 		for(int i =0; i<= 23; i++)

@@ -1727,7 +1727,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		break;
 		case "Login" :graph.LoginGame();
 		break;
-
 		case "Auto" : 
 		{
 			threadauto();
@@ -1747,7 +1746,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 			@Override
 			public void run() {
 
-				//g.ThreadPaint(game);
 				graph.Play_manual();
 				help.interrupt();
 			}
@@ -1766,14 +1764,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 				{
 					//g.ThreadPaint(game);
 					graph.Play_Automaticly();
-					startRun=false;
-				}
-
-				try {
-					help2.stop();
-				}
-				catch (Exception e) {
-					e.printStackTrace();
+					help2.interrupt();
 				}
 			}
 		});

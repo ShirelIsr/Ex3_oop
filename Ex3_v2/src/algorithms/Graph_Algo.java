@@ -131,7 +131,10 @@ public class Graph_Algo implements graph_algorithms,Serializable {
 		dijkstra(src);
 		return _graph.getNode(dest).getWeight();
 	}
-
+	/**
+	 * calculate the weight of all the nodes in the graph from specific node 
+	 * @param src
+	 */
 	private void dijkstra(int src)
 	{
 		clearNodeData();
@@ -160,7 +163,7 @@ public class Graph_Algo implements graph_algorithms,Serializable {
 		}
 	}
 
-
+	
 	@Override
 	public List<node_data> shortestPath(int src, int dest) {
 		List <node_data> path =new ArrayList <node_data>();
@@ -177,7 +180,7 @@ public class Graph_Algo implements graph_algorithms,Serializable {
 		Collections.reverse(path);
 		return path;
 	}
-
+	
 	@Override
 	public List<node_data> TSP(List<Integer> targets) {
 

@@ -249,6 +249,9 @@ public class MyGame_Automaticly implements MyGame{
 		this. y=y;
 
 	}
+	/**
+	 * this thread is using reduce the cost of moving the robot.
+	 */
 	Thread MoveT;
 	@Override
 	public void MoveThread()

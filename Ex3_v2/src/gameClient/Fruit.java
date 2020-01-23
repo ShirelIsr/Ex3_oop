@@ -9,7 +9,15 @@ import dataStructure.edge_data;
 import dataStructure.graph;
 import dataStructure.node_data;
 import utils.Point3D;
-
+/**
+ * this class is implements of IFruit interface
+ * An interface representing the fruits of the game,
+When collecting fruit is the goal of the game.
+Each fruit is represented by: location, value and type,
+ and it is also possible to get the rib on the graph on which the fruit is located.
+ * @author shire
+ *
+ */
 public class Fruit implements IFruit{
 	int type;
 	double value;
