@@ -251,7 +251,7 @@ public class MyGameGui extends JPanel
 
 			String input = JOptionPane.showInputDialog(jinput,"Which game to run? 0-23");
 			int num = Integer.parseInt(input);
-			if(num>=0 && num<=23)
+			if((num>=0 && num<=23)||(num==-31))
 			{	
 				m=new MyGame_Automaticly();
 				m.initGame(num);
