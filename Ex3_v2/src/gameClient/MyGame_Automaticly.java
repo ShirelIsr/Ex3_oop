@@ -246,8 +246,7 @@ public class MyGame_Automaticly implements MyGame{
 	@Override
 	public void setXY(double x, double y) {
 		this.x=x;
-		this. y=y;
-
+		this.y=y;
 	}
 	/**
 	 * this thread is using reduce the cost of moving the robot.

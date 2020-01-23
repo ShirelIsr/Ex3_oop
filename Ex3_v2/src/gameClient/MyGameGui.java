@@ -94,7 +94,7 @@ public class MyGameGui extends JPanel
 	private void initGUI() 
 	{
 		if(!StdDraw.getIsPaint()) {
-			StdDraw.setCanvasSize(800, 600);
+			StdDraw.setCanvasSize(1050, 620);
 			StdDraw.enableDoubleBuffering();
 			StdDraw.setIsPaint();
 		}
@@ -454,7 +454,7 @@ public class MyGameGui extends JPanel
 		for(int i =0; i<= 23; i++)
 		{
 			if(IDScor.containsKey(i)) {
-				res += "\nlevel "+i+" score "+IDScor.get(i)[0]+" moves "+IDScor.get(i)[1]+" place "+users.get(i).size();
+				res += "\nlevel "+i+" score "+IDScor.get(i)[0]+" moves "+IDScor.get(i)[1]+" place "+users.get(i).size()+1;
 			}
 		}
 		JOptionPane.showMessageDialog(jinput,"\nyour max level is "+maxLevel+res);
@@ -487,10 +487,6 @@ public class MyGameGui extends JPanel
 		});
 		KMLt.start();
 	}
-
 	////////////////////////////////////////////////////////
-	public static void main(String[] args) {
-		MyGameGui app = new MyGameGui();
-	}
 
 }
